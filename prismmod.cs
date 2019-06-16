@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace testmod
+namespace prismmod
 {
 	class prismmod : Mod
 	{
