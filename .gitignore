@@ -1,6 +1,6 @@
 
 *.ini
 
-/.vs
+.vs/
 .vs/prismmod/v15/Server/sqlite3/storage.ide-shm
 *.ide-shm
