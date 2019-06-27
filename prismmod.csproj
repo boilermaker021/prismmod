@@ -37,6 +37,7 @@
     <Compile Include="Buffs\Freezing.cs" />
     <Compile Include="Items\Accessories\KnightsBadge.cs" />
     <Compile Include="Items\Accessories\SharpshootersBadge.cs" />
+    <Compile Include="Items\Placeables\convertor.cs" />
     <Compile Include="Items\Weapons\MeekOak.cs" />
     <Compile Include="Items\Weapons\NathanGun.cs" />
     <Compile Include="Items\Weapons\PlanterasWrath.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="PrismPlayer.cs" />
     <Compile Include="Projectiles\MeekAcorn.cs" />
     <Compile Include="Projectiles\ThornBall.cs" />
+    <Compile Include="Tiles\Converter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework" />
@@ -96,6 +98,7 @@
     <Content Include="Items\Weapons\TrappingEdge.png" />
     <Content Include="Projectiles\MeekAcorn.png" />
     <Content Include="Projectiles\ThornBall.png" />
+    <Content Include="Tiles\Converter.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="obj\Release\testmod.csproj.CoreCompileInputs.cache" />

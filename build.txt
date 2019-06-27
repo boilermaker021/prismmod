@@ -1,4 +1,4 @@
 author = CommieSlayer1950 and GourmetSandwichBuns
 version = 0.1
-displayName = Test Mod
+displayName = The Prism Mod
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* 

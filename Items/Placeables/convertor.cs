@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace prismmod.Items.Placeables
 {
-    public class Converter : ModItem
+    public class convertor : ModItem
     {
         public override void SetStaticDefaults()
         {
