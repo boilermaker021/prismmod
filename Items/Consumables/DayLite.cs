@@ -31,7 +31,7 @@ namespace prismmod.Items.Consumables
 
             if (Main.dayTime == false)
             {
-                Main.time = 0;
+                Main.time = 10000;
                 Main.dayTime = true;
                 return true;
             }
