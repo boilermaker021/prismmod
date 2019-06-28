@@ -10,7 +10,8 @@ namespace prismmod.Buffs
 
 		public override void Update(NPC target, ref int buffIndex)
 		{
-            target.velocity *= 0f;
+            target.velocity.Y = 9.8f;
+            target.velocity.X = 0f;
 		}
 	}
 }
