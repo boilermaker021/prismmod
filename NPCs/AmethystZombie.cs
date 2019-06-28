@@ -5,11 +5,11 @@ using Microsoft.Xna.Framework;
 
 namespace prismmod.NPCs
 {
-    class DiamondZombie : ModNPC
+    class AmethystZombie : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Diamond Zombie");
+            DisplayName.SetDefault("Amethyst Zombie");
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
         }
 
@@ -23,7 +23,7 @@ namespace prismmod.NPCs
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
-            npc.knockBackResist = 0.5f;
+            npc.knockBackResist= 0.5f;
 
         }
 
@@ -34,7 +34,7 @@ namespace prismmod.NPCs
 
         public override void NPCLoot()
         {
-            Item.NewItem(npc.getRect(), ItemID.Diamond, Main.rand.Next(3, 6));
+            Item.NewItem(npc.getRect(), ItemID.Amethyst, Main.rand.Next(3, 6));
         }
 
 
