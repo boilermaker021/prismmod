@@ -15,8 +15,8 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
-            npc.width = 20;
-            npc.height = 40;
+            npc.width =18;
+            npc.height = 34;
             animationType = NPCID.Zombie;
             npc.aiStyle = 3;
             npc.lifeMax = 75;
@@ -28,7 +28,7 @@ namespace prismmod.NPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance*0.09f;
+            return SpawnCondition.OverworldNightMonster.Chance*0.1f;
         }
 
         public override void NPCLoot()
