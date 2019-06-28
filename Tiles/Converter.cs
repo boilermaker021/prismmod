@@ -28,6 +28,7 @@ namespace prismmod.Tiles
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.WorkBenches };
             Main.tileFrameImportant[Type] = true;
+            Main.tileLighted[Type] = true;
         }
 
 
@@ -35,6 +36,18 @@ namespace prismmod.Tiles
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("convertor"));
+        }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        {
+            // 239,16,224
+            Tile tile = Main.tile[i, j];
+            if (tile.frameX == 0)
+            {
+                r = 0.93f;
+                g = 0.06f;
+                b = 0.87f;
+            }
         }
     }
 }
