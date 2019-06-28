@@ -37,11 +37,14 @@
     <Compile Include="Buffs\Freezing.cs" />
     <Compile Include="Items\Accessories\KnightsBadge.cs" />
     <Compile Include="Items\Accessories\SharpshootersBadge.cs" />
+    <Compile Include="Items\Consumables\DayLite.cs" />
+    <Compile Include="Items\Consumables\NightLite.cs" />
     <Compile Include="Items\Placeables\convertor.cs" />
     <Compile Include="Items\Weapons\MeekOak.cs" />
     <Compile Include="Items\Weapons\NathanGun.cs" />
     <Compile Include="Items\Weapons\PlanterasWrath.cs" />
     <Compile Include="Items\Weapons\TrappingEdge.cs" />
+    <Compile Include="NPCs\DiamondZombie.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -86,6 +89,8 @@
     <Content Include="Items\Accessories\RalliersBadge.png" />
     <Content Include="Items\Accessories\SharpshootersBadge.png" />
     <Content Include="Items\Accessories\WizardsBadge.png" />
+    <Content Include="Items\Consumables\DayLite.png" />
+    <Content Include="Items\Consumables\NightLite.png" />
     <Content Include="Items\Consumables\PrismaticChunk.png" />
     <Content Include="Items\OtherItems\ShimmeringPathfinder.png" />
     <Content Include="Items\Placeables\convertor.png" />
