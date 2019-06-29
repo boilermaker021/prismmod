@@ -27,7 +27,7 @@ namespace prismmod.Items.Consumables
 
         }
 
-        public override bool UseItem(Player player)
+        public override bool CanUseItem(Player player)
         {
 
             if (Main.dayTime == false)
