@@ -40,7 +40,7 @@ namespace prismmod.Items.Consumables
                 return true;
             }
 
-            return false; //change when figure out how to restrict area in which item is useable
+            return false;
         }
 
         public override void AddRecipes()
