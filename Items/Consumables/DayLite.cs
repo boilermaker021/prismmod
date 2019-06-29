@@ -23,6 +23,7 @@ namespace prismmod.Items.Consumables
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.UseSound = SoundID.Item29;
             item.maxStack = 999;
+            item.useAnimation = 30;
 
         }
 

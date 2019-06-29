@@ -20,9 +20,10 @@ namespace prismmod.Items.Consumables
             item.noMelee = true;
             item.consumable = true;
             item.useTime = 4;
-            item.useStyle = ItemUseStyleID.HoldingUp;
+            item.useStyle = 4;
             item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.ForceRoar, 0);
             item.maxStack = 20;
+            item.useAnimation = 30;
 
         }
 
@@ -34,11 +35,16 @@ namespace prismmod.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            if (player.ZoneRockLayerHeight)
+            {
+                return true;
+            }
+
+            return false; //change when figure out how to restrict area in which item is useable
         }
 
         public override void AddRecipes()
-        {
+        { 
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Topaz, 5);
             recipe.AddIngredient(ItemID.Sapphire, 5);
@@ -49,6 +55,9 @@ namespace prismmod.Items.Consumables
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
+
+           
+            
 
         }
     }
