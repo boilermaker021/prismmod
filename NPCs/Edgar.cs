@@ -11,7 +11,7 @@ namespace prismmod.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Edgar");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults()
