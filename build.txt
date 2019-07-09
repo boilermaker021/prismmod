@@ -1,4 +1,4 @@
-author = CommieSlayer1950 and GourmetSandwichBuns and hippoodfdf
+author = CommieSlayer1950, GourmetSandwichBuns and hippoodfdf
 version = 0.0.1
 displayName = The Prism Mod - Alpha
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* 
