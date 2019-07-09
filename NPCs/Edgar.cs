@@ -16,12 +16,13 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
-            npc.width = 18;
-            npc.height = 34;
+            npc.width = 75;
+            npc.height = 51;
             npc.aiStyle = 22;
             npc.lifeMax = 40;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            animationType = NPCID.Wraith;
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
             npc.noTileCollide = true;
@@ -55,12 +56,6 @@ namespace prismmod.NPCs
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void AI()
-        {
-            
-            
         }
     }
 }

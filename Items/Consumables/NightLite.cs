@@ -35,9 +35,9 @@ namespace prismmod.Items.Consumables
                 Main.dayTime = false;
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
+
+        
     }
 }
