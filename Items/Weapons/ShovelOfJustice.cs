@@ -10,22 +10,22 @@ namespace prismmod.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shovel of Justice");
-			Tooltip.SetDefault("Freezes enemies while they are being stabbed.");
+			Tooltip.SetDefault("Allows you to bounce when you hit enemies");
 		}
 		public override void SetDefaults()
 		{
 			item.damage = 5;
 			item.melee = true;
-			item.width = 40;
-			item.height = 40;
+			item.width = 100;
+			item.height = 20;
 			item.useTime = 20;
-			item.useAnimation = 10;
+			item.useAnimation = 15;
 			item.useStyle = 3;
 			item.knockBack = 0;
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
 		}
 
 		public override void AddRecipes()
@@ -36,5 +36,22 @@ namespace prismmod.Items.Weapons
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-	}
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            if (player.GetModPlayer<PrismPlayer>().timesBounced < 5 && !player.HasBuff(mod.BuffType("NoBounce")))
+            {
+                player.velocity.Y = -10f;
+                player.GetModPlayer<PrismPlayer>().timesBounced++;
+                
+            }
+
+            if (player.GetModPlayer<PrismPlayer>().timesBounced == 5)
+            {
+                player.AddBuff(mod.BuffType("NoBounce"), 120);
+                player.GetModPlayer<PrismPlayer>().timesBounced = 0;
+                
+            }
+        }
+    }
 }
