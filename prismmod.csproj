@@ -44,8 +44,10 @@
     <Compile Include="Items\Weapons\MeekOak.cs" />
     <Compile Include="Items\Weapons\NathanGun.cs" />
     <Compile Include="Items\Weapons\PlanterasWrath.cs" />
+    <Compile Include="Items\Weapons\ShovelOfJustice.cs" />
     <Compile Include="Items\Weapons\TrappingEdge.cs" />
     <Compile Include="NPCs\AmethystZombie.cs" />
+    <Compile Include="NPCs\Edgar.cs" />
     <Compile Include="NPCs\DiamondZombie.cs" />
     <Compile Include="NPCs\EmeraldZombie.cs" />
     <Compile Include="NPCs\RubyZombie.cs" />
@@ -106,9 +108,15 @@
     <Content Include="Items\Weapons\NathanGun.png" />
     <Content Include="Items\Weapons\PlanterasWrath.png" />
     <Content Include="Items\Weapons\PlanterasWrathLarger.png" />
+    <Content Include="Items\Weapons\RainBow.png" />
+    <Content Include="Items\Weapons\ShovelOfJustice.png" />
+    <Content Include="Items\Weapons\snowbower.png" />
+    <Content Include="Items\Weapons\SparklingConfusion.png" />
     <Content Include="Items\Weapons\TrappingEdge.png" />
     <Content Include="NPCs\AmethystZombie.png" />
     <Content Include="NPCs\DiamondZombie.png" />
+    <Content Include="NPCs\Edgar.png" />
+    <Content Include="NPCs\Edgar_Glowmask.png" />
     <Content Include="NPCs\EmeraldZombie.png" />
     <Content Include="NPCs\RubyZombie.png" />
     <Content Include="NPCs\SapphireZombie.png" />
