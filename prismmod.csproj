@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Buffs\NoBounce.cs" />
     <Compile Include="Buffs\Freezing.cs" />
     <Compile Include="Items\Accessories\KnightsBadge.cs" />
     <Compile Include="Items\Accessories\SharpshootersBadge.cs" />
@@ -91,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Buffs\NoBounce.png" />
     <Content Include="Buffs\Freezing.png" />
     <Content Include="build.txt" />
     <Content Include="Items\Accessories\KnightsBadge.png" />
