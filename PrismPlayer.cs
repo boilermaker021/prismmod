@@ -15,6 +15,7 @@ namespace prismmod
         Random rndm = new Random();
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;
+        public int timesBounced = 0;
 
         
         public override bool ConsumeAmmo(Item weapon, Item ammo)
@@ -28,6 +29,8 @@ namespace prismmod
             noAmmoUseChance = 0f;
             return true;
         }
+
+        
 
 
     }
