@@ -19,7 +19,7 @@ namespace prismmod.Items.Consumables
             item.height = 20;
             item.noMelee = true;
             item.consumable = true;
-            item.useTime = 4;
+            item.useTime = 30;
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.UseSound = SoundID.Item29;
             item.maxStack = 999;
@@ -35,9 +35,13 @@ namespace prismmod.Items.Consumables
                 Main.dayTime = false;
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
+
+        public override bool UseItem(Player player)
+        {
+            return true;
+        }
+
     }
 }
