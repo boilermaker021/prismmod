@@ -1,0 +1,1 @@
+Contains sprite templates. Spriters, feel free to organize everything in here however you want.

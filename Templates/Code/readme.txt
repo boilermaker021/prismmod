@@ -1,0 +1,1 @@
+Contains basic outlines for code for different types of items, npcs, bosses, etc.
