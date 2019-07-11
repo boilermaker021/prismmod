@@ -104,6 +104,7 @@
     <Content Include="Items\Consumables\PrismaticChunk.png" />
     <Content Include="Items\OtherItems\ShimmeringPathfinder.png" />
     <Content Include="Items\Placeables\convertor.png" />
+    <Content Include="Items\Weapons\AntLauncher.png" />
     <Content Include="Items\Weapons\Flametosser.png" />
     <Content Include="Items\Weapons\legion staff.png" />
     <Content Include="Items\Weapons\MeekOak.png" />
@@ -115,6 +116,8 @@
     <Content Include="Items\Weapons\snowbower.png" />
     <Content Include="Items\Weapons\SparklingConfusion.png" />
     <Content Include="Items\Weapons\TrappingEdge.png" />
+    <Content Include="Items\Weapons\VibrantShard.png" />
+    <Content Include="Items\Weapons\WintersEssence.png" />
     <Content Include="NPCs\AmethystZombie.png" />
     <Content Include="NPCs\DiamondZombie.png" />
     <Content Include="NPCs\Edgar.png" />
