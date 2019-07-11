@@ -12,12 +12,11 @@ namespace prismmod.Buffs
 		{
             if (target.boss == false)
             {
-                target.velocity.Y = 9.8f;
                 target.velocity.X = 0f;
             }
             else
             {
-                target.velocity *= 0.8f;
+                target.velocity *= 0.95f;
 
             }
 		}
