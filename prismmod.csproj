@@ -34,13 +34,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Buffs\NoBounce.cs" />
     <Compile Include="Buffs\Freezing.cs" />
     <Compile Include="Items\Accessories\KnightsBadge.cs" />
     <Compile Include="Items\Accessories\SharpshootersBadge.cs" />
+    <Compile Include="Items\Consumables\DayLite.cs" />
+    <Compile Include="Items\Consumables\NightLite.cs" />
+    <Compile Include="Items\Consumables\PrismaticChunk.cs" />
+    <Compile Include="Items\Placeables\convertor.cs" />
     <Compile Include="Items\Weapons\MeekOak.cs" />
     <Compile Include="Items\Weapons\NathanGun.cs" />
     <Compile Include="Items\Weapons\PlanterasWrath.cs" />
+    <Compile Include="Items\Weapons\ShovelOfJustice.cs" />
     <Compile Include="Items\Weapons\TrappingEdge.cs" />
+    <Compile Include="NPCs\AmethystZombie.cs" />
+    <Compile Include="NPCs\Edgar.cs" />
+    <Compile Include="NPCs\DiamondZombie.cs" />
+    <Compile Include="NPCs\EmeraldZombie.cs" />
+    <Compile Include="NPCs\RubyZombie.cs" />
+    <Compile Include="NPCs\SapphireZombie.cs" />
+    <Compile Include="NPCs\TopazZombie.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -48,6 +61,7 @@
     <Compile Include="PrismPlayer.cs" />
     <Compile Include="Projectiles\MeekAcorn.cs" />
     <Compile Include="Projectiles\ThornBall.cs" />
+    <Compile Include="Tiles\Converter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework" />
@@ -78,12 +92,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Buffs\NoBounce.png" />
     <Content Include="Buffs\Freezing.png" />
     <Content Include="build.txt" />
     <Content Include="Items\Accessories\KnightsBadge.png" />
     <Content Include="Items\Accessories\RalliersBadge.png" />
     <Content Include="Items\Accessories\SharpshootersBadge.png" />
     <Content Include="Items\Accessories\WizardsBadge.png" />
+    <Content Include="Items\Consumables\DayLite.png" />
+    <Content Include="Items\Consumables\NightLite.png" />
     <Content Include="Items\Consumables\PrismaticChunk.png" />
     <Content Include="Items\OtherItems\ShimmeringPathfinder.png" />
     <Content Include="Items\Placeables\convertor.png" />
@@ -93,9 +110,22 @@
     <Content Include="Items\Weapons\NathanGun.png" />
     <Content Include="Items\Weapons\PlanterasWrath.png" />
     <Content Include="Items\Weapons\PlanterasWrathLarger.png" />
+    <Content Include="Items\Weapons\RainBow.png" />
+    <Content Include="Items\Weapons\ShovelOfJustice.png" />
+    <Content Include="Items\Weapons\snowbower.png" />
+    <Content Include="Items\Weapons\SparklingConfusion.png" />
     <Content Include="Items\Weapons\TrappingEdge.png" />
+    <Content Include="NPCs\AmethystZombie.png" />
+    <Content Include="NPCs\DiamondZombie.png" />
+    <Content Include="NPCs\Edgar.png" />
+    <Content Include="NPCs\Edgar_Glowmask.png" />
+    <Content Include="NPCs\EmeraldZombie.png" />
+    <Content Include="NPCs\RubyZombie.png" />
+    <Content Include="NPCs\SapphireZombie.png" />
+    <Content Include="NPCs\TopazZombie.png" />
     <Content Include="Projectiles\MeekAcorn.png" />
     <Content Include="Projectiles\ThornBall.png" />
+    <Content Include="Tiles\Converter.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="obj\Release\testmod.csproj.CoreCompileInputs.cache" />

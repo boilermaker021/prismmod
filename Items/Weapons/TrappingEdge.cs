@@ -29,7 +29,7 @@ namespace prismmod.Items.Weapons
 		}
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knoclkback, bool crit)
-        {
+        {            
             target.AddBuff(mod.BuffType("Freezing"), 60);
         }
 

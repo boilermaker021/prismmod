@@ -41,7 +41,7 @@ namespace prismmod.Items.Weapons
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(mod.TileType("ExampleWorkbench"));
+            recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
