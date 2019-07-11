@@ -13,6 +13,7 @@ namespace prismmod.Buffs
             if (target.boss == false)
             {
                 target.velocity.X = 0f;
+                target.velocity.Y = 0f;
             }
             else
             {
