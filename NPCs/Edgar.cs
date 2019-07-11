@@ -39,7 +39,17 @@ namespace prismmod.NPCs
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            
+
             Texture2D texture = mod.GetTexture("NPCs/Edgar_Glowmask");
+            if (npc.spriteDirection==1)
+            {
+                texture = mod.GetTexture("NPCs/Edgar_GlowmaskR");
+            }
+            if (npc.spriteDirection==0)
+            {
+                texture = mod.GetTexture("NPCs/Edgar_Glowmask");
+            }
             spriteBatch.Draw
             (
                 texture,
@@ -56,6 +66,21 @@ namespace prismmod.NPCs
                 SpriteEffects.None,
                 0f
             );
+        }
+
+        public override void AI()
+        {
+            float r = 1f;
+            float g = 201/255;
+            float b = 70/255;
+
+            float positionX = npc.position.X + npc.width / 2 - 33;
+            float positionY = npc.position.Y + npc.height / 2 - 10;
+
+            Vector2 npcPos = new Vector2(positionX, positionY);
+
+            Lighting.AddLight(npcPos, r, g, b);
+
         }
     }
 }
