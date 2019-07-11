@@ -28,7 +28,15 @@ namespace prismmod.Items.Armor
             player.minionDamage += 0.05f;
         }
 
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("SpecialCloth"), 7);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 
+        }
 
 
         public override bool DrawHead()
