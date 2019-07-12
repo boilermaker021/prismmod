@@ -10,7 +10,7 @@ namespace prismmod.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Edgar");
+            DisplayName.SetDefault("Rare Edgar");
             Main.npcFrameCount[npc.type] = 4;
         }
 
@@ -81,6 +81,11 @@ namespace prismmod.NPCs
 
             Lighting.AddLight(npcPos, r, g, b);
 
+        }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem(npc.getRect(), mod.ItemType("SpecialCloth"), Main.rand.Next(9, 12));
         }
     }
 }

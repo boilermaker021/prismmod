@@ -82,5 +82,10 @@ namespace prismmod.NPCs
             Lighting.AddLight(npcPos, r, g, b);
 
         }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem(npc.getRect(), mod.ItemType("SpecialCloth"), Main.rand.Next(1,4));
+        }
     }
 }
