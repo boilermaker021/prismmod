@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
+
 namespace prismmod.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
@@ -11,21 +12,20 @@ namespace prismmod.Items.Armor
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shady Hood");
-            Tooltip.SetDefault("+1 Max Minion");
+            Tooltip.SetDefault("+4% Flamethrower Damage");
         }
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 20;
             item.rare = 1;
-            item.defense = 1;
-            
-            
+            item.defense = 1; 
         }
 
         public override void UpdateEquip(Player player)
         {
-            //player.maxMinions += 1;
+            player.GetModPlayer<PrismPlayer>().flamerDamageIncrease += 0.04f;
+            
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -35,8 +35,9 @@ namespace prismmod.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Immunity to being Chilled, flamethrower flames reach 20% further";
+            player.setBonus = "Immunity to being Chilled, flamethrower flames reach 25% further";
             player.buffImmune[BuffID.Chilled] = true;
+            player.GetModPlayer<PrismPlayer>().flamerSpeedIncrease += 0.25f;
         }
 
         public override void AddRecipes()
