@@ -14,7 +14,7 @@ namespace prismmod.Tiles
             Main.tileSolidTop[Type] = true;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            Main.tileTable[Type] = true;
+            Main.tileTable[Type] = false;
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
             TileObjectData.newTile.Height = 2;
