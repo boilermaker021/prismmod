@@ -41,6 +41,9 @@
     <Compile Include="Items\Armor\ShadyTunic.cs" />
     <Compile Include="Items\Armor\ShadyRobes.cs" />
     <Compile Include="Items\Armor\ShadyHood.cs" />
+    <Compile Include="Items\Armor\TrekkersBoots.cs" />
+    <Compile Include="Items\Armor\TrekkersHood.cs" />
+    <Compile Include="Items\Armor\TrekkersJacket.cs" />
     <Compile Include="Items\Consumables\DayLite.cs" />
     <Compile Include="Items\Consumables\NightLite.cs" />
     <Compile Include="Items\Consumables\PrismaticChunk.cs" />
@@ -69,9 +72,6 @@
     <Compile Include="Tiles\Converter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Xna.Framework" />
-    <Reference Include="Microsoft.Xna.Framework.Game" />
-    <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.dll</HintPath>
@@ -115,12 +115,17 @@
     <Content Include="Items\Armor\TrekkersBoots.png" />
     <Content Include="Items\Armor\TrekkersBoots_Legs.png" />
     <Content Include="Items\Armor\TrekkersHeadgear.png" />
+    <Content Include="Items\Armor\TrekkersHeadgear_Head.png" />
     <Content Include="Items\Armor\TrekkersHelmet.png" />
+    <Content Include="Items\Armor\TrekkersHelmet_Head.png" />
     <Content Include="Items\Armor\TrekkersHood.png" />
+    <Content Include="Items\Armor\TrekkersHood_Head.png" />
     <Content Include="Items\Armor\TrekkersJacket.png" />
     <Content Include="Items\Armor\TrekkersJacketWIP.png" />
+    <Content Include="Items\Armor\TrekkersJacket_Arms.png" />
     <Content Include="Items\Armor\TrekkersJacket_Body.png" />
     <Content Include="Items\Armor\TrekkersMask.png" />
+    <Content Include="Items\Armor\TrekkersMask_Head.png" />
     <Content Include="Items\Consumables\DayLite.png" />
     <Content Include="Items\Consumables\NightLite.png" />
     <Content Include="Items\Consumables\PrismaticChunk.png" />
