@@ -1,4 +1,8 @@
-author = CommieSlayer1950, GourmetSandwichBuns and hippoodfdf
+author = CommieSlayer1950 and GourmetSandwichBuns
 version = 0.0.1
 displayName = The Prism Mod - Alpha
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* 
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* , .git\*, Templates\*, README.md
+homepage = https://github.com/CommieSlayer1950/prismmod/wiki
+hideCode = true
+hideResources = true
+includeSource = false
