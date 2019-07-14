@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace prismmod.NPCs
 {
+    [AutoloadBossHead]
     class GargantuanTortoise : ModNPC
     {
         public override void SetStaticDefaults()
@@ -44,9 +45,9 @@ namespace prismmod.NPCs
 
         public override void NPCLoot()
         {
-            if (mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false) ;
+            if (mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("DuoGloriae"), 1);
+                Item.NewItem(npc.getRect(), mod.ItemType("DuoGloriae"));
             }
             mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
         }
