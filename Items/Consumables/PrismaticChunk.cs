@@ -19,11 +19,11 @@ namespace prismmod.Items.Consumables
             item.height = 20;
             item.noMelee = true;
             item.consumable = true;
-            item.useTime = 4;
+            item.useTime = 20;
             item.useStyle = 4;
             item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.ForceRoar, 0);
             item.maxStack = 20;
-            item.useAnimation = 30;
+            item.useAnimation = 15;
 
         }
 
