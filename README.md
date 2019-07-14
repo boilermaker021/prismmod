@@ -6,6 +6,7 @@
 <p>So far we have added:</p>
 <ul>
 <li>2 NPCs</li>
+<li>1 Mini-boss </li>
 <li>2 materials</li>
 <li>3 consumables</li>
 <li>2 armor sets</li>
