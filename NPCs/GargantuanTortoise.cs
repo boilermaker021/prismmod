@@ -56,7 +56,7 @@ namespace prismmod.NPCs
         {
             
 
-            Texture2D texture = mod.GetTexture("NPCs/Edgar_Glowmask");
+            Texture2D texture = mod.GetTexture("NPCs/GargantuanTortoise_Glowmask");
             if (npc.spriteDirection==1)
             {
                 texture = mod.GetTexture("NPCs/GargantuanTortoise_GlowmaskR");
