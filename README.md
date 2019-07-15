@@ -2,7 +2,7 @@
 <p>by CommieSlayer and LordCrumple</p>
 
 
-<p>The Prism Mod aims to overhaul Terraria and add mamy new bosses, npcs, items, biomes, and more.</p>
+<p>The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, biomes, and more.</p>
 <p>So far we have added:</p>
 <ul>
 <li>2 NPCs</li>
