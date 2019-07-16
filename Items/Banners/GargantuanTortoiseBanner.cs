@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Banners
 {
-    public class GargantuanTortoise : ModItem
+    public class GargantuanTortoiseBanner : ModItem
     {
         public override void SetStaticDefaults()
         {
