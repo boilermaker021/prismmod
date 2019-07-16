@@ -28,6 +28,8 @@ namespace prismmod.NPCs
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.damage = 10;
+            banner = npc.type;
+            bannerItem = mod.ItemType("EdgarBannerItem");
 
         }
 
