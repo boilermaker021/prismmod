@@ -18,6 +18,7 @@ namespace prismmod.Tiles
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
             TileObjectData.newTile.Height = 2;
+            TileObjectData.newTile.Width = 7;
             TileObjectData.newTile.CoordinateHeights = new[] { 16,16};
             TileObjectData.newTile.Origin = new Point16(3, 1);
             TileObjectData.addTile(Type);

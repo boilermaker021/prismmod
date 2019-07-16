@@ -51,5 +51,36 @@ namespace prismmod.NPCs
             }
             mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            
+
+            Texture2D texture = mod.GetTexture("NPCs/GargantuanTortoise_Glowmask");
+            if (npc.spriteDirection==1)
+            {
+                texture = mod.GetTexture("NPCs/GargantuanTortoise_GlowmaskR");
+            }
+            if (npc.spriteDirection==0)
+            {
+                texture = mod.GetTexture("NPCs/GargantuanTortoise_Glowmask");
+            }
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    npc.position.X - Main.screenPosition.X + npc.width * 0.5f,
+                    npc.position.Y - Main.screenPosition.Y + npc.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                npc.rotation,
+                texture.Size()*0.5f,
+                npc.scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
     }
 }
