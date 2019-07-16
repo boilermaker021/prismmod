@@ -35,7 +35,7 @@ namespace prismmod.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (Main.dayTime == false && mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false
-                &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1)
+                &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 &&NPC.downedSlimeKing)
             {
                 return SpawnCondition.SurfaceJungle.Chance * 0.05f;
             }
