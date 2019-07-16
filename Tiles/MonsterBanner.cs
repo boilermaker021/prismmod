@@ -42,6 +42,12 @@ namespace prismmod.Tiles
                 case 1:
                     item = "GargantuanTortoiseBanner";
                     break;
+                case 2:
+                    item = "RareEdgarBanner";
+                    break;
+                case 3:
+                    item = "BoulduckBanner";
+                    break;
                 default:
                     return;
                
@@ -64,6 +70,12 @@ namespace prismmod.Tiles
                         break;
                     case 1:
                         type = "GargantuanTortoise";
+                        break;
+                    case 2:
+                        type = "RareEdgar";
+                        break;
+                    case 3:
+                        type = "RareEdgar";//will be changed to Boulduck once the enemy is implemented
                         break;
                     default:
                         return;
