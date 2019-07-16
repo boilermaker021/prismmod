@@ -10,7 +10,7 @@ namespace prismmod.Items.Consumables
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("MechaEgg");
-            Tooltip.SetDefault("Summons the Gargantuan Tortoise");
+            Tooltip.SetDefault("Summons the Gargantuan Tortoise\nCan only be used in the Jungle");
         }
 
         public override void SetDefaults()
