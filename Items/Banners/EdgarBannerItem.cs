@@ -27,7 +27,7 @@ namespace prismmod.Items.Banners
             item.consumable = true;
             item.value = Item.buyPrice(0,0,10,0);
             item.createTile = mod.TileType("EdgarBannerTile");
-            item.placeStyle = 1;
+            item.placeStyle = 0;
         }
     }
 }
