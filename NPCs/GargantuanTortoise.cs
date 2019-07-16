@@ -28,6 +28,8 @@ namespace prismmod.NPCs
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
             npc.damage = 30;
+            banner = npc.type;
+            bannerItem = mod.ItemType("GargantuanTortoiseBanner");
 
         }
 
