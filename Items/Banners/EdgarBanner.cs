@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Banners
 {
-    public class EdgarBannerItem : ModItem
+    public class EdgarBanner : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ namespace prismmod.Items.Banners
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.buyPrice(0,0,10,0);
-            item.createTile = mod.TileType("EdgarBannerTile");
+            item.createTile = mod.TileType("MonsterBanner");
             item.placeStyle = 0;
         }
     }
