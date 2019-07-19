@@ -15,7 +15,7 @@ namespace prismmod.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Iciclunk");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[5];//will change
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[6];//will change
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace prismmod.NPCs
             npc.width =18;
             npc.height = 34;
             animationType = 0;
-            npc.aiStyle = 0;
+            npc.aiStyle = 41;
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
