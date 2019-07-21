@@ -17,9 +17,13 @@ namespace prismmod
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
         public float flamerDamageIncrease = 1f;
-        public float flamerSpeedIncrease = 0f;
+        public float flamerSpeedIncrease = 1f;
+        public float rocketDamageIncrease = 1f;
+        public float bulletDamageIncrease = 1f;
+        public float arrowDamageIncrease = 1f;
+        public float arrowsFreezeEnemies = 1f;
 
-        
+
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
             double number = rndm.NextDouble();
@@ -35,6 +39,10 @@ namespace prismmod
         {
             flamerDamageIncrease = 1f;
             flamerSpeedIncrease = 1f;
+            rocketDamageIncrease = 1f;
+            bulletDamageIncrease = 1f;
+            arrowDamageIncrease = 1f;
+            arrowsFreezeEnemies = 1f;
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -46,12 +54,21 @@ namespace prismmod
                 speedX *= flamerSpeedIncrease;
 
             }
+            if (item.useAmmo == AmmoID.Rocket)
+            {
+                damage = (int)((float)damage * rocketDamageIncrease);
+
+            }
+            if (item.useAmmo == AmmoID.Bullet)
+            {
+                damage = (int)((float)damage * bulletDamageIncrease);
+            }
+            if (item.useAmmo == AmmoID.Arrow)
+            {
+                damage = (int)((float)damage * arrowDamageIncrease);
+            }
             return true;
         }
-
-
-
-
 
     }
 }
