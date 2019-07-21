@@ -37,7 +37,10 @@ namespace prismmod.Items.Armor
         {
             player.setBonus = "Immunity to being Chilled, Enemies are less likely to target you in the snow biome";
             player.buffImmune[BuffID.Chilled] = true;
-            //Enemies less likely to target player in snow biome(I think I can do this????)
+            if (player.ZoneSnow)
+            {
+                player.aggro -= (int)(player.aggro * 0.33f);
+            }
         }
 
         public override void AddRecipes()
