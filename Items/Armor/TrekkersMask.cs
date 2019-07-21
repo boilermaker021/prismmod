@@ -37,7 +37,7 @@ namespace prismmod.Items.Armor
         {
             player.setBonus = "Immunity to being Chilled, 10% chance for bows to freeze enemies";
             player.buffImmune[BuffID.Chilled] = true;
-            //Blast radius buff by 25%, will be implemented later
+            player.GetModPlayer<PrismPlayer>().arrowsFreezeEnemies += 0.10f;
         }
 
         public override void AddRecipes()

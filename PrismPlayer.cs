@@ -21,7 +21,7 @@ namespace prismmod
         public float rocketDamageIncrease = 1f;
         public float bulletDamageIncrease = 1f;
         public float arrowDamageIncrease = 1f;
-        public float arrowsFreezeEnemies = 1f;
+        public float arrowsFreezeEnemies = 0f;
 
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
@@ -42,7 +42,7 @@ namespace prismmod
             rocketDamageIncrease = 1f;
             bulletDamageIncrease = 1f;
             arrowDamageIncrease = 1f;
-            arrowsFreezeEnemies = 1f;
+            arrowsFreezeEnemies = 0f;
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -70,5 +70,16 @@ namespace prismmod
             return true;
         }
 
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (proj.aiStyle == 1)
+            {
+                double number = rndm.NextDouble();
+                if (number < arrowsFreezeEnemies)
+                {
+                    target.AddBuff(mod.BuffType("Freezing"), 180);//for 3 seconds, can be changed for balancing later
+                }
+            }
+        }
     }
 }
