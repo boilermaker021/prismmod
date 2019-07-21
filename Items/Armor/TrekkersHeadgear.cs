@@ -7,24 +7,24 @@ using Microsoft.Xna.Framework;
 namespace prismmod.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrekkersHood : ModItem
+    public class TrekkersHeadgear : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Trekker's Hood");
-            Tooltip.SetDefault("+4% Flamethrower Damage");
+            DisplayName.SetDefault("Trekker's Headgear");
+            Tooltip.SetDefault("+4% Rocket Damage");
         }
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 20;
             item.rare = 1;
-            item.defense = 1; 
+            item.defense = 3; 
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.GetModPlayer<PrismPlayer>().flamerDamageIncrease += 0.04f;
+            player.GetModPlayer<PrismPlayer>().rocketDamageIncrease += 0.04f;
             
         }
 
@@ -35,9 +35,9 @@ namespace prismmod.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Immunity to being Chilled, flamethrower flames reach 25% further";
+            player.setBonus = "Immunity to being Chilled, Blast Radius increased by 25%";
             player.buffImmune[BuffID.Chilled] = true;
-            player.GetModPlayer<PrismPlayer>().flamerSpeedIncrease += 0.25f;
+            //Blast radius buff by 25%, will be implemented later
         }
 
         public override void AddRecipes()
