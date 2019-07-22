@@ -10,7 +10,7 @@ namespace prismmod.Buffs
 
 		public override void Update(NPC target, ref int buffIndex)
 		{
-            if (target.boss == false)
+            if (!target.boss)
             {
                 target.velocity.X = 0f;
                 target.velocity.Y = 0f;
