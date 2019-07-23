@@ -1,10 +1,12 @@
-<h1> The Prism Mod</h1>
-<p>by CommieSlayer and LordCrumple</p>
+## The Prism Mod
+by CommieSlayer and LordCrumple
 
 
-<p>The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, biomes, and more.</p>
+The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, biomes, and more.
+
 [Join our discord!](https://discord.gg/KRsXFuB)
-<p>So far we have added:</p>
+
+So far we have added:
 <ul>
 <li>3 NPCs</li>
 <li>1 Mini-boss </li>
