@@ -22,6 +22,7 @@ namespace prismmod
         public float bulletDamageIncrease = 1f;
         public float arrowDamageIncrease = 1f;
         public float arrowsFreezeEnemies = 0f;
+        public float twoShotRocket = 0f;
 
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
@@ -43,6 +44,7 @@ namespace prismmod
             bulletDamageIncrease = 1f;
             arrowDamageIncrease = 1f;
             arrowsFreezeEnemies = 0f;
+            twoShotRocket = 0f;
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -57,7 +59,6 @@ namespace prismmod
             if (item.useAmmo == AmmoID.Rocket)
             {
                 damage = (int)((float)damage * rocketDamageIncrease);
-
             }
             if (item.useAmmo == AmmoID.Bullet)
             {
