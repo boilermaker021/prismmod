@@ -59,13 +59,13 @@ namespace prismmod
             if (item.useAmmo == AmmoID.Rocket)
             {
                 damage = (int)((float)damage * rocketDamageIncrease);
-				//double number = rndm.NextDouble();
-				//if(number < twoShotRocket)
-				//{
+				double number = rndm.NextDouble();
+				if(number < twoShotRocket)
+				{
 					Vector2 perturbedSpeed = new Vector2(speedX, speedY);
 					perturbedSpeed = perturbedSpeed*0.5f;
 					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-				//}
+				}
             }
             if (item.useAmmo == AmmoID.Bullet)
             {
