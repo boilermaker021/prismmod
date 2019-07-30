@@ -54,5 +54,11 @@ namespace prismmod.Items.Armor
 		{
 			return true;
 		}
+
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+        }
+
     }
 }
