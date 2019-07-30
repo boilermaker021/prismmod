@@ -15,7 +15,7 @@ namespace prismmod.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Iciclunk");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[8];//will change
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults()
