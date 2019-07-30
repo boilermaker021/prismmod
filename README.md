@@ -2,7 +2,6 @@
 ![Discord](https://img.shields.io/discord/591522781087399937.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/CommieSlayer1950/prismmod.svg)
 ![GitHub release](https://img.shields.io/github/release/CommieSlayer1950/prismmod.svg?label=latest%20version)
-![GitHub All Releases](https://img.shields.io/github/downloads/CommieSlayer1950/prismmod/total.svg)
 
 by CommieSlayer and LordCrumple
 
