@@ -43,6 +43,14 @@ namespace prismmod.NPCs
             player = Main.player[npc.target];
         }
 
+        private const int AI_State_Slot = 0;
+        
+        public float AI_State
+        {
+            get => npc.ai[AI_State_Slot];
+            set => npc.ai[AI_State_Slot] = value;
+
+        }
         public override void AI()
         {
             
