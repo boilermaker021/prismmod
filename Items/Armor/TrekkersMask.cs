@@ -49,5 +49,10 @@ namespace prismmod.Items.Armor
             recipe.AddRecipe();
             
         }
+		
+		public override bool DrawHead()
+		{
+			return true;
+		}
     }
 }
