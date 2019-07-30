@@ -35,9 +35,9 @@ namespace prismmod.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Immunity to being Chilled, Blast Radius increased by 25%";
+            player.setBonus = "Immunity to being Chilled, 25% to shoot two rockets";
             player.buffImmune[BuffID.Chilled] = true;
-            //Blast radius buff by 25%, will be implemented later
+            player.GetModPlayer<PrismPlayer>().twoShotRocket += 0.25f;
         }
 
         public override void AddRecipes()
