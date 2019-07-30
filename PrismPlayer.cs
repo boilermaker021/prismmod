@@ -63,7 +63,7 @@ namespace prismmod
 				//if(number < twoShotRocket)
 				//{
 					Vector2 perturbedSpeed = new Vector2(speedX, speedY);
-					perturbedSpeed = perturbedSpeed*0.8f;
+					perturbedSpeed = perturbedSpeed*0.5f;
 					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 				//}
             }
