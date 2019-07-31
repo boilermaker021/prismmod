@@ -24,6 +24,7 @@ namespace prismmod.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
             npc.knockBackResist= 0.5f;
+            npc.damage = 14;
 
         }
 
