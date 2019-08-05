@@ -20,7 +20,7 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
-            npc.width =100;
+            npc.width =200;
             npc.height = 50;
             //npc.aiStyle = 41;
             npc.lifeMax = 75;
