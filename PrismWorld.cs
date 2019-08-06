@@ -24,5 +24,18 @@ namespace prismmod
             killedGargantuanTortoise = false;
         }
 
+        public override void NetSend(BinaryWriter writer)
+        {
+            BitsByte flags = new BitsByte();
+            flags[0] = killedGargantuanTortoise;
+            writer.Write(flags);
+        }
+
+        public override void NetReceive(BinaryReader reader)
+        {
+            BitsByte flags = reader.ReadByte();
+            killedGargantuanTortoise = flags[0];
+        }
+
     }
 }
