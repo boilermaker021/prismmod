@@ -23,6 +23,7 @@ namespace prismmod
         public float arrowDamageIncrease = 1f;
         public float arrowsFreezeEnemies = 0f;
         public float twoShotRocket = 0f;
+        public float reducedContactDamage = 1f;
 
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
@@ -88,6 +89,11 @@ namespace prismmod
                     target.AddBuff(mod.BuffType("Freezing"), 180);//for 3 seconds, can be changed for balancing later
                 }
             }
+        }
+
+        public override void OnHitByNPC(NPC npc, int damage, bool crit)
+        {
+            damage = (int)((float)damage *(reducedContactDamage - 1f));
         }
     }
 }
