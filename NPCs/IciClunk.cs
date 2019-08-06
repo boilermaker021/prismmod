@@ -21,8 +21,8 @@ namespace prismmod.NPCs
         public override void SetDefaults()
         {
             npc.width =100;
-            npc.height = 100;
-            //npc.aiStyle = 41;
+            npc.height = 108;
+            //npc.aiStyle = 41; //Derpling AI
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -47,6 +47,7 @@ namespace prismmod.NPCs
             set => npc.ai[AI_State_Slot] = value;
 
         }
+
         public override void AI()
         {
             
