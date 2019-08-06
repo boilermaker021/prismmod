@@ -10,12 +10,12 @@ namespace prismmod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kanaya's Lipstick");
+			DisplayName.SetDefault("Mysterious Lipstick");
 			Tooltip.SetDefault("Not just a stick of lipstick...");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 50;
 			item.melee = true;
 			item.width = 54;
 			item.height = 14;
@@ -30,7 +30,7 @@ namespace prismmod.Items.Tools
 			item.rare = 2;
 			item.UseSound = SoundID.Item22;
 			item.autoReuse = true;
-            item.axe = 165;
+            item.axe = 220;
             item.shoot = mod.ProjectileType("KanayasChainsawProjectile");
             item.shootSpeed = 40f;
 		}
@@ -39,7 +39,7 @@ namespace prismmod.Items.Tools
         {
             
             spriteBatch.Draw(mod.GetTexture("Items/Tools/KanayasLipstick"),
-                  new Rectangle((int)position.X+10, (int)position.Y+10, (int)(14 * scale), (int)(36 * scale)),
+                  new Rectangle((int)position.X+10, (int)position.Y-5, (int)(14 * scale), (int)(36 * scale)),
                   drawColor);
             return false; 
         }
