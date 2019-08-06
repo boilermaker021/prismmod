@@ -11,7 +11,7 @@ namespace prismmod.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Kanaya's Lipstick");
-			Tooltip.SetDefault("Think of something creative");
+			Tooltip.SetDefault("Not just a stick of lipstick...");
 		}
 		public override void SetDefaults()
 		{
