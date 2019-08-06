@@ -38,10 +38,6 @@ namespace prismmod.NPCs
             Item.NewItem(npc.getRect(), mod.ItemType("IciclunkHorn"), Main.rand.Next(3, 6));
         }
 
-        public void Target()
-        {
-            player = Main.player[npc.target];
-        }
 
         private const int AI_State_Slot = 0;
         
