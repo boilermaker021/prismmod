@@ -20,8 +20,8 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
-            npc.width =200;
-            npc.height = 50;
+            npc.width =100;
+            npc.height = 100;
             //npc.aiStyle = 41;
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
