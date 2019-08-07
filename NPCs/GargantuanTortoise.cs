@@ -39,7 +39,7 @@ namespace prismmod.NPCs
             if (Main.dayTime == false && mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false
                 &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 &&NPC.downedSlimeKing)
             {
-                return SpawnCondition.SurfaceJungle.Chance * 0.05f;
+                return SpawnCondition.SurfaceJungle.Chance * 0.1f;
             }
             return 0f;
         }
@@ -52,7 +52,15 @@ namespace prismmod.NPCs
                 Item.NewItem(npc.getRect(), mod.ItemType("DuoGloriae"));
             }
             mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
-        }
+
+            if (!mod.GetModWorld<PrismWorld>().killedGargantuanTortoise)
+            {
+                mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+
+                }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
