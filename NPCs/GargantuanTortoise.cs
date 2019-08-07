@@ -61,6 +61,8 @@ namespace prismmod.NPCs
                     NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 
                 }
+            }
+        }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
