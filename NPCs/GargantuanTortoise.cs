@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace prismmod.NPCs
 {
@@ -62,6 +63,13 @@ namespace prismmod.NPCs
 
                 }
             }
+
+            Random rand = new Random();
+            if (rand.NextDouble() <= 0.5)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("TinyTurtleCaptureOrb"));
+            }
+
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -13,6 +13,7 @@ namespace prismmod
     class PrismPlayer : ModPlayer
     {
         Random rndm = new Random();
+        public bool tinyTurtle = false;
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
@@ -47,6 +48,7 @@ namespace prismmod
             arrowsFreezeEnemies = 0f;
             twoShotRocket = 0f;
             reducedContactDamage = 1f;
+            tinyTurtle = false;
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
