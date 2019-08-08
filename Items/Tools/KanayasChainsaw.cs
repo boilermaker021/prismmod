@@ -11,7 +11,7 @@ namespace prismmod.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mysterious Lipstick");
-			Tooltip.SetDefault("Not just a stick of lipstick...");
+			Tooltip.SetDefault("Not just a stick of lipstick... \nDoes double damage to sea creatures");
 		}
 		public override void SetDefaults()
 		{
