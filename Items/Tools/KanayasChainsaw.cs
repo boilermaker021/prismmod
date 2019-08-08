@@ -35,14 +35,9 @@ namespace prismmod.Items.Tools
             item.shootSpeed = 40f;
 		}
 
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            
-            spriteBatch.Draw(mod.GetTexture("Items/Tools/KanayasLipstick"),
-                  new Rectangle((int)position.X+10, (int)position.Y-5, (int)(14 * scale), (int)(36 * scale)),
-                  drawColor);
-            return false; 
-        }
+        
+
+        
 
         /*public override void AddRecipes()
 		{
