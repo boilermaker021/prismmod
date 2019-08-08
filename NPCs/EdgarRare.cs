@@ -89,5 +89,15 @@ namespace prismmod.NPCs
         {
             Item.NewItem(npc.getRect(), mod.ItemType("SpecialCloth"), Main.rand.Next(9, 12));
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarRareGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarGore3"), 1f);
+            }
+        }
     }
 }

@@ -38,6 +38,15 @@ namespace prismmod.NPCs
             Item.NewItem(npc.getRect(), ItemID.Ruby, Main.rand.Next(3, 6));
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RubyZombieGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RubyZombieGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RubyZombieGore3"), 1f);
+            }
+        }
 
     }
 

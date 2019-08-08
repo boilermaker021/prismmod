@@ -64,6 +64,16 @@ namespace prismmod.NPCs
             }
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore1"),1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore2"),1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore3"),1f);
+            }
+        }
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             

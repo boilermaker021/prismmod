@@ -39,6 +39,14 @@ namespace prismmod.NPCs
             Item.NewItem(npc.getRect(), mod.ItemType("BoulduckFeather"), Main.rand.Next(3, 6));
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoulduckGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoulduckGore2"), 1f);
+            }
+        }
 
     }
 
