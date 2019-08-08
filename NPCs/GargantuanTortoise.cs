@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace prismmod.NPCs
 {
@@ -28,6 +29,8 @@ namespace prismmod.NPCs
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
             npc.damage = 30;
+            banner = npc.type;
+            bannerItem = mod.ItemType("GargantuanTortoiseBanner");
 
         }
 
@@ -35,9 +38,9 @@ namespace prismmod.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (Main.dayTime == false && mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false
-                &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1)
+                &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 &&NPC.downedSlimeKing)
             {
-                return SpawnCondition.SurfaceJungle.Chance * 0.05f;
+                return SpawnCondition.SurfaceJungle.Chance * 0.1f;
             }
             return 0f;
         }
@@ -50,6 +53,33 @@ namespace prismmod.NPCs
                 Item.NewItem(npc.getRect(), mod.ItemType("DuoGloriae"));
             }
             mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
+
+            if (!mod.GetModWorld<PrismWorld>().killedGargantuanTortoise)
+            {
+                mod.GetModWorld<PrismWorld>().killedGargantuanTortoise = true;
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+
+                }
+            }
+
+            Random rand = new Random();
+            if (rand.NextDouble() <= 0.5)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("TinyTurtleCaptureOrb"));
+            }
+
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore1"),1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore2"),1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore3"),1f);
+            }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

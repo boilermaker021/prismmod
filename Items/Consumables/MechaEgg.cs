@@ -10,7 +10,7 @@ namespace prismmod.Items.Consumables
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("MechaEgg");
-            Tooltip.SetDefault("Summons the Gargantuan Tortoise");
+            Tooltip.SetDefault("Summons the Gargantuan Tortoise\nCan only be used in the Jungle");
         }
 
         public override void SetDefaults()
@@ -24,6 +24,7 @@ namespace prismmod.Items.Consumables
             item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.ForceRoar, 0);
             item.maxStack = 20;
             item.useAnimation = 15;
+            item.value = Item.buyPrice(0, 5, 0, 0);
 
         }
 

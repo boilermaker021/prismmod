@@ -24,6 +24,7 @@ namespace prismmod.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
+            npc.damage = 14;
 
         }
 
@@ -37,8 +38,14 @@ namespace prismmod.NPCs
             Item.NewItem(npc.getRect(), ItemID.Emerald, Main.rand.Next(3, 6));
         }
 
-
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EmeraldZombieGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EmeraldZombieGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EmeraldZombieGore3"), 1f);
+            }
+        }
     }
-
-
 }

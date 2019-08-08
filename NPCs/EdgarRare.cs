@@ -28,6 +28,8 @@ namespace prismmod.NPCs
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.damage = 10;
+            banner = npc.type;
+            bannerItem = mod.ItemType("RareEdgarBanner");
 
         }
 
@@ -86,6 +88,16 @@ namespace prismmod.NPCs
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), mod.ItemType("SpecialCloth"), Main.rand.Next(9, 12));
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarRareGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/EdgarGore3"), 1f);
+            }
         }
     }
 }

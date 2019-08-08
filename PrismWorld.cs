@@ -1,4 +1,3 @@
-
 using prismmod.NPCs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,6 +22,19 @@ namespace prismmod
         public override void Initialize()
         {
             killedGargantuanTortoise = false;
+        }
+
+        public override void NetSend(BinaryWriter writer)
+        {
+            BitsByte flags = new BitsByte();
+            flags[0] = killedGargantuanTortoise;
+            writer.Write(flags);
+        }
+
+        public override void NetReceive(BinaryReader reader)
+        {
+            BitsByte flags = reader.ReadByte();
+            killedGargantuanTortoise = flags[0];
         }
 
     }

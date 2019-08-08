@@ -11,7 +11,7 @@ namespace prismmod.Items.Armor
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shady Hood");
+            DisplayName.SetDefault("Trekker's Hood");
             Tooltip.SetDefault("+4% Flamethrower Damage");
         }
         public override void SetDefaults()
