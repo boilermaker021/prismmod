@@ -41,20 +41,6 @@ namespace prismmod.Items.Tools
 			recipe.AddRecipe();
 		}*/
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            short[] SeaCreatures = {NPCID.IcyMerman, NPCID.AnglerFish, NPCID.DukeFishron, NPCID.FlyingFish, NPCID.FungoFish,
-            NPCID.Goldfish, NPCID.Piranha, NPCID.Shark, NPCID.PinkJellyfish, NPCID.SeaSnail, NPCID.BlueJellyfish,
-            NPCID.GreenJellyfish, NPCID.BloodFeeder, NPCID.BloodJelly, NPCID.FungoFish, NPCID.CrimsonGoldfish, NPCID.CorruptGoldfish};
-            foreach (short enemyType in SeaCreatures)
-            {
-                if (target.type == enemyType)
-                {
-                    damage *= 2;
-                    break;
-                }
-            }
-        }
 
 
     }
