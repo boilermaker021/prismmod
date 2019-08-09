@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace prismmod.NPCs
 {
-    class IciClunk : ModNPC
+    class IciClunk : ModNPC;lkjsdf
     {
 
         Player player;
