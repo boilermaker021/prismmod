@@ -2,7 +2,6 @@
 ![Discord](https://img.shields.io/discord/591522781087399937.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/CommieSlayer1950/prismmod.svg)
 ![GitHub release](https://img.shields.io/github/release/CommieSlayer1950/prismmod.svg?label=latest%20version)
-![Travis Build Status](https://travis-ci.org/CommieSlayer1950/prismmod.svg?branch=master)
 
 by CommieSlayer and LordCrumple
 
