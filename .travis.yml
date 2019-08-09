@@ -1,6 +1,12 @@
+os: windows
 language: csharp
-solution: prismmod.sln
 dotnet: 2.1.502
+solution: prismmod.sln
 script:
     - dotnet restore prismmod.sln
-    - buildItems/tModLoaderServer.exe -build "$(ProjectDir)/"
+    - cd builditems
+    - COMPILE_run_build.bat
+    
+ branches: 
+    only:
+        - master
