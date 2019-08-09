@@ -9,7 +9,7 @@ namespace prismmod.Items.Pets
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tiny Turtle Capture Orb");
+            DisplayName.SetDefault("Capture Orb");
             Tooltip.SetDefault("Summons a Tiny Turtle to follow you");
         }
 
