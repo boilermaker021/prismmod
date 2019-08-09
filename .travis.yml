@@ -1,6 +1,7 @@
 os: windows
-language: generic
+language: csharp
 dotnet: 2.1.502
+solution: prismmod.sln
 script:
     - dotnet restore prismmod.sln
     - cd builditems
