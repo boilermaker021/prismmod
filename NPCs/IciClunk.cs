@@ -42,8 +42,7 @@ namespace prismmod.NPCs
         private const int AI_State_Slot = 0;
         private const int AI_State_Waiting = 0;
         private const int AI_State_Jumping = 1;
-        private const int AI_State_Air = 2;
-        private const int AI_State_Landed = 3;
+        private const int AI_State_Landed = 2;
         private int timer;
 
         public float AI_State
@@ -72,18 +71,14 @@ namespace prismmod.NPCs
 
             }
 
-            else if(AI_State == AI_State_Air)
-            {
-
-
-            }
 
             else if(AI_State == AI_State_Landed)
             {
 
                 //maintain sprite rotation
+
                 timer++;
-                if(timer>20)
+                if(timer>120)
                 {
                     timer=0;
                     AI_State = AI_State_Waiting;
