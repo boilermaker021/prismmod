@@ -22,7 +22,7 @@ namespace prismmod.NPCs
         {
             npc.width =100;
             npc.height = 108;
-            //npc.aiStyle = 41; //Derpling AI
+            //no aiStyle
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -44,6 +44,7 @@ namespace prismmod.NPCs
         private const int AI_State_Jumping = 1;
         private const int AI_State_Air = 2;
         private const int AI_State_Landed = 3;
+        private int timer;
 
         public float AI_State
         {
@@ -54,7 +55,43 @@ namespace prismmod.NPCs
 
         public override void AI()
         {
-            //
+            if(AI_State == AI_State_Waiting)
+            {
+                //move towards player
+                //check player distance
+               // {
+
+
+                //}
+
+            }
+
+            else if(AI_State == AI_State_Jumping)
+            {
+
+
+            }
+
+            else if(AI_State == AI_State_Air)
+            {
+
+
+            }
+
+            else if(AI_State == AI_State_Landed)
+            {
+
+                //maintain sprite rotation
+                timer++;
+                if(timer>20)
+                {
+                    timer=0;
+                    AI_State = AI_State_Waiting;
+                }
+
+            }
+
+
         }
 
         public override void FindFrame(int frameHeight)
