@@ -1,4 +1,4 @@
-﻿using Terraria.ID;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -31,7 +31,7 @@ namespace prismmod.NPCs
 
         }
 
-        
+
 
         public override void NPCLoot()
         {
@@ -40,7 +40,11 @@ namespace prismmod.NPCs
 
 
         private const int AI_State_Slot = 0;
-        
+        private const int AI_State_Waiting = 0;
+        private const int AI_State_Jumping = 1;
+        private const int AI_State_Air = 2;
+        private const int AI_State_Landed = 3;
+
         public float AI_State
         {
             get => npc.ai[AI_State_Slot];
@@ -50,7 +54,7 @@ namespace prismmod.NPCs
 
         public override void AI()
         {
-            
+            //
         }
 
         public override void FindFrame(int frameHeight)
