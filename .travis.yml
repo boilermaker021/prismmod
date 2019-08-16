@@ -5,7 +5,7 @@ solution: prismmod.sln
 script:
     - dotnet restore prismmod.sln
     - cd builditems
-    - COMPILE_run_build.bat
+    - cmd.exe COMPILE_run_build.bat
     
  branches: 
     only:
