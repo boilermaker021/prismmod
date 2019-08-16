@@ -68,7 +68,7 @@ namespace prismmod.NPCs
                 //move towards player
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    npc.velocity = new Vector2(4f, 4f); ;
+                    npc.velocity = new Vector2(-10f, 4f); ;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
 
@@ -77,7 +77,7 @@ namespace prismmod.NPCs
                 else if (AI_State == AI_State_Jumped)
                 {
                     AI_Timer++;
-                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2 + AI_Timer * 5;
+                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
 
                 }
 
