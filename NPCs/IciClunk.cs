@@ -65,7 +65,9 @@ namespace prismmod.NPCs
         {
             if (AI_State == AI_State_Waiting)
             {
-                //move towards player
+
+                //insert move towards player code
+                //currently, the enemy does not walk
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
                     npc.velocity = new Vector2(-10f, 4f); ;
@@ -77,7 +79,7 @@ namespace prismmod.NPCs
                 else if (AI_State == AI_State_Jumped)
                 {
                     AI_Timer++;
-                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
+                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;//enemy faces the direction in which it is traveling in the air
 
                 }
 
@@ -85,13 +87,14 @@ namespace prismmod.NPCs
                 else if (AI_State == AI_State_Landed)
                 {
 
-                    npc.rotation = 0.75f;
+                    npc.rotation = 0.75f;//points sprite downwards
 
                     timer++;
-                    if (timer > 120)
+                    if (timer > 120)//waits for 2 seconds before the enemy rights itself
                     {
                         timer = 0;
                         AI_State = AI_State_Waiting;
+                        npc.rotation=0f;//resets rotation
                     }
 
                 }
@@ -102,7 +105,7 @@ namespace prismmod.NPCs
 
         public override void FindFrame(int frameHeight)
         {
-
+            //add in frame-changing code depending on AI_State
             npc.frame.Y = 0;
         }
 
