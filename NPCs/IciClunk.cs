@@ -40,8 +40,11 @@ namespace prismmod.NPCs
 
 
         private const int AI_State_Slot = 0;
+        private const int AI_Timer_Slot = 1;
+
+
         private const int AI_State_Waiting = 0;
-        private const int AI_State_Jumping = 1;
+        private const int AI_State_Jumped = 1;
         private const int AI_State_Landed = 2;
         private int timer;
 
@@ -52,41 +55,49 @@ namespace prismmod.NPCs
 
         }
 
+        public float AI_Timer {
+            get => npc.ai[AI_Timer_Slot];
+            set => npc.ai[AI_Timer_Slot] = value;
+
+        }
+
         public override void AI()
         {
-            if(AI_State == AI_State_Waiting)
+            if (AI_State == AI_State_Waiting)
             {
                 //move towards player
-                //check player distance
-               // {
-
-
-                //}
-
-            }
-
-            else if(AI_State == AI_State_Jumping)
-            {
-
-
-            }
-
-
-            else if(AI_State == AI_State_Landed)
-            {
-
-                //maintain sprite rotation
-
-                timer++;
-                if(timer>120)
+                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    timer=0;
-                    AI_State = AI_State_Waiting;
+                    npc.velocity = new Vector2(4f, 4f); ;
+                    AI_State = AI_State_Jumped;
+                    AI_Timer = 0;
+
                 }
 
+                else if (AI_State == AI_State_Jumped)
+                {
+                    AI_Timer++;
+                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2 + AI_Timer * 5;
+
+                }
+
+
+                else if (AI_State == AI_State_Landed)
+                {
+
+                    npc.rotation = 0.75f;
+
+                    timer++;
+                    if (timer > 120)
+                    {
+                        timer = 0;
+                        AI_State = AI_State_Waiting;
+                    }
+
+                }
+
+
             }
-
-
         }
 
         public override void FindFrame(int frameHeight)
