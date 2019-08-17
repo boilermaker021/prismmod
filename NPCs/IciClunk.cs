@@ -23,6 +23,7 @@ namespace prismmod.NPCs
             npc.width = 100;
             npc.height = 108;
             //no aiStyle
+            npc.damage = 10;
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
