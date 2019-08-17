@@ -8,10 +8,6 @@ namespace prismmod.NPCs
     class IciClunk : ModNPC
     {
 
-        Player player;
-        private float speed;
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Iciclunk");
