@@ -20,14 +20,14 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
-            npc.width =100;
+            npc.width = 100;
             npc.height = 108;
             //no aiStyle
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
-            npc.knockBackResist= 0.5f;
+            npc.knockBackResist = 0.5f;
 
         }
 
@@ -65,44 +65,47 @@ namespace prismmod.NPCs
         {
             if (AI_State == AI_State_Waiting)
             {
+                npc.rotation = 0;
 
                 //insert move towards player code
                 //currently, the enemy does not walk
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    npc.velocity = new Vector2(-10f, 4f); ;
+                    npc.velocity = new Vector2(-20f, -20f); ;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
 
                 }
+            }
 
-                else if (AI_State == AI_State_Jumped)
+            else if (AI_State == AI_State_Jumped)
+            {
+                npc.velocity.Y = npc.velocity.Y + 0.2f; // 0.1f for arrow gravity, 0.4f for knife gravity
+                if (npc.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
                 {
-                    AI_Timer++;
-                    npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;//enemy faces the direction in which it is traveling in the air
-
+                    npc.velocity.Y = 16f;
                 }
-
-
-                else if (AI_State == AI_State_Landed)
-                {
-
-                    npc.rotation = 0.75f;//points sprite downwards
-
-                    timer++;
-                    if (timer > 120)//waits for 2 seconds before the enemy rights itself
-                    {
-                        timer = 0;
-                        AI_State = AI_State_Waiting;
-                        npc.rotation=0f;//resets rotation
-                    }
-
-                }
-
+                npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
 
             }
-        }
 
+
+            /*else if (AI_State == AI_State_Landed)
+            {
+
+                npc.rotation = 0.75f;//points sprite downwards
+
+                timer++;
+                if (timer > 120)//waits for 2 seconds before the enemy rights itself
+                {
+                    timer = 0;
+                    AI_State = AI_State_Waiting;
+                    npc.rotation = 0f;//resets rotation
+                }
+
+            }*/
+
+        }
         public override void FindFrame(int frameHeight)
         {
             //add in frame-changing code depending on AI_State
@@ -118,8 +121,5 @@ namespace prismmod.NPCs
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/IciclunkGore3"), 1f);
             }
         }
-
     }
-
-
 }
