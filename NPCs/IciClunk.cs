@@ -79,7 +79,7 @@ namespace prismmod.NPCs
 
             else if (AI_State == AI_State_Jumped)
             {
-                npc.velocity.Y = npc.velocity.Y + 0.2f; // 0.1f for arrow gravity, 0.4f for knife gravity
+                npc.velocity.Y = npc.velocity.Y + 0.5f; // 0.1f for arrow gravity, 0.4f for knife gravity
                 if (npc.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
                 {
                     npc.velocity.Y = 16f;
