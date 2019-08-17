@@ -68,7 +68,9 @@ namespace prismmod.NPCs
                 //currently, the enemy does not walk
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    npc.velocity = new Vector2(-20f, -20f); ;
+                    float adjDistance = (Main.player[npc.target].Center.X-npc.Center.X) * 0.003f;
+
+                    npc.velocity = new Vector2(20f*adjDistance , -20f); ;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
 
