@@ -87,7 +87,7 @@ namespace prismmod.NPCs
             else if (AI_State == AI_State_Movement)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.5f;
-                if (npc.velocity = 0)
+                if (npc.velocity == 0f)
                 {
                     AI_State = AI_State_Waiting;
                 }
