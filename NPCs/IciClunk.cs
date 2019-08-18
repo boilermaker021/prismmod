@@ -72,10 +72,11 @@ namespace prismmod.NPCs
                 hitPlayer = false;
 
                 float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.0035f;
+                //float adjDistanceY = Math.Abs((Main.player[npc.target].Center.Y - npc.Center.Y) * 0.001f);
 
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    npc.velocity = new Vector2(20f * adjDistance, -20f);
+                    npc.velocity = new Vector2(20f * adjDistance, -20f);//*adjDistanceY);
                     jumped = true;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
@@ -84,7 +85,7 @@ namespace prismmod.NPCs
                 else if (npc.HasValidTarget)
                 {
                     jumped = true;
-                    npc.velocity = new Vector2(20f * (adjDistance * Math.Abs(1 / adjDistance)), -20f);
+                    npc.velocity = new Vector2(20f * (adjDistance * Math.Abs(1 / adjDistance)), -20f);//*adjDistanceY);
                     AI_State = AI_State_Movement;
                     AI_Timer = 0;
                 }
