@@ -28,8 +28,8 @@ namespace prismmod.Items.Weapons
             item.rare = 2;
             item.UseSound = SoundID.Item5;
             item.noMelee = true;
-            item.shoot = item.shoot = mod.ProjectileType("AquaArrow");
-            item.useAmmo = mod.ItemType("AquaArrow");
+            item.shoot = mod.ProjectileType("AquaArrow");
+            item.useAmmo = AmmoID.Arrow;
             item.shootSpeed = 7f;
             item.autoReuse = true;
         }
