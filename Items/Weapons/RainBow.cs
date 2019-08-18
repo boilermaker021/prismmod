@@ -20,18 +20,18 @@ namespace prismmod.Items.Weapons
             item.width = 12;
             item.height = 38;
             item.maxStack = 1;
-            item.useTime = 28;
-            item.useAnimation = 28;
+            item.useTime = 56;
+            item.useAnimation = 56;
             item.useStyle = 5;
             item.knockBack = 2;
             item.value = 12000;
             item.rare = 2;
             item.UseSound = SoundID.Item5;
             item.noMelee = true;
-            item.shoot = 1;
-            item.useAmmo = AmmoID.Arrow;
-            item.shootSpeed = 10f;
-            item.autoReuse = false;
+            item.shoot = item.shoot = mod.ProjectileType("AquaArrow");
+            item.useAmmo = mod.ItemType("AquaArrow");
+            item.shootSpeed = 7f;
+            item.autoReuse = true;
         }
     }
 }
