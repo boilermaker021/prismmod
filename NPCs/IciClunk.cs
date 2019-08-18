@@ -42,7 +42,8 @@ namespace prismmod.NPCs
 
         private const int AI_State_Waiting = 0;
         private const int AI_State_Jumped = 1;
-        private const int AI_State_Landed = 2;
+        private const int AI_State_Movement = 2;
+        private const int AI_State_Landed = 3;
         private int timer;
 
         public float AI_State
@@ -64,16 +65,31 @@ namespace prismmod.NPCs
             {
                 npc.rotation = 0;
 
+                float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.003f;
+
                 //insert move towards player code
                 //currently, the enemy does not walk
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
-                    float adjDistance = (Main.player[npc.target].Center.X-npc.Center.X) * 0.003f;
-
-                    npc.velocity = new Vector2(20f*adjDistance , -20f); ;
+                    npc.velocity = new Vector2(20f * adjDistance, -20f);
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
 
+                }
+                else if (npc.HasValidTarget)
+                {
+                    npc.velocity = new Vector2(20f*(adjDistance*(1/adjDistance)), -20f);
+                    AI_State = AI_State_Movement;
+                    AI_Timer = 0;
+                }
+            }
+
+            else if (AI_State == AI_State_Movement)
+            {
+                npc.velocity.Y = npc.velocity.Y + 0.5f;
+                if (npc.velocity = 0)
+                {
+                    AI_State = AI_State_Waiting;
                 }
             }
 
