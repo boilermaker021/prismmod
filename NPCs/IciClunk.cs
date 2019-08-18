@@ -44,9 +44,10 @@ namespace prismmod.NPCs
         private const int AI_State_Waiting = 0;
         private const int AI_State_Jumped = 1;
         private const int AI_State_Movement = 2;
-        private const int AI_State_Landed = 3;
+        private const int AI_State_Landed_PostMove = 3;
+        private const int AI_State_Landed_PostJump = 4;
+        private const int AI_State_Righting = 5;
         private bool jumped;
-        private int timer;
 
         public float AI_State
         {
@@ -65,7 +66,7 @@ namespace prismmod.NPCs
         {
             if (AI_State == AI_State_Waiting)
             {
-                npc.rotation = 0;
+                npc.rotation = 0f;
                 jumped = false;
 
                 float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.004f;
@@ -81,7 +82,7 @@ namespace prismmod.NPCs
                 else if (npc.HasValidTarget)
                 {
                     jumped = true;
-                    npc.velocity = new Vector2(20f*(adjDistance* Math.Abs(1 / adjDistance)), -20f);
+                    npc.velocity = new Vector2(20f * (adjDistance * Math.Abs(1 / adjDistance)), -20f);
                     AI_State = AI_State_Movement;
                     AI_Timer = 0;
                 }
@@ -91,16 +92,15 @@ namespace prismmod.NPCs
             {
                 npc.velocity.Y = npc.velocity.Y + 0.5f;
 
-                
-
-                if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
-                {
-                    AI_State = AI_State_Waiting;
-                }
 
                 if (npc.velocity.Y > 1f)
                 {
                     jumped = false;
+                }
+
+                if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
+                {
+                    AI_State = AI_State_Landed_PostMove;
                 }
             }
 
@@ -121,26 +121,52 @@ namespace prismmod.NPCs
 
                 if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
                 {
+                    AI_State = AI_State_Landed_PostJump;
+                    npc.rotation = MathHelper.Pi;
+                }
+
+            }
+
+            else if (AI_State == AI_State_Landed_PostMove)
+            {
+
+                AI_Timer++;
+                if (AI_Timer > 120)//waits for 2 seconds before the enemy rights itself
+                {
+                    AI_Timer = 0;
                     AI_State = AI_State_Waiting;
                 }
 
             }
 
-
-            /*else if (AI_State == AI_State_Landed)
+            else if (AI_State == AI_State_Landed_PostJump)
             {
-
-                npc.rotation = 0.75f;//points sprite downwards
-
-                timer++;
-                if (timer > 120)//waits for 2 seconds before the enemy rights itself
+                AI_Timer++;
+                if (AI_Timer > 180)//waits for 2 seconds before the enemy rights itself
                 {
-                    timer = 0;
-                    AI_State = AI_State_Waiting;
-                    npc.rotation = 0f;//resets rotation
+                    AI_Timer = 0;
+                    AI_State = AI_State_Righting;
+                    jumped = true;
+                    npc.velocity.Y = -4f;
                 }
 
-            }*/
+            }
+
+            else if (AI_State == AI_State_Righting)
+            {
+                npc.rotation = -(npc.velocity.ToRotation()) + MathHelper.PiOver2;
+                if (npc.velocity.Y > 1f)
+                {
+                    jumped = false;
+                }
+
+                if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
+                {
+                    AI_State = AI_State_Landed_PostMove;
+                }
+
+
+            }
 
         }
         public override void FindFrame(int frameHeight)
