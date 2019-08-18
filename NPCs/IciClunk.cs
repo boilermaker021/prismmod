@@ -48,6 +48,7 @@ namespace prismmod.NPCs
         private const int AI_State_Landed_PostJump = 4;
         private const int AI_State_Righting = 5;
         private bool jumped;
+        private bool hitPlayer;
 
         public float AI_State
         {
@@ -68,8 +69,9 @@ namespace prismmod.NPCs
             {
                 npc.rotation = 0f;
                 jumped = false;
+                hitPlayer = false;
 
-                float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.004f;
+                float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.0035f;
 
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
@@ -113,6 +115,12 @@ namespace prismmod.NPCs
                 }
                 npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
 
+                if (hitPlayer)
+                {
+                    AI_State = AI_State_Landed_PostMove;
+                    npc.rotation = 0f;
+                    hitPlayer = false;
+                }
 
                 if (npc.velocity.Y > 1f)
                 {
@@ -124,12 +132,10 @@ namespace prismmod.NPCs
                     AI_State = AI_State_Landed_PostJump;
                     npc.rotation = MathHelper.Pi;
                 }
-
             }
 
             else if (AI_State == AI_State_Landed_PostMove)
             {
-
                 AI_Timer++;
                 if (AI_Timer > 120)//waits for 2 seconds before the enemy rights itself
                 {
@@ -141,20 +147,30 @@ namespace prismmod.NPCs
 
             else if (AI_State == AI_State_Landed_PostJump)
             {
-                AI_Timer++;
-                if (AI_Timer > 180)//waits for 2 seconds before the enemy rights itself
+                if (hitPlayer)
                 {
-                    AI_Timer = 0;
-                    AI_State = AI_State_Righting;
-                    jumped = true;
-                    npc.velocity.Y = -4f;
+                    AI_State = AI_State_Landed_PostMove;
+                    npc.rotation = 0f;
+                    hitPlayer = false;
+                }
+                else
+                {
+                    AI_Timer++;
+                    if (AI_Timer > 180)//waits for 2 seconds before the enemy rights itself
+                    {
+                        AI_Timer = 0;
+                        AI_State = AI_State_Righting;
+                        jumped = true;
+                        npc.velocity.Y = -6f;
+                        npc.velocity.X = -2f;
+                    }
                 }
 
             }
 
             else if (AI_State == AI_State_Righting)
             {
-                npc.rotation = -(npc.velocity.ToRotation()) + MathHelper.PiOver2;
+                npc.rotation = (npc.velocity.ToRotation() + MathHelper.PiOver2)-MathHelper.Pi;
                 if (npc.velocity.Y > 1f)
                 {
                     jumped = false;
@@ -163,12 +179,16 @@ namespace prismmod.NPCs
                 if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
                 {
                     AI_State = AI_State_Landed_PostMove;
+                    npc.rotation = 0f;
                 }
-
-
             }
-
         }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            hitPlayer = true;
+        }
+
         public override void FindFrame(int frameHeight)
         {
             //add in frame-changing code depending on AI_State
