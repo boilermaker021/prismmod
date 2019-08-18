@@ -204,5 +204,18 @@ namespace prismmod.NPCs
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/IciclunkGore3"), 1f);
             }
         }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            if (spawnInfo.player.ZoneSnow)
+            {
+                return SpawnCondition.Overworld.Chance * 0.1f;
+            }
+            else
+            {
+                return 0f;
+            }
+        }
+
     }
 }
