@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace prismmod.Items.Weapons.Items
+namespace prismmod.Weapons.Items
 {
     public class RainBow : ModItem
     {
