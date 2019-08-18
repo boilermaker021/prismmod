@@ -2,6 +2,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace prismmod.NPCs
 {
@@ -44,6 +45,7 @@ namespace prismmod.NPCs
         private const int AI_State_Jumped = 1;
         private const int AI_State_Movement = 2;
         private const int AI_State_Landed = 3;
+        private bool jumped;
         private int timer;
 
         public float AI_State
@@ -64,21 +66,22 @@ namespace prismmod.NPCs
             if (AI_State == AI_State_Waiting)
             {
                 npc.rotation = 0;
+                jumped = false;
 
-                float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.003f;
+                float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.004f;
 
-                //insert move towards player code
-                //currently, the enemy does not walk
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                 {
                     npc.velocity = new Vector2(20f * adjDistance, -20f);
+                    jumped = true;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
 
                 }
                 else if (npc.HasValidTarget)
                 {
-                    npc.velocity = new Vector2(20f*(adjDistance*(1/adjDistance)), -20f);
+                    jumped = true;
+                    npc.velocity = new Vector2(20f*(adjDistance* Math.Abs(1 / adjDistance)), -20f);
                     AI_State = AI_State_Movement;
                     AI_Timer = 0;
                 }
@@ -87,9 +90,17 @@ namespace prismmod.NPCs
             else if (AI_State == AI_State_Movement)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.5f;
-                if (npc.velocity.Y == 0f)
+
+                
+
+                if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
                 {
                     AI_State = AI_State_Waiting;
+                }
+
+                if (npc.velocity.Y > 1f)
+                {
+                    jumped = false;
                 }
             }
 
@@ -101,6 +112,17 @@ namespace prismmod.NPCs
                     npc.velocity.Y = 16f;
                 }
                 npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
+
+
+                if (npc.velocity.Y > 1f)
+                {
+                    jumped = false;
+                }
+
+                if (npc.velocity.Y < 1f && npc.velocity.Y > -1f && jumped == false)
+                {
+                    AI_State = AI_State_Waiting;
+                }
 
             }
 
