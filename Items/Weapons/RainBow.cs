@@ -15,7 +15,7 @@ namespace prismmod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 2000;
+            item.damage = 20;
             item.ranged = true;
             item.width = 12;
             item.height = 38;
@@ -33,5 +33,12 @@ namespace prismmod.Items.Weapons
             item.shootSpeed = 7f;
             item.autoReuse = true;
         }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("AquaArrow"), damage, knockBack, player.whoAmI);
+            return false;
+        }
+
     }
 }
