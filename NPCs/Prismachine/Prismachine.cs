@@ -15,9 +15,8 @@ namespace prismmod.NPCs.Projectile
 
         public override void SetDefaults()
         {
-            npc.width =;
-            npc.height = 34;
-            animationType = NPCID.Zombie;
+            npc.width = 100;
+            npc.height = 100;
             //no Ai Style
             npc.lifeMax = 5000;
             npc.HitSound = SoundID.NPCHit1;
