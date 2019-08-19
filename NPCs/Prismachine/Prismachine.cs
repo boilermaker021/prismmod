@@ -3,9 +3,9 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace prismmod.NPCs
+namespace prismmod.NPCs.Projectile
 {
-    class DiamondZombie : ModNPC
+    class Prismachine : ModNPC
     {
         public override void SetStaticDefaults()
         {
