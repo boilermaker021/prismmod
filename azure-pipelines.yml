@@ -17,6 +17,20 @@ variables:
 
 
 steps:
-- task: BatchScript@1
+- task: NuGetToolInstaller@1
+- task: NuGetCommand@2
   inputs:
-    filename: buildItems\COMPILE_run_build.bat
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
