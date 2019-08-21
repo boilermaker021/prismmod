@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\references\tModLoader.targets" />
+  <Import Project="buildItems\references\tModLoader.targets" />
   <PropertyGroup>
     <AssemblyName>prismmod</AssemblyName>
     <TargetFramework>net45</TargetFramework>

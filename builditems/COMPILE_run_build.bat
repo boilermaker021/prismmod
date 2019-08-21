@@ -7,7 +7,7 @@
 set server_path=tModLoaderServer.exe
 
 :: Path to mod sources. NO backslash at the end. Path can contain spaces
-set mod_sources_path=..\
+set mod_sources_path=..
 
 :: Your internal mod name. must correspond to your Mod class name.
 set mod_name=prismmod
