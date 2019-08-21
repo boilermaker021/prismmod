@@ -89,7 +89,7 @@ namespace prismmod.NPCs.Prismachine
 
         public override void FindFrame(int frameHeight)//?
         {
-            npc.FindFrame(0);
+            npc.frame = 0;
         }
 
         public override void HitEffect(int hitDirection, double damage)
