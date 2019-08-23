@@ -40,13 +40,13 @@ namespace prismmod.NPCs.Prismachine
         }
 
 
-        private bool orbsSpawned = false;
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
         private const int AI_Attack_Slot_Element1 = 2;
         private const int AI_Attack_Slot_Element2 = 3;
         private const int AI_Attack_Slot_Element3 = 4;
         private const int AI_Attack_Slot_Element4 = 5;
+        private const int AI_Orbs_Spawned_Slot = 6;
 
 
 
@@ -63,7 +63,7 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
-        public float AI_Attack_Element1 {
+        public float AI_Attack_Element1 {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
             get => npc.ai[AI_Attack_Slot_Element1];
             set => npc.ai[AI_Attack_Slot_Element1] = value;
 
@@ -87,10 +87,16 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
+        public float orbsSpawned{
+            get=> npc.ai[AI_Orbs_Spawned_Slot];
+            set=> npc.ai[AI_Orbs_Spawned_Slot] = value;
+
+        }
+
         public override void AI()
         {
 
-            if(!orbsSpawned)
+            if(orbsSpawned!=0)
             {
                 //orb spawn code
 
