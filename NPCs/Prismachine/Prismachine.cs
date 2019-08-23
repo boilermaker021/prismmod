@@ -2,6 +2,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace prismmod.NPCs.Prismachine
 {
@@ -26,9 +27,11 @@ namespace prismmod.NPCs.Prismachine
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
-
+            // npc.immune = false;
         }
 
+
+        //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
 
         public override void NPCLoot()
         {
@@ -37,12 +40,15 @@ namespace prismmod.NPCs.Prismachine
         }
 
 
+        private bool orbsSpawned = false;
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
         private const int AI_Attack_Slot_Element1 = 2;
         private const int AI_Attack_Slot_Element2 = 3;
         private const int AI_Attack_Slot_Element3 = 4;
         private const int AI_Attack_Slot_Element4 = 5;
+
+
 
         public float AI_State
         {
@@ -83,7 +89,34 @@ namespace prismmod.NPCs.Prismachine
 
         public override void AI()
         {
-            //start working on AI
+
+            if(!orbsSpawned)
+            {
+                //orb spawn code
+
+            }
+
+            if (npc.HasValidTarget&&npc.Center.X!=Main.player[npc.target].Center.X)//adjusts the X coordinate
+            {
+                float direction = (Main.player[npc.target].Center.X - npc.Center.X);
+                direction = direction/Math.Abs(direction);
+                npc.velocity.X=10f;
+            }
+            else
+            {
+                npc.velocity.X=0f;//stops NPC's right<->left movement
+            }
+
+            if (npc.HasValidTarget&&npc.Center.Y<Main.player[npc.target].Center.Y+10f&&)npc.Center.Y<Main.player[npc.target].Center.Y+25f//adjusts the Y coordinate
+            {
+                float direction = (Main.player[npc.target].Center.Y - npc.Center.Y);
+                direction = direction/Math.Abs(direction);
+                npc.velocity.Y=10f;
+            }
+            else
+            {
+                npc.velocity.Y=0f;//stops NPC's up<->down movement
+            }
 
         }
 
