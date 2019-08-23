@@ -100,7 +100,7 @@ namespace prismmod.NPCs.Prismachine
             {
                 float direction = (Main.player[npc.target].Center.X - npc.Center.X);
                 direction = direction/Math.Abs(direction);
-                npc.velocity.X=10f;
+                npc.velocity.X=10f*direction;
             }
             else
             {
@@ -111,11 +111,19 @@ namespace prismmod.NPCs.Prismachine
             {
                 float direction = (Main.player[npc.target].Center.Y - npc.Center.Y);
                 direction = direction/Math.Abs(direction);
-                npc.velocity.Y=10f;
+                npc.velocity.Y=10f*direction;
             }
             else
             {
                 npc.velocity.Y=0f;//stops NPC's up<->down movement
+            }
+
+            //end of constant movement, attack orb functions start soon
+
+            if(AI_Attack_Element1!=0)
+            {
+                //enable attacks of orb/element 1 type
+
             }
 
         }
@@ -129,7 +137,7 @@ namespace prismmod.NPCs.Prismachine
         {
             if (npc.life <= 0)
             {
-                //Readd once Prismachine gores have been entered
+                //Re-add once Prismachine gores have been entered
                 //Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Prismachine"), 1f);
                 //Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Prismachine2"), 1f);
                 //Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Prismachine3"), 1f);
