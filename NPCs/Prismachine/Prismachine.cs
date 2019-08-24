@@ -102,31 +102,19 @@ namespace prismmod.NPCs.Prismachine
 
             }
 
-            if (npc.HasValidTarget&&npc.Center.X!=Main.player[npc.target].Center.X)//adjusts the X coordinate
-            {
-                float direction = (Main.player[npc.target].Center.X - npc.Center.X);
-                direction = direction/Math.Abs(direction);
-                npc.velocity.X=10f*direction;
-            }
-            else
-            {
-                npc.velocity.X=0f;//stops NPC's right<->left movement
-            }
+            bool move = (Main.player[npc.target].Distance(npc.Center)<50f);
 
-            if (npc.HasValidTarget&&npc.Center.Y<Main.player[npc.target].Center.Y+10f&&)npc.Center.Y<Main.player[npc.target].Center.Y+25f//adjusts the Y coordinate
+            if (move)
             {
-                float direction = (Main.player[npc.target].Center.Y - npc.Center.Y);
-                direction = direction/Math.Abs(direction);
-                npc.velocity.Y=10f*direction;
-            }
-            else
-            {
-                npc.velocity.Y=0f;//stops NPC's up<->down movement
+                if (npc.netID == NetmodeID.Server)
+                {
+                    //float random;
+                }
             }
 
             //end of constant movement, attack orb functions start soon
 
-            if(AI_Attack_Element1!=0)
+            if (AI_Attack_Element1!=0)
             {
                 //enable attacks of orb/element 1 type
 
