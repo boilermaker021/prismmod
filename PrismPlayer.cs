@@ -84,7 +84,7 @@ namespace prismmod
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            if (proj.aiStyle == 1)
+            if (proj.arrow)
             {
                 double number = rndm.NextDouble();
                 if (number < arrowsFreezeEnemies)
