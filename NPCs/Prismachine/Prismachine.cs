@@ -112,7 +112,7 @@ namespace prismmod.NPCs.Prismachine
 
             }
 
-            bool move = (Main.player[npc.target].Distance(npc.Center)<500f);
+            bool move = (Main.player[npc.target].Distance(npc.Center)<200f);
 
             if (move)
             {
