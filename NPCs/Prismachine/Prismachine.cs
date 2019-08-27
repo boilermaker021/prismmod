@@ -51,6 +51,7 @@ namespace prismmod.NPCs.Prismachine
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
         private Random generator = new Random();
+        private int timer = 1;
 
 
 
@@ -103,6 +104,7 @@ namespace prismmod.NPCs.Prismachine
 
         public override void AI()
         {
+            
 
             if(!orbsSpawned&&Main.netMode!=1)
             {
@@ -114,10 +116,11 @@ namespace prismmod.NPCs.Prismachine
 
             if (move)
             {
-                if (Main.netMode!=1)
+                if (Main.netMode!=1&&timer==10)
                 {
-                    npc.velocity.X = (((float)generator.Next(0, 3) - 1) * 10f);
-                    npc.velocity.Y = (((float)generator.Next(0, 3) - 1) * 10f);
+                    npc.velocity.X = (((float)generator.Next(0, 5) - 3) * 10f);
+                    npc.velocity.Y = (((float)generator.Next(0, 5) - 3) * 10f);
+                    timer = 0;
                 }
             }
 
@@ -125,10 +128,10 @@ namespace prismmod.NPCs.Prismachine
 
             //if (AI_Attack_Element1!=0)
             //{
-                //enable attacks of orb/element 1 type
+            //enable attacks of orb/element 1 type
 
             //}
-
+            timer++;
         }
 
         public override void FindFrame(int frameHeight)//?
