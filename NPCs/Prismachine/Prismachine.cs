@@ -120,6 +120,7 @@ namespace prismmod.NPCs.Prismachine
                 {
                     npc.velocity.X = (((float)generator.Next(0, 5) - 3) * 10f);
                     npc.velocity.Y = (((float)generator.Next(0, 5) - 3) * 10f);
+                    npc.netUpdate = true;
                     timer = 0;
                 }
             }
