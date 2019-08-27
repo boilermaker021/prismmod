@@ -9,7 +9,7 @@ namespace prismmod.Items.Weapons
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shovel of Justice Drill");
+			DisplayName.SetDefault("Shovel of Justice");
 			Tooltip.SetDefault("Allows you to bounce when you hit enemies");
 		}
 		public override void SetDefaults()
