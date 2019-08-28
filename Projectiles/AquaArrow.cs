@@ -33,6 +33,8 @@ namespace prismmod.Projectiles
             {
                 Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + 
                     speedY, speedX, speedY, 90, (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0f, 0f, mod.ProjectileType("RainDroplet"), 
+                    10, 0f, owner.whoAmI);
             }
         }
 
