@@ -102,9 +102,23 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
+        public int numOfAttacks
+        {
+            int t=0;
+            for(bool b: Attacks_Enabled)
+            {
+                if(b)
+                {
+                    t++;
+                }
+            }
+            get=>t;
+
+        }
+
         public override void AI()
         {
-            
+
 
             if(!orbsSpawned&&Main.netMode!=1)
             {
