@@ -139,15 +139,30 @@ namespace prismmod.NPCs.Prismachine
 
             //end of constant movement, attack orb functions start soon
 
-            //if (AI_Attack_Element1!=0)
-            //{
-            //enable attacks of orb/element 1 type
+            if (AI_Attack_Element1)
+            {
+                //enable attacks of orb/element 1 type
 
-            //}
+            }
+            if (AI_Attack_Element2)
+            {
+                //enable attacks of orb/element 2 type
+
+            }
+            if (AI_Attack_Element3)
+            {
+                //enable attacks of orb/element 3 type
+
+            }
+            if (AI_Attack_Element4)
+            {
+                //enable attacks of orb/element 4 type
+
+            }
             timer++;
         }
 
-        public override void FindFrame(int frameHeight)//?
+        public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
         {
             npc.frame.Y = 0;
         }
