@@ -53,8 +53,6 @@ namespace prismmod.NPCs.Prismachine
         private Random generator = new Random();
         private int timer = 1;
 
-
-
         public float AI_State
         {
             get => npc.ai[AI_State_Slot];
@@ -74,28 +72,21 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
-        public bool Attack_Element1
-        {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
-            get => Attacks_Enabled[0];
-            set => Attacks_Enabled[0] = value;
-
-        }
-
-        public bool Attack_Element2
+        public bool AI_Attack_Element2
         {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
             get => Attacks_Enabled[1];
             set => Attacks_Enabled[1] = value;
 
         }
 
-        public bool Attack_Element3
+        public bool AI_Attack_Element3
         {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
             get => Attacks_Enabled[2];
             set => Attacks_Enabled[2] = value;
 
         }
 
-        public bool Attack_Element4
+        public bool AI_Attack_Element4
         {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
             get => Attacks_Enabled[3];
             set => Attacks_Enabled[3] = value;
