@@ -105,7 +105,7 @@ namespace prismmod.NPCs.Prismachine
         public int numOfAttacks()
         {
             int t=0;
-            for(bool b: Attacks_Enabled)
+            foreach(bool b in Attacks_Enabled)
             {
                 if(b)
                 {
