@@ -11,7 +11,7 @@ namespace prismmod.NPCs.Prismachine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Prismachine");
-            Main.npcFrameCount[npc.type] = 9;
+            Main.npcFrameCount[npc.type] = 21;
         }
 
         public override void SetDefaults()
@@ -60,13 +60,15 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
-        public float AI_Timer {
+        public float AI_Timer
+        {
             get => npc.ai[AI_Timer_Slot];
             set => npc.ai[AI_Timer_Slot] = value;
 
         }
 
-        public bool AI_Attack_Element1 {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
+        public bool AI_Attack_Element1
+        {//use 0 to signify enabled attacks, and anything else to signify enabled attacks
             get => Attacks_Enabled[0];
             set => Attacks_Enabled[0] = value;
 
@@ -95,10 +97,10 @@ namespace prismmod.NPCs.Prismachine
 
         public int numOfAttacks()
         {
-            int t=0;
-            foreach(bool b in Attacks_Enabled)
+            int t = 0;
+            foreach (bool b in Attacks_Enabled)
             {
-                if(b)
+                if (b)
                 {
                     t++;
                 }
@@ -109,17 +111,25 @@ namespace prismmod.NPCs.Prismachine
         public override void AI()
         {
 
-            if(!orbsSpawned&&Main.netMode!=1)
+            if (!orbsSpawned && Main.netMode != 1)
             {
                 //orb spawn code
-
+                for (int i = 0; i < 4; i++)
+                {
+                    int orb = NPC.NewNPC((int)npc.position.X+(i*20), (int)npc.position.Y+(i*20), mod.NPCType("Orb"));
+                    Main.npc[orb].ai[0] = npc.whoAmI;
+                    Main.npc[orb].ai[1] = i;
+                    Main.npc[orb].ai[2] = 0;
+                }
+                orbsSpawned = true;
             }
 
-            bool move = (Main.player[npc.target].Distance(npc.Center)<200f);
 
-            if (move)
+            npc.velocity.X = 0f;
+            npc.velocity.Y = 0f;
+            if (Main.player[npc.target].Distance(npc.Center) < 500f)
             {
-                if (Main.netMode!=1&&timer==10)
+                if (Main.netMode != 1 && timer >= 10)
                 {
                     npc.velocity.X = (((float)generator.Next(0, 5) - 3) * 10f);
                     npc.velocity.Y = (((float)generator.Next(0, 5) - 3) * 10f);
