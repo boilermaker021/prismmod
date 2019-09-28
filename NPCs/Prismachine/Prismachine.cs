@@ -17,8 +17,8 @@ namespace prismmod.NPCs.Prismachine
         public override void SetDefaults()
         {
             //update hitbox to match sprite: KEEP HITBOX OUT OF ORB HITBOXES
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 364;
+            npc.height = 260;
             //no Ai Style
             npc.lifeMax = 5000; //ask braden for life values
             //beware of generic hit sounds
