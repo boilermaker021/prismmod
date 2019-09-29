@@ -7,6 +7,7 @@ using System;
 
 namespace prismmod.NPCs.Prismachine
 {
+    [AutoloadBossHead]
     class Prismachine : ModNPC
     {
         public override void SetStaticDefaults()
@@ -31,6 +32,7 @@ namespace prismmod.NPCs.Prismachine
             // npc.immune = false;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            npc.boss = true;
         }
 
 

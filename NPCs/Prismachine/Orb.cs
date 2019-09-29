@@ -46,19 +46,27 @@ namespace prismmod.NPCs.Prismachine
             if (npc.ai[1] == 0)
             {
                 prismachine.ai[0] += 1000;
+                Main.NewText("Element 1 Attack Enabled!", 227, 76, 150);
             }
             else if (npc.ai[1] == 1)
             {
                 prismachine.ai[0] += 100;
+                Main.NewText("Element 2 Attack Enabled!", 0, 38, 227);
             }
             else if (npc.ai[1] == 2)
             {
                 prismachine.ai[0] += 10;
+                Main.NewText("Element 3 Attack Enabled!", 155, 2, 161);
             }
             else if (npc.ai[1] == 3)
             {
                 prismachine.ai[0] += 1;
+                Main.NewText("Element 4 Attack Enabled!", 112, 202, 204);
             }
+            else {
+                Main.NewText("Warning: Generic orb killed! No Element activated", 255,0,0);
+            }
+            
         }
 
     }
