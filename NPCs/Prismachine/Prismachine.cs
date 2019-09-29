@@ -46,6 +46,9 @@ namespace prismmod.NPCs.Prismachine
             {
                 npc.DropBossBags();
             }
+            Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
+            Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
+            Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
         }
 
 
