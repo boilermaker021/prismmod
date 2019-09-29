@@ -33,6 +33,7 @@ namespace prismmod.NPCs.Prismachine
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.boss = true;
+            bossBag = mod.ItemType("PrismachineBag");
         }
 
 
