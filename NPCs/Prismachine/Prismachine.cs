@@ -49,6 +49,8 @@ namespace prismmod.NPCs.Prismachine
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
             Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
+
+            mod.GetModWorld<PrismWorld>().downedPrismachine = true;
         }
 
 
