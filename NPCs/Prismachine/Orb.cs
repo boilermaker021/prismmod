@@ -68,9 +68,6 @@ namespace prismmod.NPCs.Prismachine
                 prismachine.ai[0] += 1;
                 Main.NewText("Spike Spreader Enabled!", 112, 202, 204);
             }
-            else {
-                Main.NewText("Warning: Generic orb killed! No Element activated", 255,0,0);
-            }
             
         }
 
