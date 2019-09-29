@@ -20,13 +20,18 @@ namespace prismmod.Items.Weapons
 			item.height = 20;
 			item.useTime = 20;
 			item.useAnimation = 15;
-			item.useStyle = 3;
-			item.knockBack = 0;
+			item.useStyle = 5;
+            item.noMelee = true;
+            item.channel = true;
+            item.noUseGraphic = true;
+            item.knockBack = 0;
 			item.value = 10000;
 			item.rare = 2;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-		}
+			//item.UseSound = SoundID.Item1;
+			item.autoReuse = false;
+            item.shoot = mod.ProjectileType("ShovelOfJusticeProj");
+            item.shootSpeed = 40f;
+        }
 
 		public override void AddRecipes()
 		{
@@ -36,22 +41,5 @@ namespace prismmod.Items.Weapons
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            if (player.GetModPlayer<PrismPlayer>().timesBounced < 5 && !player.HasBuff(mod.BuffType("NoBounce")))
-            {
-                player.velocity.Y = -10f;
-                player.GetModPlayer<PrismPlayer>().timesBounced++;
-                
-            }
-
-            if (player.GetModPlayer<PrismPlayer>().timesBounced == 5)
-            {
-                player.AddBuff(mod.BuffType("NoBounce"), 120);
-                player.GetModPlayer<PrismPlayer>().timesBounced = 0;
-                
-            }
-        }
     }
 }

@@ -29,13 +29,13 @@ namespace prismmod.Items.Consumables
 
         public override bool UseItem(Player player)
         {
-            //to be implemented when the Bejeweled Behemoth is coded.... in a million years
-            return false;
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Prismachine"));
+            return true;
         }
 
         public override bool CanUseItem(Player player)
         {
-            if (player.ZoneRockLayerHeight)
+            if (player.ZoneOverworldHeight)
             {
                 return true;
             }
