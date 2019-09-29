@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace prismmod.NPCs.Prismachine
 {
@@ -42,9 +43,23 @@ namespace prismmod.NPCs.Prismachine
         public override void NPCLoot()
         {
             NPC prismachine = Main.npc[(int)npc.ai[0]];
-            prismachine.ai[0] = 1;
+            if (npc.ai[1] == 0)
+            {
+                prismachine.ai[0] += 1000;
+            }
+            else if (npc.ai[1] == 1)
+            {
+                prismachine.ai[0] += 100;
+            }
+            else if (npc.ai[1] == 2)
+            {
+                prismachine.ai[0] += 10;
+            }
+            else if (npc.ai[1] == 3)
+            {
+                prismachine.ai[0] += 1;
+            }
         }
-
 
     }
 }

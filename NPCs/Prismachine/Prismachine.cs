@@ -4,6 +4,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using System;
 
+
 namespace prismmod.NPCs.Prismachine
 {
     class Prismachine : ModNPC
@@ -108,8 +109,37 @@ namespace prismmod.NPCs.Prismachine
             return t;
         }
 
+
+        public bool[] attackSetter()
+        {
+            int attackNum = (int)npc.ai[0];
+            bool[] parsedAttackList = new bool[4];
+            if ((int)(attackNum / 1000) == 1)
+            {
+                parsedAttackList[0] = true;
+                attackNum -= 1000;
+            }
+            if ((int)(attackNum / 100) == 1)
+            {
+                parsedAttackList[1] = true;
+                attackNum -= 100;
+            }
+            if ((int)(attackNum / 10) == 1)
+            {
+                parsedAttackList[2] = true;
+                attackNum -= 10;
+            }
+            if ((int)(attackNum) == 1)
+            {
+                parsedAttackList[3] = true;
+            }
+            return parsedAttackList;
+        }
+
         public override void AI()
         {
+
+            Attacks_Enabled = attackSetter();
 
             if (!orbsSpawned && Main.netMode != 1)
             {
