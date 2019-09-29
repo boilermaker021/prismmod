@@ -195,9 +195,15 @@ namespace prismmod.NPCs.Prismachine
             timer++;
         }
 
+        int frame_timer = 0;
         public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
         {
-            npc.frame.Y = 0;
+            npc.frame.Y = frameHeight * (int)(frame_timer/10);
+            frame_timer++;
+            if (frame_timer > 200)
+            {
+                frame_timer = 0;
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
