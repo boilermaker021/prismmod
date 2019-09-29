@@ -70,28 +70,28 @@ namespace prismmod.NPCs.Prismachine
 
         }
 
-        public bool AI_Attack_Element1
+        public bool MasterPump
         {
             get => Attacks_Enabled[0];
             set => Attacks_Enabled[0] = value;
 
         }
 
-        public bool AI_Attack_Element2
+        public bool CrystallizedTelepathy
         {
             get => Attacks_Enabled[1];
             set => Attacks_Enabled[1] = value;
 
         }
 
-        public bool AI_Attack_Element3
+        public bool FlareCannon
         {
             get => Attacks_Enabled[2];
             set => Attacks_Enabled[2] = value;
 
         }
 
-        public bool AI_Attack_Element4
+        public bool SpikeSpreader
         {
             get => Attacks_Enabled[3];
             set => Attacks_Enabled[3] = value;
@@ -170,24 +170,23 @@ namespace prismmod.NPCs.Prismachine
                 }
             }*/
 
-            //end of constant movement, attack orb functions start soon
 
-            if (AI_Attack_Element1)
+            if (MasterPump)
             {
                 //enable attacks of orb/element 1 type
 
             }
-            if (AI_Attack_Element2)
+            if (CrystallizedTelepathy)
             {
                 //enable attacks of orb/element 2 type
 
             }
-            if (AI_Attack_Element3)
+            if (FlareCannon)
             {
                 //enable attacks of orb/element 3 type
 
             }
-            if (AI_Attack_Element4)
+            if (SpikeSpreader)
             {
                 //enable attacks of orb/element 4 type
 
