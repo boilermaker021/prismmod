@@ -29,10 +29,10 @@ namespace prismmod.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            int choice = Main.rand.Next(2/*n-1*/);
+            int choice = Main.rand.Next(3/*n-1*/);
             if(choice==0)
             {
-                player.QuickSpawnItem(mod.ItemType("Prismatic Chunk"));
+                player.QuickSpawnItem(mod.ItemType("Rainbow"));
             }
         }
 
