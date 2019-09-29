@@ -34,6 +34,8 @@ namespace prismmod.Items.BossBags
             {
                 player.QuickSpawnItem(mod.ItemType("Rainbow"));
             }
+
+            player.QuickSpawnItem(ItemID.GoldCoin, 10);
         }
 
         public override bool CanRightClick()
