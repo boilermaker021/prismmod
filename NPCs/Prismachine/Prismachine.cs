@@ -170,7 +170,7 @@ namespace prismmod.NPCs.Prismachine
                         numX = -1;
                         numY = 1;
                     }
-                    int orb = NPC.NewNPC((int)npc.position.X+(numX*20), (int)npc.position.Y+(numY*20), mod.NPCType("Orb"));
+                    int orb = NPC.NewNPC((int)npc.Center.X+(numX*250), (int)npc.Center.Y+(numY*250), mod.NPCType("Orb"));
                     Main.npc[orb].ai[0] = npc.whoAmI;
                     Main.npc[orb].ai[1] = i;
                     Main.npc[orb].ai[2] = 0;
