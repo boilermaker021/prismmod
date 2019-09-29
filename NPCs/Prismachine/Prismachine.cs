@@ -42,7 +42,10 @@ namespace prismmod.NPCs.Prismachine
         public override void NPCLoot()
         {
             //Change loot to bossbag in hard mode and regular items if not
-            //Item.NewItem(npc.getRect(), ItemID.Diamond, Main.rand.Next(3, 6));
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
         }
 
 
