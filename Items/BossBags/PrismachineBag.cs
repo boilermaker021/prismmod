@@ -1,4 +1,4 @@
-/*using Terraria.ID;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -29,9 +29,11 @@ namespace prismmod.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            int choice = Main.rand.Next(2/*n-1);
-            //if(choice==0)
-            //{ }
+            int choice = Main.rand.Next(2/*n-1*/);
+            if(choice==0)
+            {
+                player.QuickSpawnItem(mod.ItemType("Prismatic Chunk"));
+            }
         }
 
         public override bool CanRightClick()
@@ -42,4 +44,3 @@ namespace prismmod.Items.BossBags
         public override int BossBagNPC => mod.NPCType("Prismachine");
     }
 }
-*/
