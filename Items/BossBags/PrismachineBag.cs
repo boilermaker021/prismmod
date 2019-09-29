@@ -21,7 +21,7 @@ namespace prismmod.Items.BossBags
             item.consumable = true;
             item.useTime = 20;
             item.useStyle = 4;
-            item.maxStack = 1;
+            item.maxStack = 99;
             item.useAnimation = 15;
             item.expert = true;
 
