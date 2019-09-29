@@ -145,10 +145,32 @@ namespace prismmod.NPCs.Prismachine
 
             if (!orbsSpawned && Main.netMode != 1)
             {
+                int numX = 0;
+                int numY = 0;
                 //orb spawn code
                 for (int i = 0; i < 4; i++)
                 {
-                    int orb = NPC.NewNPC((int)npc.position.X+(i*20), (int)npc.position.Y+(i*20), mod.NPCType("Orb"));
+                    if (i==0)
+                    {
+                        numX = 1;
+                        numY = 1;
+                    }
+                    else if (i == 1)
+                    {
+                        numX = -1;
+                        numY = -1;
+                    }
+                    else if (i == 2)
+                    {
+                        numX = 1;
+                        numY = -1;
+                    }
+                    else if (i == 3)
+                    {
+                        numX = -1;
+                        numY = 1;
+                    }
+                    int orb = NPC.NewNPC((int)npc.position.X+(numX*20), (int)npc.position.Y+(numY*20), mod.NPCType("Orb"));
                     Main.npc[orb].ai[0] = npc.whoAmI;
                     Main.npc[orb].ai[1] = i;
                     Main.npc[orb].ai[2] = 0;
