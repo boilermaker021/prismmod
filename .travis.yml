@@ -1,6 +1,0 @@
-language: csharp
-solution: prismmod.sln
-dotnet: 2.1.502
-script:
-    - dotnet restore prismmod.sln
-    - buildItems/tModLoaderServer.exe -build "$(ProjectDir)/"
