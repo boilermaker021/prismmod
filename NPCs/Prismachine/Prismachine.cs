@@ -231,13 +231,13 @@ namespace prismmod.NPCs.Prismachine
         {
             if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore5"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore6"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore7"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore2"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore3"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore4"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore5"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore6"), 1f);
+                Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore7"), 1f);
             }
         }
     }
