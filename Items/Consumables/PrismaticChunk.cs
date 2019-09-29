@@ -35,12 +35,12 @@ namespace prismmod.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            //if (player.ZoneRockLayerHeight)
-            //{
+            if (player.ZoneOverworldHeight)
+            {
                 return true;
-            //}
+            }
 
-            //return false;
+            return false;
         }
 
         public override void AddRecipes()
