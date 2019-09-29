@@ -13,7 +13,7 @@ namespace prismmod.NPCs.Prismachine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Orb");
-            Main.npcFrameCount[npc.type] = 1;
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
@@ -40,23 +40,28 @@ namespace prismmod.NPCs.Prismachine
             NPC prismachine = Main.npc[(int)npc.ai[0]];
         }
 
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frame.Y = frameHeight * (int)npc.ai[1];
+        }
+
         public override void NPCLoot()
         {
             NPC prismachine = Main.npc[(int)npc.ai[0]];
             if (npc.ai[1] == 0)
             {
                 prismachine.ai[0] += 1000;
-                Main.NewText("Element 1 Attack Enabled!", 227, 76, 150);
+                Main.NewText("Element 1 Attack Enabled!", 0, 38, 227);
             }
             else if (npc.ai[1] == 1)
             {
                 prismachine.ai[0] += 100;
-                Main.NewText("Element 2 Attack Enabled!", 0, 38, 227);
+                Main.NewText("Element 2 Attack Enabled!", 155, 2, 161);
             }
             else if (npc.ai[1] == 2)
             {
                 prismachine.ai[0] += 10;
-                Main.NewText("Element 3 Attack Enabled!", 155, 2, 161);
+                Main.NewText("Element 3 Attack Enabled!", 199,0,0);
             }
             else if (npc.ai[1] == 3)
             {
