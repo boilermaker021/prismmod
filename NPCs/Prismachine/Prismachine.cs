@@ -159,7 +159,7 @@ namespace prismmod.NPCs.Prismachine
 
             npc.velocity.X = 0f;
             npc.velocity.Y = 0f;
-            if (Main.player[npc.target].Distance(npc.Center) < 500f)
+            /*if (Main.player[npc.target].Distance(npc.Center) < 500f)
             {
                 if (Main.netMode != 1 && timer >= 10)
                 {
@@ -168,7 +168,7 @@ namespace prismmod.NPCs.Prismachine
                     npc.netUpdate = true;
                     timer = 0;
                 }
-            }
+            }*/
 
             //end of constant movement, attack orb functions start soon
 
