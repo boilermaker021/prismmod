@@ -47,10 +47,6 @@ namespace prismmod.NPCs.Prismachine
 
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
-        private const int AI_Attack_Slot_Element1 = 2;
-        private const int AI_Attack_Slot_Element2 = 3;
-        private const int AI_Attack_Slot_Element3 = 4;
-        private const int AI_Attack_Slot_Element4 = 5;
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
         private Random generator = new Random();
