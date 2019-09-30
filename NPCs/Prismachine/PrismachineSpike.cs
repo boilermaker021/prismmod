@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace prismmod.Projectiles
+namespace prismmod.NPCs.Prismachine
 {
     public class PrismachineSpike : ModProjectile
     {
