@@ -23,7 +23,7 @@ namespace prismmod.NPCs.Prismachine
             //no Ai Style
             npc.lifeMax = 5000; //ask braden for life values
             //beware of generic hit sounds
-            npc.HitSound = SoundID.NPCHit1;
+            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Prismachine/zzzt");
             npc.DeathSound = SoundID.NPCDeath1;
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
@@ -237,7 +237,7 @@ namespace prismmod.NPCs.Prismachine
         {
             if (npc.life > 0)
             {
-                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt.wav"));
+                //Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt.wav"));
                 // Note to future self try to find out how to randomize pitch changes.
             }
             // Plays a custom sound when hit and above 0 health
