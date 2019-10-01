@@ -23,7 +23,7 @@ namespace prismmod.NPCs.Prismachine
             //no Ai Style
             npc.lifeMax = 5000; //ask braden for life values
             //beware of generic hit sounds
-            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Prismachine/zzzt.wav");
+            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Prismachine/zzzt");
             npc.DeathSound = SoundID.NPCDeath1;
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
