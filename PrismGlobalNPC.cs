@@ -23,14 +23,5 @@ namespace prismmod
                 }
             }
         }
-
-        public override void NPCLoot(NPC npc)
-        {
-            if (npc.type == NPCID.KingSlime)
-            {
-
-            }
-        }
-
     }
 }
