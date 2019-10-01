@@ -4,7 +4,6 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using System;
 
-
 namespace prismmod.NPCs.Prismachine
 {
     [AutoloadBossHead]
@@ -33,6 +32,7 @@ namespace prismmod.NPCs.Prismachine
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.boss = true;
+            npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
         }
 
@@ -215,13 +215,14 @@ namespace prismmod.NPCs.Prismachine
             }
             if (SpikeSpreader)
             {
-                //enable attacks of orb/element 4 type
-
+                //mod.ProjectileType("PrismachineSpike");
+                Projectile.NewProjectile()
             }
             timer++;
         }
 
         int frame_timer = 0;
+
         public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
         {
             npc.frame.Y = frameHeight * (int)(frame_timer/10);
@@ -234,6 +235,12 @@ namespace prismmod.NPCs.Prismachine
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life > 0)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt.wav"));
+                // Note to future self try to find out how to randomize pitch changes.
+            }
+            // Plays a custom sound when hit and above 0 health
             if (npc.life <= 0)
             {
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);

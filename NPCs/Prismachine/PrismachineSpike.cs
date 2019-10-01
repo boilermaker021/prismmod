@@ -12,6 +12,10 @@ namespace prismmod.NPCs.Prismachine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prismachine Spike");
+            //projectile.CloneDefaults(ProjectileID.Shuriken);
+            // projectile.aiStyle = 3;
+            //aiType = ProjectileID.Shuriken;
+            //This is just easy vanilla AI for a shuriken
         }
 
         public override void SetDefaults()
