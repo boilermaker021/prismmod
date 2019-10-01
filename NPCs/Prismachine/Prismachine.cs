@@ -216,7 +216,7 @@ namespace prismmod.NPCs.Prismachine
             if (SpikeSpreader)
             {
                 //mod.ProjectileType("PrismachineSpike");
-                Projectile.NewProjectile()
+                //Projectile.NewProjectile();
             }
             timer++;
         }
