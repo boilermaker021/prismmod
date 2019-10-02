@@ -7,7 +7,7 @@ using System;
 namespace prismmod.NPCs.Prismachine
 {
     [AutoloadBossHead]
-    class Prismachine : ModNPC
+    partial class Prismachine : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -215,8 +215,9 @@ namespace prismmod.NPCs.Prismachine
             }
             if (SpikeSpreader)
             {
-                //mod.ProjectileType("PrismachineSpike");
-                //Projectile.NewProjectile();
+                Projectile.NewProjectile(npc.Left.X, npc.Center.Y+3f, -10f, 1f, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Right.X, npc.Center.Y+3f, 10f, 1f, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                //enables attacks of orb/element 4 type
             }
             timer++;
         }
@@ -246,6 +247,7 @@ namespace prismmod.NPCs.Prismachine
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore2"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore3"), 1f);
+                // Add death sound here
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore4"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore5"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore6"), 1f);

@@ -12,9 +12,8 @@ namespace prismmod.NPCs.Prismachine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prismachine Spike");
-            //projectile.CloneDefaults(ProjectileID.Shuriken);
-            // projectile.aiStyle = 3;
-            //aiType = ProjectileID.Shuriken;
+            projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
+            projectile.aiStyle = 1;
             //This is just easy vanilla AI for a shuriken
         }
 
@@ -24,7 +23,10 @@ namespace prismmod.NPCs.Prismachine
             projectile.height = 10;
             projectile.friendly = false;
             projectile.ranged = true;
+            projectile.damage = 20;
+            projectile.knockBack = 5;
         }
+
         public override void AI()
         {
             projectile.velocity.Y = projectile.velocity.Y + 0.3f;
