@@ -17,10 +17,8 @@ namespace prismmod.NPCs.Prismachine
             projectile.height = 40;
             projectile.friendly = false;
             projectile.ranged = true;
-            projectile.damage = 20;
-            projectile.knockBack = 5;
             projectile.timeLeft = 180;
-            projectile.damage = 20;
+            projectile.hostile = true;
         }
 
         public override void AI()
@@ -31,6 +29,11 @@ namespace prismmod.NPCs.Prismachine
                 projectile.velocity.Y = 16f;
             }
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            projectile.Kill();
         }
     }
 }

@@ -17,10 +17,8 @@ namespace prismmod.NPCs.Prismachine
             projectile.height = 40;
             projectile.friendly = false;
             projectile.ranged = true;
-            projectile.damage = 20;
-            projectile.knockBack = 5;
             projectile.timeLeft = 180;
-            projectile.damage = 20;
+            projectile.hostile = true;
         }
 
         public override void AI()
