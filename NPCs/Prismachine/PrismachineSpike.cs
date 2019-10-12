@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace prismmod.NPCs.Prismachine
@@ -30,6 +27,5 @@ namespace prismmod.NPCs.Prismachine
         {
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
-
     }
 }

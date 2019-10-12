@@ -1,11 +1,10 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.NPCs
 {
-    class AmethystZombie : ModNPC
+    internal class AmethystZombie : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -25,7 +24,6 @@ namespace prismmod.NPCs
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
             npc.damage = 14;
-
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.BossBags
 {
@@ -24,13 +23,12 @@ namespace prismmod.Items.BossBags
             item.maxStack = 99;
             item.useAnimation = 15;
             item.expert = true;
-
         }
 
         public override void OpenBossBag(Player player)
         {
             int choice = Main.rand.Next(3/*n-1*/);
-            if(choice==0)
+            if (choice == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("Rainbow"));
             }

@@ -1,18 +1,13 @@
-using System.Collections.Generic;
-using System.IO;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using System;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace prismmod.NPCs.Prismachine
 {
-    class Orb : ModNPC
+    internal class Orb : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Orb");
@@ -36,8 +31,7 @@ namespace prismmod.NPCs.Prismachine
             npc.noGravity = true;
             npc.noTileCollide = true;
         }
-        
-        
+
         public override void AI()
         {
             NPC prismachine = Main.npc[(int)npc.ai[0]];
@@ -76,7 +70,7 @@ namespace prismmod.NPCs.Prismachine
             }
             else
             {
-                NetworkText text=NetworkText.FromLiteral("");
+                NetworkText text = NetworkText.FromLiteral("");
                 Color color = Color.Black;
                 NPC prismachine = Main.npc[(int)npc.ai[0]];
                 if (npc.ai[1] == 0)
@@ -104,10 +98,7 @@ namespace prismmod.NPCs.Prismachine
                     color = new Color(112, 202, 204);
                 }
                 NetMessage.BroadcastChatMessage(text, color);
-
             }
-            
         }
-
     }
 }

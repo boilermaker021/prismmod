@@ -39,6 +39,5 @@ namespace prismmod.Items.Weapons
             Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("AquaArrow"), damage, knockBack, player.whoAmI);
             return false;
         }
-
     }
 }

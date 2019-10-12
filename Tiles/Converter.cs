@@ -19,11 +19,11 @@ namespace prismmod.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
             TileObjectData.newTile.Height = 2;
             TileObjectData.newTile.Width = 7;
-            TileObjectData.newTile.CoordinateHeights = new[] { 16,16};
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
             TileObjectData.newTile.Origin = new Point16(3, 1);
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-            ModTranslation name = CreateMapEntryName(); 
+            ModTranslation name = CreateMapEntryName();
             name.SetDefault("Converter");
             AddMapEntry(new Color(200, 200, 200), name);
             disableSmartCursor = true;
@@ -31,8 +31,6 @@ namespace prismmod.Tiles
             Main.tileFrameImportant[Type] = true;
             Main.tileLighted[Type] = true;
         }
-
-
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

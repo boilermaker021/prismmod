@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod
 {
-    class PrismPlayer : ModPlayer
+    internal class PrismPlayer : ModPlayer
     {
-        Random rndm = new Random();
+        private Random rndm = new Random();
         public bool tinyTurtle = false;
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;
@@ -26,7 +22,6 @@ namespace prismmod
         public float twoShotRocket = 0f;
         public float reducedContactDamage = 1f;
 
-
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
             double number = rndm.NextDouble();
@@ -38,6 +33,7 @@ namespace prismmod
             noAmmoUseChance = 0f;
             return true;
         }
+
         public override void ResetEffects()
         {
             flamerDamageIncrease = 1f;
@@ -58,18 +54,17 @@ namespace prismmod
                 damage = (int)((float)damage * flamerDamageIncrease);
                 speedY *= flamerSpeedIncrease;
                 speedX *= flamerSpeedIncrease;
-
             }
             if (item.useAmmo == AmmoID.Rocket)
             {
                 damage = (int)((float)damage * rocketDamageIncrease);
-				double number = rndm.NextDouble();
-				if(number < twoShotRocket)
-				{
-					Vector2 perturbedSpeed = new Vector2(speedX, speedY);
-					perturbedSpeed = perturbedSpeed*0.5f;
-					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-				}
+                double number = rndm.NextDouble();
+                if (number < twoShotRocket)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY);
+                    perturbedSpeed = perturbedSpeed * 0.5f;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
             }
             if (item.useAmmo == AmmoID.Bullet)
             {
@@ -96,7 +91,7 @@ namespace prismmod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-            damage = (int)((float)damage *(reducedContactDamage - 1f));
+            damage = (int)((float)damage * (reducedContactDamage - 1f));
         }
     }
 }

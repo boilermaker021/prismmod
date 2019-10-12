@@ -1,21 +1,21 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Accessories
 {
-	public class Pshoes : ModItem
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Pshooooes");
-			Tooltip.SetDefault("Don't you dare visit your denizen early");
-		}
-		public override void SetDefaults()
-		{
+    public class Pshoes : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Pshooooes");
+            Tooltip.SetDefault("Don't you dare visit your denizen early");
+        }
+
+        public override void SetDefaults()
+        {
             item.accessory = true;
-		}
+        }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -25,16 +25,15 @@ namespace prismmod.Items.Accessories
             player.rocketTimeMax = 24;
         }
 
-
         public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.TungstenBar, 5);
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.TungstenBar, 5);
             recipe.AddIngredient(ItemID.GoldBar, 5);
             recipe.AddIngredient(ItemID.Wood, 8);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	}
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

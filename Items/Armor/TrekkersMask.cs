@@ -1,8 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-
 
 namespace prismmod.Items.Armor
 {
@@ -14,18 +12,18 @@ namespace prismmod.Items.Armor
             DisplayName.SetDefault("Trekker's Mask");
             Tooltip.SetDefault("+4% Bow Damage");
         }
+
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 20;
             item.rare = 1;
-            item.defense = 1; 
+            item.defense = 1;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<PrismPlayer>().arrowDamageIncrease += 0.04f;
-            
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -47,18 +45,16 @@ namespace prismmod.Items.Armor
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
         }
-		
-		public override bool DrawHead()
-		{
-			return true;
-		}
+
+        public override bool DrawHead()
+        {
+            return true;
+        }
 
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
             drawHair = true;
         }
-
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,19 +21,19 @@ namespace prismmod.Projectiles
             projectile.ranged = true;
             aiType = ProjectileID.WoodenArrowFriendly;
         }
+
         public override void AI()
         {
             Player owner = Main.player[projectile.owner];
             float speedX = projectile.velocity.X;
             float speedY = projectile.velocity.Y;
-            if (projectile.timeLeft % 15 == 0) 
+            if (projectile.timeLeft % 15 == 0)
             {
-                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + 
+                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y +
                     speedY, speedX, speedY, 90, (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0f, 0f, mod.ProjectileType("RainDroplet"), 
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0f, 0f, mod.ProjectileType("RainDroplet"),
                     10, 0f, owner.whoAmI);
             }
         }
-
     }
 }

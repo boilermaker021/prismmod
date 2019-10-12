@@ -1,14 +1,13 @@
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace prismmod.NPCs
 {
-    class IciClunk : ModNPC
+    internal class IciClunk : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Iciclunk");
@@ -26,20 +25,15 @@ namespace prismmod.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
-
         }
-
-
 
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), mod.ItemType("IciclunkHorn"), Main.rand.Next(3, 6));
         }
 
-
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
-
 
         private const int AI_State_Waiting = 0;
         private const int AI_State_Jumped = 1;
@@ -54,13 +48,12 @@ namespace prismmod.NPCs
         {
             get => npc.ai[AI_State_Slot];
             set => npc.ai[AI_State_Slot] = value;
-
         }
 
-        public float AI_Timer {
+        public float AI_Timer
+        {
             get => npc.ai[AI_Timer_Slot];
             set => npc.ai[AI_Timer_Slot] = value;
-
         }
 
         public override void AI()
@@ -80,7 +73,6 @@ namespace prismmod.NPCs
                     jumped = true;
                     AI_State = AI_State_Jumped;
                     AI_Timer = 0;
-
                 }
                 else if (npc.HasValidTarget)
                 {
@@ -90,11 +82,9 @@ namespace prismmod.NPCs
                     AI_Timer = 0;
                 }
             }
-
             else if (AI_State == AI_State_Movement)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.5f;
-
 
                 if (npc.velocity.Y > 1f)
                 {
@@ -106,7 +96,6 @@ namespace prismmod.NPCs
                     AI_State = AI_State_Landed_PostMove;
                 }
             }
-
             else if (AI_State == AI_State_Jumped)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.5f; // 0.1f for arrow gravity, 0.4f for knife gravity
@@ -134,7 +123,6 @@ namespace prismmod.NPCs
                     npc.rotation = MathHelper.Pi;
                 }
             }
-
             else if (AI_State == AI_State_Landed_PostMove)
             {
                 AI_Timer++;
@@ -143,9 +131,7 @@ namespace prismmod.NPCs
                     AI_Timer = 0;
                     AI_State = AI_State_Waiting;
                 }
-
             }
-
             else if (AI_State == AI_State_Landed_PostJump)
             {
                 if (hitPlayer)
@@ -166,12 +152,10 @@ namespace prismmod.NPCs
                         npc.velocity.X = -2f;
                     }
                 }
-
             }
-
             else if (AI_State == AI_State_Righting)
             {
-                npc.rotation = (npc.velocity.ToRotation() + MathHelper.PiOver2)-MathHelper.Pi;
+                npc.rotation = (npc.velocity.ToRotation() + MathHelper.PiOver2) - MathHelper.Pi;
                 if (npc.velocity.Y > 1f)
                 {
                     jumped = false;
@@ -217,6 +201,5 @@ namespace prismmod.NPCs
                 return 0f;
             }
         }
-
     }
 }

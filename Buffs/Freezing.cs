@@ -1,15 +1,12 @@
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace prismmod.Buffs
 {
-	public class Freezing : ModBuff
-	{
-
-		public override void Update(NPC target, ref int buffIndex)
-		{
+    public class Freezing : ModBuff
+    {
+        public override void Update(NPC target, ref int buffIndex)
+        {
             if (!target.boss)
             {
                 target.velocity.X = 0f;
@@ -18,8 +15,7 @@ namespace prismmod.Buffs
             else
             {
                 target.velocity *= 0.95f;
-
             }
-		}
-	}
+        }
+    }
 }

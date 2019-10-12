@@ -1,9 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace prismmod.Projectiles
 {
@@ -21,10 +16,10 @@ namespace prismmod.Projectiles
             projectile.friendly = true;
             projectile.ranged = true;
         }
+
         public override void AI()
         {
             projectile.velocity.Y = projectile.velocity.Y + 0.3f;
         }
-
     }
 }

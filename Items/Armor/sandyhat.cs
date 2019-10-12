@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Armor
 {
@@ -12,20 +11,19 @@ namespace prismmod.Items.Armor
         {
             DisplayName.SetDefault("Sandy Hat");
         }
+
         public override void SetDefaults()
         {
             item.width = 16;
             item.height = 12;
             item.rare = 1;
             item.defense = 69;
-            
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("sandychest") && legs.type == mod.ItemType("sandylegs") ;
+            return body.type == mod.ItemType("sandychest") && legs.type == mod.ItemType("sandylegs");
         }
-
 
         public override bool DrawHead()
         {
@@ -39,7 +37,6 @@ namespace prismmod.Items.Armor
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
         }
     }
 }

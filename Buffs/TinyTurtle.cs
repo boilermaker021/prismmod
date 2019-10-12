@@ -1,12 +1,10 @@
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace prismmod.Buffs
 {
-	public class TinyTurtle : ModBuff
-	{
+    public class TinyTurtle : ModBuff
+    {
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Turtle Buddy!");
@@ -25,6 +23,5 @@ namespace prismmod.Buffs
                 Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("TinyTurtle"), 0, 0f, player.whoAmI, 0f, 0f);
             }
         }
-
     }
 }

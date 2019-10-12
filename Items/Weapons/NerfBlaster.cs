@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,6 +11,7 @@ namespace prismmod.Items.Weapons
             DisplayName.SetDefault("Nerf Gun");
             Tooltip.SetDefault("It's Nerf or Nathan");
         }
+
         public override void SetDefaults()
         {
             item.damage = 69420;

@@ -1,8 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-
 
 namespace prismmod.Items.Armor
 {
@@ -14,18 +12,18 @@ namespace prismmod.Items.Armor
             DisplayName.SetDefault("Trekker's Helmet");
             Tooltip.SetDefault("+4% Gun Damage");
         }
+
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 20;
             item.rare = 1;
-            item.defense = 2; 
+            item.defense = 2;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<PrismPlayer>().bulletDamageIncrease += 0.04f;
-            
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -50,7 +48,6 @@ namespace prismmod.Items.Armor
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
         }
     }
 }
