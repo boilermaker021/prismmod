@@ -213,10 +213,22 @@ namespace prismmod.NPCs.Prismachine
                 //enable attacks of orb/element 3 type
 
             }
-            if (SpikeSpreader)
+            if (SpikeSpreader&timer%60==0)
             {
-                Projectile.NewProjectile(npc.Left.X, npc.Center.Y+3f, -10f, 1f, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
-                Projectile.NewProjectile(npc.Right.X, npc.Center.Y+3f, 10f, 1f, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                int times = 8;//change this value for number of spikes
+                //left
+                for (int i = 0; i < times; i++)
+                {
+                    Projectile.NewProjectile(npc.Left.X+5f, npc.Center.Y+20f, -10f, ((float)-times / 4) + i*2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                }
+
+
+                //right
+                for (int i = 0; i < times; i++)
+                {
+                    Projectile.NewProjectile(npc.Right.X-5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                }
+
                 //enables attacks of orb/element 4 type
             }
             timer++;
