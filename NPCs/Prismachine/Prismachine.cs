@@ -58,7 +58,7 @@ namespace prismmod.NPCs.Prismachine
         private const int AI_Timer_Slot = 1;
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
-        private int timer = 1;
+        
 
         public float AI_State
         {
@@ -197,9 +197,9 @@ namespace prismmod.NPCs.Prismachine
             }*/
 
 
-            if (MasterPump&timer%30==0)
+            if (MasterPump&AI_Timer%30==0)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType<PrismachineDroplet>(),20,1.5f);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y+(npc.height/2), 0f, 10f, mod.ProjectileType<PrismachineDroplet>(),20,1.5f);
 
             }
             if (CrystallizedTelepathy)
@@ -212,7 +212,7 @@ namespace prismmod.NPCs.Prismachine
                 //enable attacks of orb/element 3 type
 
             }
-            if (SpikeSpreader&timer%60==0)//change time intervals
+            if (SpikeSpreader&AI_Timer%60==0)//change time intervals
             {
                 int times = 8;//change this value for number of spikes
                 //left
@@ -230,7 +230,7 @@ namespace prismmod.NPCs.Prismachine
 
                 //enables attacks of orb/element 4 type
             }
-            timer++;
+            AI_Timer++;
         }
 
         int frame_timer = 0;
