@@ -58,7 +58,6 @@ namespace prismmod.NPCs.Prismachine
         private const int AI_Timer_Slot = 1;
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
-        Random rand = new Random();
         
 
         public float AI_State
@@ -212,7 +211,7 @@ namespace prismmod.NPCs.Prismachine
             {
                 /*if (Main.netMode != 1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)rand.Next(-5,6)), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11)-5), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
                 }*/
             }
             if (SpikeSpreader&AI_Timer%60==0)//change time intervals
