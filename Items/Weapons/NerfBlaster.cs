@@ -16,8 +16,8 @@ namespace prismmod.Items.Weapons
         {
             item.damage = 69420;
             item.ranged = true;
-            item.width = 18;
-            item.height = 12;
+            item.width = 33;
+            item.height = 21;
             item.useTime = 30;
             item.useAnimation = 30;
             item.useStyle = 5;
@@ -30,7 +30,6 @@ namespace prismmod.Items.Weapons
             item.shoot = mod.ProjectileType("Nerfdart");
             item.shootSpeed = 6f;
             item.useAmmo = mod.ItemType("Nerfdart");
-            item.scale = 1.5f;
         }
 
         public override void AddRecipes()
