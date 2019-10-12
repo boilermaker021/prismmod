@@ -15,6 +15,7 @@ namespace prismmod.Items.Accessories
         {
             item.accessory = true;
             item.defense = 0;
+            item.rare = -12;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
