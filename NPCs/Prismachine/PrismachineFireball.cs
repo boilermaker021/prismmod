@@ -29,7 +29,7 @@ namespace prismmod.NPCs.Prismachine
         public override void AI()
         {
             projectile.velocity.Y = projectile.velocity.Y + 0.2f;
-            if (projectile.velocity.Y > 16f)
+            if (projectile.velocity.Y > 10f)
             {
                 projectile.velocity.Y = 16f;
             }
