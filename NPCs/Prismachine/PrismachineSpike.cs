@@ -12,12 +12,11 @@ namespace prismmod.NPCs.Prismachine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prismachine Spike");
-            //This is just easy vanilla AI for a shuriken
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 22;
+            projectile.width = 40;
             projectile.height = 40;
             projectile.friendly = false;
             projectile.ranged = true;
