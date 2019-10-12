@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.IO;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -47,26 +50,61 @@ namespace prismmod.NPCs.Prismachine
 
         public override void NPCLoot()
         {
-            NPC prismachine = Main.npc[(int)npc.ai[0]];
-            if (npc.ai[1] == 0)
+            if (Main.netMode != 2)
             {
-                prismachine.ai[0] += 1000;
-                Main.NewText("Master Pump Enabled!", 0, 38, 227);
+                NPC prismachine = Main.npc[(int)npc.ai[0]];
+                if (npc.ai[1] == 0)
+                {
+                    prismachine.ai[0] += 1000;
+                    Main.NewText("Master Pump Enabled!", 0, 38, 227);
+                }
+                else if (npc.ai[1] == 1)
+                {
+                    prismachine.ai[0] += 100;
+                    Main.NewText("Crystallized Telepathy Enabled!", 155, 2, 161);
+                }
+                else if (npc.ai[1] == 2)
+                {
+                    prismachine.ai[0] += 10;
+                    Main.NewText("Flare Cannon Enabled!", 199, 0, 0);
+                }
+                else if (npc.ai[1] == 3)
+                {
+                    prismachine.ai[0] += 1;
+                    Main.NewText("Spike Spreader Enabled!", 112, 202, 204);
+                }
             }
-            else if (npc.ai[1] == 1)
+            else
             {
-                prismachine.ai[0] += 100;
-                Main.NewText("Crystallized Telepathy Enabled!", 155, 2, 161);
-            }
-            else if (npc.ai[1] == 2)
-            {
-                prismachine.ai[0] += 10;
-                Main.NewText("Flare Cannon Enabled!", 199,0,0);
-            }
-            else if (npc.ai[1] == 3)
-            {
-                prismachine.ai[0] += 1;
-                Main.NewText("Spike Spreader Enabled!", 112, 202, 204);
+                NetworkText text=NetworkText.FromLiteral("");
+                Color color = Color.Black;
+                NPC prismachine = Main.npc[(int)npc.ai[0]];
+                if (npc.ai[1] == 0)
+                {
+                    prismachine.ai[0] += 1000;
+                    text = NetworkText.FromLiteral("Master Pump Enabled");
+                    color = new Color(0, 38, 227);
+                }
+                else if (npc.ai[1] == 1)
+                {
+                    prismachine.ai[0] += 100;
+                    text = NetworkText.FromLiteral("Crystallized Telepathy Enabled");
+                    color = new Color(155, 2, 161);
+                }
+                else if (npc.ai[1] == 2)
+                {
+                    prismachine.ai[0] += 10;
+                    text = NetworkText.FromLiteral("Flare Cannon Enabled");
+                    color = new Color(199, 0, 0);
+                }
+                else if (npc.ai[1] == 3)
+                {
+                    prismachine.ai[0] += 1;
+                    text = NetworkText.FromLiteral("Spike Spreader Enabled");
+                    color = new Color(112, 202, 204);
+                }
+                NetMessage.BroadcastChatMessage(text, color);
+
             }
             
         }
