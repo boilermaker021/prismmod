@@ -191,6 +191,7 @@ namespace prismmod.NPCs.Prismachine
                 //for (int i = 0; i < 3; i++)
                 //{
                     Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
                 //}
             }
             if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1)
