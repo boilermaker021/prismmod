@@ -190,12 +190,16 @@ namespace prismmod.NPCs.Prismachine
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, mod.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
             }
             if (CrystallizedTelepathy & AI_Timer % 60 == 0 & Main.netMode != 1)
-            {
-                //for (int i = 0; i < 3; i++)
-                //{
-                    Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                    Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                //}
+            {   //down
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                //up-right
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                //up-left
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+
             }
             if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1)
             {
