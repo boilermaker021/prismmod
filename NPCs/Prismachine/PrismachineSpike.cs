@@ -23,6 +23,7 @@ namespace prismmod.NPCs.Prismachine
             projectile.damage = 20;
             projectile.knockBack = 5;
             projectile.timeLeft = 180;
+            projectile.damage = 20;
         }
 
         public override void AI()
