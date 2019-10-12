@@ -50,7 +50,7 @@ namespace prismmod.NPCs.Prismachine
             mod.GetModWorld<PrismWorld>().downedPrismachine = true;
         }
 
-        private const int AI_State_Slot = 0;
+        private const int AI_State_Slot = 2;
         private const int AI_Timer_Slot = 1;
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
@@ -182,22 +182,23 @@ namespace prismmod.NPCs.Prismachine
                 }
             }*/
 
-            if (MasterPump & AI_Timer % 30 == 0)
+            if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1)
             {
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, mod.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
             }
-            if (CrystallizedTelepathy)
+            if (CrystallizedTelepathy & AI_Timer % 60 == 0 & Main.netMode != 1)
             {
-                //enable attacks of orb/element 2 type
-            }
-            if (FlareCannon & AI_Timer % 7 == 0)
-            {
-                if (Main.netMode != 1)
+                for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Center.X + (npc.width / 2), npc.Center.Y + (npc.height / 4), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Center.X - (npc.width / 2), npc.Center.Y + (npc.height / 4), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
                 }
             }
-            if (SpikeSpreader & AI_Timer % 60 == 0)//change time intervals
+            if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1)
+            {
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
+            }
+            if (SpikeSpreader & AI_Timer % 60 == 0 & Main.netMode != 1)//change time intervals
             {
                 int times = 8;//change this value for number of spikes
                 //left
