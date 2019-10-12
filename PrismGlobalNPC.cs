@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace prismmod
 {
-    internal class PrismGlobalNPC : GlobalNPC
+    class PrismGlobalNPC : GlobalNPC
     {
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {

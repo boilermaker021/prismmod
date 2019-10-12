@@ -2,7 +2,8 @@
 
 namespace prismmod
 {
-    internal class PrismGlobalItem : GlobalItem
+    class PrismGlobalItem : GlobalItem
     {
+
     }
 }
