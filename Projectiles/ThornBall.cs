@@ -1,27 +1,19 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.GameContent.Achievements;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections;
-
 
 namespace prismmod.Projectiles
 {
     public class ThornBall : ModProjectile
     {
-
         public override void SetDefaults()
         {
-            
             projectile.width = 16;
             projectile.height = 16;
             projectile.friendly = true;
             projectile.magic = true;
             projectile.penetrate = 3;
             projectile.timeLeft = 600;
-
         }
 
         public override void AI()
@@ -32,16 +24,12 @@ namespace prismmod.Projectiles
                 projectile.velocity.Y = 16f;
             }
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-        
             projectile.velocity = new Vector2(0f);
             return false;
-
         }
-
     }
 }

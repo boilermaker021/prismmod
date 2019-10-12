@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Consumables
 {
@@ -25,7 +24,6 @@ namespace prismmod.Items.Consumables
             item.maxStack = 20;
             item.useAnimation = 15;
             item.value = Item.buyPrice(0, 5, 0, 0);
-
         }
 
         public override bool UseItem(Player player)
@@ -37,13 +35,12 @@ namespace prismmod.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            if (player.ZoneJungle&&NPC.CountNPCS(mod.NPCType("GargantuanTortoise"))<1)
+            if (player.ZoneJungle && NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1)
             {
                 return true;
             }
 
             return false;
         }
-
     }
 }

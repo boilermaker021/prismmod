@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Consumables
 {
@@ -24,19 +23,15 @@ namespace prismmod.Items.Consumables
             item.UseSound = SoundID.Item29;
             item.maxStack = 999;
             item.useAnimation = 30;
-
         }
 
         public override bool CanUseItem(Player player)
         {
-
             if (Main.dayTime == false)
             {
                 Main.time = 10000;
                 Main.dayTime = true;
                 return true;
-
-                
             }
             else
             {

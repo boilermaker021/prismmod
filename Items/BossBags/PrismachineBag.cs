@@ -1,7 +1,6 @@
-/*using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace prismmod.Items.BossBags
 {
@@ -21,17 +20,20 @@ namespace prismmod.Items.BossBags
             item.consumable = true;
             item.useTime = 20;
             item.useStyle = 4;
-            item.maxStack = 1;
+            item.maxStack = 99;
             item.useAnimation = 15;
             item.expert = true;
-
         }
 
         public override void OpenBossBag(Player player)
         {
-            int choice = Main.rand.Next(2/*n-1);
-            //if(choice==0)
-            //{ }
+            int choice = Main.rand.Next(3/*n-1*/);
+            if (choice == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("Rainbow"));
+            }
+
+            player.QuickSpawnItem(ItemID.GoldCoin, 10);
         }
 
         public override bool CanRightClick()
@@ -42,4 +44,3 @@ namespace prismmod.Items.BossBags
         public override int BossBagNPC => mod.NPCType("Prismachine");
     }
 }
-*/

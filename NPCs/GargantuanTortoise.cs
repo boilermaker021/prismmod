@@ -1,14 +1,14 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace prismmod.NPCs
 {
     [AutoloadBossHead]
-    class GargantuanTortoise : ModNPC
+    internal class GargantuanTortoise : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -31,20 +31,17 @@ namespace prismmod.NPCs
             npc.damage = 30;
             banner = npc.type;
             bannerItem = mod.ItemType("GargantuanTortoiseBanner");
-
         }
-
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (Main.dayTime == false && mod.GetModWorld<PrismWorld>().killedGargantuanTortoise == false
-                &&NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 &&NPC.downedSlimeKing)
+                && NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 && NPC.downedSlimeKing)
             {
                 return SpawnCondition.SurfaceJungle.Chance * 0.1f;
             }
             return 0f;
         }
-
 
         public override void NPCLoot()
         {
@@ -60,7 +57,6 @@ namespace prismmod.NPCs
                 if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-
                 }
             }
 
@@ -69,29 +65,26 @@ namespace prismmod.NPCs
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("TinyTurtleCaptureOrb"));
             }
-
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore1"),1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore2"),1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore3"),1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GargTortoiseGore3"), 1f);
             }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            
-
             Texture2D texture = mod.GetTexture("NPCs/GargantuanTortoise_Glowmask");
-            if (npc.spriteDirection==1)
+            if (npc.spriteDirection == 1)
             {
                 texture = mod.GetTexture("NPCs/GargantuanTortoise_GlowmaskR");
             }
-            if (npc.spriteDirection==0)
+            if (npc.spriteDirection == 0)
             {
                 texture = mod.GetTexture("NPCs/GargantuanTortoise_Glowmask");
             }
@@ -106,7 +99,7 @@ namespace prismmod.NPCs
                 new Rectangle(0, 0, texture.Width, texture.Height),
                 Color.White,
                 npc.rotation,
-                texture.Size()*0.5f,
+                texture.Size() * 0.5f,
                 npc.scale,
                 SpriteEffects.None,
                 0f

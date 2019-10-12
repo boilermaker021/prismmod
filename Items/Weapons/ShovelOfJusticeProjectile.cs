@@ -1,18 +1,17 @@
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace prismmod.Items.Weapons
 {
-	public class ShovelOfJusticeProj : ModProjectile
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Shovel of Justice");
-		}
-		public override void SetDefaults()
-		{
+    public class ShovelOfJusticeProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Shovel of Justice");
+        }
+
+        public override void SetDefaults()
+        {
             projectile.Name = "Shovel of Justice";
             projectile.width = 22;
             projectile.height = 22;
@@ -25,12 +24,9 @@ namespace prismmod.Items.Weapons
             projectile.melee = true;
         }
 
-
         public override void AI()
         {
-            
         }
-
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -39,14 +35,12 @@ namespace prismmod.Items.Weapons
             {
                 player.velocity.Y = -10f;
                 player.GetModPlayer<PrismPlayer>().timesBounced++;
-
             }
 
             if (player.GetModPlayer<PrismPlayer>().timesBounced == 5)
             {
                 player.AddBuff(mod.BuffType("NoBounce"), 120);
                 player.GetModPlayer<PrismPlayer>().timesBounced = 0;
-
             }
         }
     }

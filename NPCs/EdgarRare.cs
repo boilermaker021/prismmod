@@ -1,12 +1,12 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace prismmod.NPCs
 {
-    class EdgarRare : ModNPC
+    internal class EdgarRare : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -30,7 +30,6 @@ namespace prismmod.NPCs
             npc.damage = 10;
             banner = npc.type;
             bannerItem = mod.ItemType("RareEdgarBanner");
-
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -38,17 +37,14 @@ namespace prismmod.NPCs
             return SpawnCondition.OverworldNightMonster.Chance * 0.01f;
         }
 
-
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            
-
             Texture2D texture = mod.GetTexture("NPCs/Edgar_Glowmask");
-            if (npc.spriteDirection==1)
+            if (npc.spriteDirection == 1)
             {
                 texture = mod.GetTexture("NPCs/Edgar_GlowmaskR");
             }
-            if (npc.spriteDirection==0)
+            if (npc.spriteDirection == 0)
             {
                 texture = mod.GetTexture("NPCs/Edgar_Glowmask");
             }
@@ -63,7 +59,7 @@ namespace prismmod.NPCs
                 new Rectangle(0, 0, texture.Width, texture.Height),
                 Color.White,
                 npc.rotation,
-                texture.Size()*0.5f,
+                texture.Size() * 0.5f,
                 npc.scale,
                 SpriteEffects.None,
                 0f
@@ -73,8 +69,8 @@ namespace prismmod.NPCs
         public override void AI()
         {
             float r = 1f;
-            float g = 201/255;
-            float b = 70/255;
+            float g = 201 / 255;
+            float b = 70 / 255;
 
             float positionX = npc.position.X + npc.width / 2 - 33;
             float positionY = npc.position.Y + npc.height / 2 - 10;
@@ -82,7 +78,6 @@ namespace prismmod.NPCs
             Vector2 npcPos = new Vector2(positionX, positionY);
 
             Lighting.AddLight(npcPos, r, g, b);
-
         }
 
         public override void NPCLoot()

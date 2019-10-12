@@ -8,3 +8,4 @@
 *.ide-wal
 obj/
 .bin/
+pat.txt

@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Armor
 {
@@ -13,13 +12,13 @@ namespace prismmod.Items.Armor
             DisplayName.SetDefault("Shady Hood");
             Tooltip.SetDefault("+1 Max Minion");
         }
+
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 20;
             item.rare = 1;
             item.defense = 1;
-            
         }
 
         public override void UpdateEquip(Player player)
@@ -50,7 +49,6 @@ namespace prismmod.Items.Armor
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
         }
     }
 }

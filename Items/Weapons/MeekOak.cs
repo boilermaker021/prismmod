@@ -1,10 +1,7 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections;
 
 namespace prismmod.Items.Weapons
 {
@@ -46,14 +43,11 @@ namespace prismmod.Items.Weapons
             recipe.AddRecipe();
         }
 
-        
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-       {
-
+        {
             position = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
-            speedX=0f;
-            speedY=0f;
+            speedX = 0f;
+            speedY = 0f;
             return true;
         }
     }

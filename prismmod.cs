@@ -1,21 +1,19 @@
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace prismmod
 {
-	class prismmod : Mod
-	{
-		public prismmod()
-		{
-
+    internal class prismmod : Mod
+    {
+        public prismmod()
+        {
             Properties = new ModProperties()
             {
                 Autoload = true,
                 AutoloadGores = true,
                 AutoloadSounds = true
             };
-
-		}
+        }
 
         public override void AddRecipes()
         {

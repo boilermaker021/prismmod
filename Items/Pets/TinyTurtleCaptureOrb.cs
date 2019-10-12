@@ -1,12 +1,11 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Pets
 {
-	public class TinyTurtleCaptureOrb : ModItem
-	{
+    public class TinyTurtleCaptureOrb : ModItem
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Capture Orb");
@@ -19,7 +18,6 @@ namespace prismmod.Items.Pets
             item.shoot = mod.ProjectileType("TinyTurtle");
             item.buffType = mod.BuffType("TinyTurtle");
         }
-
 
         public override void UseStyle(Player player)
         {

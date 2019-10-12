@@ -1,17 +1,11 @@
-using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections;
-
 
 namespace prismmod.Projectiles.Pets
 {
     public class TinyTurtle : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 1;

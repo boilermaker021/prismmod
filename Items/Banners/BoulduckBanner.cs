@@ -1,7 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Banners
 {
@@ -11,7 +9,6 @@ namespace prismmod.Items.Banners
         {
             DisplayName.SetDefault("Boulduck Banner");
             Tooltip.SetDefault("Nearby players get a bonus against: Boulduck Banner");
-            
         }
 
         public override void SetDefaults()
@@ -25,7 +22,7 @@ namespace prismmod.Items.Banners
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.value = Item.buyPrice(0,0,10,0);
+            item.value = Item.buyPrice(0, 0, 10, 0);
             item.createTile = mod.TileType("MonsterBanner");
             item.placeStyle = 3;
         }

@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Items.Consumables
 {
@@ -24,7 +23,6 @@ namespace prismmod.Items.Consumables
             item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.ForceRoar, 0);
             item.maxStack = 20;
             item.useAnimation = 15;
-
         }
 
         public override bool UseItem(Player player)
@@ -44,7 +42,7 @@ namespace prismmod.Items.Consumables
         }
 
         public override void AddRecipes()
-        { 
+        {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Topaz, 5);
             recipe.AddIngredient(ItemID.Sapphire, 5);
@@ -55,10 +53,6 @@ namespace prismmod.Items.Consumables
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-
-           
-            
-
         }
     }
 }
