@@ -26,15 +26,12 @@ namespace prismmod.NPCs.Prismachine
             for (int i= 0; i < Main.player.Length;i++)
             {
                 Player target = Main.player[i];
-                //If the npc is hostile
                 if (target.Distance(projectile.Center)<400f)
                 {
-                    //Get the shoot trajectory from the projectile and target
                     float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                     float shootToY = target.position.Y - projectile.Center.Y;
                     float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
 
-                    //If the distance between the live targeted npc and the projectile is less than 480 pixels
                     if (target.active)
                     {
                         //Divide the factor, 3f, which is the desired velocity
@@ -44,7 +41,6 @@ namespace prismmod.NPCs.Prismachine
                         shootToX *= distance * 5;
                         shootToY *= distance * 5;
 
-                        //Set the velocities to the shoot values
                         projectile.velocity.X = shootToX;
                         projectile.velocity.Y = shootToY;
                     }
@@ -56,5 +52,6 @@ namespace prismmod.NPCs.Prismachine
         {
             projectile.Kill();
         }
+
     }
 }
