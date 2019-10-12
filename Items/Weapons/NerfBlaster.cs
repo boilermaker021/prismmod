@@ -30,18 +30,9 @@ namespace prismmod.Items.Weapons
             item.shoot = mod.ProjectileType("Nerfdart");
             item.shootSpeed = 6f;
             item.useAmmo = mod.ItemType("Nerfdart");
+            item.rare = -12;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DynastyWood, 5);
-            recipe.AddIngredient(ItemID.IronBar, 10);
-            recipe.AddIngredient(ItemID.GrayPressurePlate, 1);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
 
         public override Vector2? HoldoutOffset()
         {
