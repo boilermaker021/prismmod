@@ -6,3 +6,4 @@ homepage = https://github.com/CommieSlayer1950/prismmod/wiki
 hideCode = false
 hideResources = false
 includeSource = true
+weakReferences = prismmodmusic
