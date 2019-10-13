@@ -30,7 +30,7 @@ namespace prismmod.Items.Weapons
             item.channel = true;
 
             item.shootSpeed = 40f;
-            item.shoot = mod.ProjectileType<PrismaspearProjectile>();
+            item.shoot = ModContent.ProjectileType<PrismaspearProjectile>();
 
 
         }

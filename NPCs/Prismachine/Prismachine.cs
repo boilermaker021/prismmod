@@ -50,7 +50,7 @@ namespace prismmod.NPCs.Prismachine
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
             Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
 
-            mod.GetModWorld<PrismWorld>().downedPrismachine = true;
+            ModContent.GetInstance<PrismWorld>().downedPrismachine = true;
         }
 
         private const int AI_State_Slot = 2;
@@ -187,23 +187,23 @@ namespace prismmod.NPCs.Prismachine
 
             if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, mod.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, ModContent.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
             }
             if (CrystallizedTelepathy & AI_Timer % 60 == 0 & Main.netMode != 1)
             {   //down
-                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
                 //up-right
-                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
                 //up-left
-                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
 
             }
             if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, ModContent.ProjectileType<PrismachineFireball>(), 20, 1.5f);
             }
             if (SpikeSpreader & AI_Timer % 60 == 0 & Main.netMode != 1)//change time intervals
             {
@@ -211,13 +211,13 @@ namespace prismmod.NPCs.Prismachine
                 //left
                 for (int i = 0; i < times; i++)
                 {
-                    Projectile.NewProjectile(npc.Left.X + 5f, npc.Center.Y + 20f, -10f, ((float)-times / 4) + i * 2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Left.X + 5f, npc.Center.Y + 20f, -10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
 
                 //right
                 for (int i = 0; i < times; i++)
                 {
-                    Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
 
                 //enables attacks of orb/element 4 type
