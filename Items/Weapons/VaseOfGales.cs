@@ -17,16 +17,18 @@ namespace prismmod.Items.Weapons
             item.width = 33;
             item.height = 22;
             item.useTime = 0;
-            item.useAnimation = 30;
+            item.useAnimation = 10;
             item.useStyle = 5;
             item.noMelee = false;
             item.rare = 2;
             item.UseSound = SoundID.Item33;
             item.autoReuse = true;
-            item.rare = -12;
+            item.rare = 2;
             item.scale = 0.75f;
             item.magic = true;
             item.mana = 1;
+            item.shoot = mod.ProjectileType("VaseOfGalesProj");
+            item.shootSpeed = 100f;
         }
 
 
