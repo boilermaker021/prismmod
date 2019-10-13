@@ -14,7 +14,6 @@ namespace prismmod.Items.Weapons
         public override void SetDefaults()
         {
             item.damage = 20;
-            item.ranged = false;
             item.width = 33;
             item.height = 22;
             item.useTime = 0;
@@ -26,6 +25,8 @@ namespace prismmod.Items.Weapons
             item.autoReuse = true;
             item.rare = -12;
             item.scale = 0.75f;
+            item.magic = true;
+            item.mana = 1;
         }
 
 
