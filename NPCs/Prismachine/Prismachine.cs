@@ -33,8 +33,14 @@ namespace prismmod.NPCs.Prismachine
             npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
 
-            musicPriority = MusicPriority.BossLow;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
+            Mod musicmod = ModLoader.GetMod("prismmodmusic");
+            if(musicmod!=null)
+            {
+                musicPriority = MusicPriority.BossLow;
+                music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
+            }
+
+            
         }
 
         //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
