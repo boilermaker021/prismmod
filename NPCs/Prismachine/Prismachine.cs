@@ -302,6 +302,63 @@ namespace prismmod.NPCs.Prismachine
                     start = false;
                 }
             }
+            else if (AI_State == 2)
+            {
+                if (AI_Timer % 58 == 0)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 7 + count;
+                    count++;
+                }
+                if (count > 1)
+                {
+                    count = 2;
+                    start = false;
+                    frameNumber = 8;
+                }
+            }
+            else if (AI_State == 3)
+            {
+                if (start == false)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 1 + count;
+                    count++;
+                }
+                if (count > 4)
+                {
+                    count = 5;
+                }
+            }
+            else if (AI_State == 4)
+            {
+                if (AI_Timer%55==0)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 9 + count;
+                    count++;
+                }
+                if (count > 5)
+                {
+                    count = 0;
+                    start = false;
+                }
+            }
             else {
                 frameNumber = 0;
             
