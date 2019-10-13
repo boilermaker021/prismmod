@@ -10,9 +10,9 @@ namespace prismmod
         {
             if (type == NPCID.Dryad)
             {
-                if (mod.GetModWorld<PrismWorld>().killedGargantuanTortoise)
+                if (ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise)
                 {
-                    shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Consumables.MechaEgg>());
+                    shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Consumables.MechaEgg>());
                     nextSlot++;
                 }
             }

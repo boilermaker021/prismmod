@@ -30,7 +30,11 @@ namespace prismmod.Items.BossBags
             int choice = Main.rand.Next(3/*n-1*/);
             if (choice == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("Rainbow"));
+                player.QuickSpawnItem(mod.ItemType("RainBow"));
+            }
+            if (choice == 1)
+            {
+                player.QuickSpawnItem(mod.ItemType("Prismaspear"));
             }
 
             player.QuickSpawnItem(ItemID.GoldCoin, 10);
