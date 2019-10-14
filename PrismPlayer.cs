@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -10,6 +10,7 @@ namespace prismmod
     {
         private Random rndm = new Random();
         public bool tinyTurtle = false;
+        public bool apatheticCloud = false;
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
