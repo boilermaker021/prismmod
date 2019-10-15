@@ -21,7 +21,6 @@ namespace prismmod.Items.Weapons
             item.useStyle = 5;
             item.noMelee = false;
             item.rare = 2;
-            item.UseSound = SoundID.Item33;
             item.autoReuse = true;
             item.rare = 2;
             item.scale = 0.75f;
