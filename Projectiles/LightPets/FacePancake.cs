@@ -13,6 +13,7 @@ namespace prismmod.Projectiles.LightPets
         {
             Main.projFrames[projectile.type] = 1;
             Main.projPet[projectile.type] = true;
+            ProjectileID.Sets.LightPet[projectile.type] = true;
         }
 
         public override void SetDefaults()
