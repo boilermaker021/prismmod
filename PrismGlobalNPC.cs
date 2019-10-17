@@ -23,7 +23,7 @@ namespace prismmod
             if (npc.type == NPCID.Demon)
             {
                 double chance = Main.rand.NextDouble();
-                if (chance <= 0.01)
+                if (chance <= 0.005)
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("CursedPan"), 1);
                 }
