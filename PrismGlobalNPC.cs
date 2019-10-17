@@ -17,5 +17,18 @@ namespace prismmod
                 }
             }
         }
+
+        public override void NPCLoot(NPC npc)
+        {
+            if (npc.type == NPCID.Demon)
+            {
+                double chance = Main.rand.NextDouble();
+                if (chance <= 0.01)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("CursedPan"), 1);
+                }
+            }
+        }
+
     }
 }
