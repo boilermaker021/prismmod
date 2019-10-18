@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework;
 
 namespace prismmod.Buffs
 {
@@ -12,12 +13,15 @@ namespace prismmod.Buffs
             DisplayName.SetDefault("Cloud Mount");
             Description.SetDefault("<Buff Description>");
             Main.buffNoTimeDisplay[Type] = true;
-            //Main.vanityPet[Type] = true;
+            Main.buffNoSave[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-
+            player.mount.SetMount(MountType<Mounts.ApatheticCloud>(), player);
+            player.buffTime[buffIndex] = 10;
+            player.mount.ResetFlightTime(0f);
+            
         }
     }
 }
