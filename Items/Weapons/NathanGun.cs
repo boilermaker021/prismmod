@@ -27,6 +27,7 @@ namespace prismmod.Items.Weapons
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
             item.shoot = 10; //idk why but all the guns in the vanilla source have this
+            //Half of the time anything that is in the vanilla game is just spagetti filler code that is useless - Manamast
             item.shootSpeed = 16f;
             item.useAmmo = AmmoID.Bullet;
         }

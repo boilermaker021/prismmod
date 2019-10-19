@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using prismmod.Items.Weapons;
 
 namespace prismmod.NPCs.Prismachine
 {
@@ -32,6 +34,15 @@ namespace prismmod.NPCs.Prismachine
             npc.boss = true;
             npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
+
+            Mod musicmod = ModLoader.GetMod("prismmodmusic");
+            if(musicmod!=null)
+            {
+                musicPriority = MusicPriority.BossLow;
+                music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
+            }
+
+            
         }
 
         //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
@@ -43,15 +54,41 @@ namespace prismmod.NPCs.Prismachine
             {
                 npc.DropBossBags();
             }
+            else 
+            {
+                bool wepGained = false;
+                int choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 0)
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<RainBow>(), 1);
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1)
+                {
+                    //wep 2
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1)
+                {
+                    //wep 3
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1 || wepGained == false)
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<Prismaspear>(), 1);
+                }
+            }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
             Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
 
-            mod.GetModWorld<PrismWorld>().downedPrismachine = true;
+            ModContent.GetInstance<PrismWorld>().downedPrismachine = true;
         }
 
         private const int AI_State_Slot = 2;
         private const int AI_Timer_Slot = 1;
+        private bool GenNewAttack = false;
+        private int attackTimes = 0;
         private bool orbsSpawned = false;
         private bool[] Attacks_Enabled = { false, false, false, false };
 
@@ -130,9 +167,29 @@ namespace prismmod.NPCs.Prismachine
             return parsedAttackList;
         }
 
+        private int tAttacks = 0;
         public override void AI()
         {
+            npc.spriteDirection = 0;
+            if (tAttacks == 0 &&numOfAttacks() ==1 )
+            {
+                GenNewAttack = true;
+            }
+            tAttacks = numOfAttacks();
+            
+
             Attacks_Enabled = attackSetter();
+            if (GenNewAttack)
+            {
+                GenNewAttack = false;
+                attackTimes = 0;
+                AI_State = Main.rand.Next(4)+1;
+                while (Attacks_Enabled[(int)AI_State-1] == false)
+                {
+                    AI_State = Main.rand.Next(4)+1;
+                }
+                //Main.NewText("New attack #: " + AI_State);
+            }
 
             if (!orbsSpawned && Main.netMode != 1)
             {
@@ -182,51 +239,161 @@ namespace prismmod.NPCs.Prismachine
                 }
             }*/
 
-            if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1)
+            if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1 && AI_State == 1)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, mod.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + (npc.height / 2), 0f, 10f, ModContent.ProjectileType<PrismachineDroplet>(), 20, 1.5f);
+                if (attackTimes >= 6)
+                {
+                    GenNewAttack = true;
+                }
+                attackTimes++;
             }
-            if (CrystallizedTelepathy & AI_Timer % 60 == 0 & Main.netMode != 1)
+            if (CrystallizedTelepathy & AI_Timer % 60 == 0 & Main.netMode != 1 & AI_State == 2)
+            {   //down
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                //up-right
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                //up-left
+                Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+                Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), -5f, -5f, ModContent.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
+
+                if (attackTimes >= 0)
+                {
+                    GenNewAttack = true;
+                }
+                attackTimes++;
+            }
+            if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1 & AI_State == 3)
             {
-                //for (int i = 0; i < 3; i++)
-                //{
-                    Projectile.NewProjectile(npc.Center.X + (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                    Projectile.NewProjectile(npc.Center.X - (npc.width / 8), npc.Center.Y - (npc.height / 18), 0f, 10f, mod.ProjectileType<PrismachineHomingBolt>(), 20, 1.5f);
-                //}
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, ModContent.ProjectileType<PrismachineFireball>(), 20, 1.5f);
+
+                if (attackTimes >= 59)
+                {
+                    GenNewAttack = true;
+                }
+                attackTimes++;
             }
-            if (FlareCannon & AI_Timer % 7 == 0 & Main.netMode != 1)
-            {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - (npc.height / 2), ((float)Main.rand.Next(11) - 5), -8f, mod.ProjectileType<PrismachineFireball>(), 20, 1.5f);
-            }
-            if (SpikeSpreader & AI_Timer % 60 == 0 & Main.netMode != 1)//change time intervals
+            if (SpikeSpreader & AI_Timer % 60 == 0 & Main.netMode != 1 & AI_State == 4)//change time intervals
             {
                 int times = 8;//change this value for number of spikes
                 //left
                 for (int i = 0; i < times; i++)
                 {
-                    Projectile.NewProjectile(npc.Left.X + 5f, npc.Center.Y + 20f, -10f, ((float)-times / 4) + i * 2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Left.X + 5f, npc.Center.Y + 20f, -10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
 
                 //right
                 for (int i = 0; i < times; i++)
                 {
-                    Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, mod.ProjectileType<PrismachineSpike>(), 20, 1.5f);
+                    Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
-
+                
+                if (attackTimes >= 2)
+                {
+                    GenNewAttack = true;
+                }
+                attackTimes++;
                 //enables attacks of orb/element 4 type
             }
             AI_Timer++;
+            //Main.NewText("Timer: "+AI_Timer);
+            if (AI_Timer >= 61)
+            {
+                AI_Timer = 1;
+            }
+            
         }
 
         private int frame_timer = 0;
+        private int frameNumber = 0;
+        private int count = 0;
 
+        bool start = false;
         public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
         {
-            npc.frame.Y = frameHeight * (int)(frame_timer / 10);
-            frame_timer++;
-            if (frame_timer > 200)
+            npc.frame.Y = frameHeight * frameNumber;
+            if (AI_State == 1)
             {
-                frame_timer = 0;
+
+                if (AI_Timer%25==0)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 15 + count;
+                    count++;
+                }
+                if (count > 5)
+                {
+                    count = 0;
+                    start = false;
+                }
+            }
+            else if (AI_State == 2)
+            {
+                if (AI_Timer % 58 == 0)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 7 + count;
+                    count++;
+                }
+                if (count > 1)
+                {
+                    count = 2;
+                    start = false;
+                    frameNumber = 8;
+                }
+            }
+            else if (AI_State == 3)
+            {
+                if (start == false)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 1 + count;
+                    count++;
+                }
+                if (count > 4)
+                {
+                    count = 5;
+                }
+            }
+            else if (AI_State == 4)
+            {
+                if (AI_Timer%55==0)
+                {
+                    count = 0;
+                    start = true;
+                }
+
+                if (start == true)
+                {
+                    frameNumber = 9 + count;
+                    count++;
+                }
+                if (count > 5)
+                {
+                    count = 0;
+                    start = false;
+                }
+            }
+            else {
+                frameNumber = 0;
+            
             }
         }
 

@@ -34,6 +34,12 @@ namespace prismmod.NPCs
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), mod.ItemType("BoulduckFeather"), Main.rand.Next(3, 6));
+
+            int rand = Main.rand.Next(6);
+            if (rand == 2)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("BoulducksRetribution"), 1);
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)

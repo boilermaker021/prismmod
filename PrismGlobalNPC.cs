@@ -10,12 +10,25 @@ namespace prismmod
         {
             if (type == NPCID.Dryad)
             {
-                if (mod.GetModWorld<PrismWorld>().killedGargantuanTortoise)
+                if (ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise)
                 {
-                    shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Consumables.MechaEgg>());
+                    shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Consumables.MechaEgg>());
                     nextSlot++;
                 }
             }
         }
+
+        public override void NPCLoot(NPC npc)
+        {
+            if (npc.type == NPCID.Demon)
+            {
+                double chance = Main.rand.NextDouble();
+                if (chance <= 0.005)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("CursedPan"), 1);
+                }
+            }
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -8,8 +8,14 @@ namespace prismmod
 {
     internal class PrismPlayer : ModPlayer
     {
-        private Random rndm = new Random();
+        Random rndm = new Random();
+
+        //pets and mounts
         public bool tinyTurtle = false;
+        public bool facePancake = false;
+        public bool apatheticCloud = false;
+
+        //stat changes
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
@@ -45,6 +51,7 @@ namespace prismmod
             twoShotRocket = 0f;
             reducedContactDamage = 1f;
             tinyTurtle = false;
+            facePancake = false;
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
