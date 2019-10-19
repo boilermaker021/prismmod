@@ -22,7 +22,7 @@ namespace prismmod.Items.Mounts
             item.useAnimation = 20;
             item.useStyle = 1;
             item.value = 30000;
-            item.rare = 1;
+            item.rare = -12;
             item.noMelee = true;
             item.mountType = MountType<ApatheticCloud>();
         }

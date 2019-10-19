@@ -27,15 +27,30 @@ namespace prismmod.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            int choice = Main.rand.Next(3/*n-1*/);
+            bool wepGained = false;
+            int choice = Main.rand.Next(4/*n-1*/);
             if (choice == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("RainBow"));
             }
+            choice = Main.rand.Next(4/*n-1*/);
             if (choice == 1)
+            {
+                //wep 2
+            }
+            choice = Main.rand.Next(4/*n-1*/);
+            if (choice == 1)
+            {
+                //wep 3
+            }
+            choice = Main.rand.Next(4/*n-1*/);
+            if (choice == 1 || wepGained == false)
             {
                 player.QuickSpawnItem(mod.ItemType("Prismaspear"));
             }
+            //non weapon drops
+
+            player.QuickSpawnItem(mod.ItemType("PrismachinePowerCore"));
 
             player.QuickSpawnItem(ItemID.GoldCoin, 10);
         }

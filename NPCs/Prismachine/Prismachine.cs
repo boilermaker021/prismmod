@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using prismmod.Items.Weapons;
 
 namespace prismmod.NPCs.Prismachine
 {
@@ -52,6 +53,30 @@ namespace prismmod.NPCs.Prismachine
             if (Main.expertMode)
             {
                 npc.DropBossBags();
+            }
+            else 
+            {
+                bool wepGained = false;
+                int choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 0)
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<RainBow>(), 1);
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1)
+                {
+                    //wep 2
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1)
+                {
+                    //wep 3
+                }
+                choice = Main.rand.Next(4/*n-1*/);
+                if (choice == 1 || wepGained == false)
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<Prismaspear>(), 1);
+                }
             }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
