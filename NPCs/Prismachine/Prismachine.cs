@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace prismmod.NPCs.Prismachine
 {
@@ -144,7 +145,7 @@ namespace prismmod.NPCs.Prismachine
         private int tAttacks = 0;
         public override void AI()
         {
-
+            npc.spriteDirection = 0;
             if (tAttacks == 0 &&numOfAttacks() ==1 )
             {
                 GenNewAttack = true;
