@@ -16,12 +16,12 @@ namespace prismmod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 5;
+            item.damage = 15;
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.useTime = 20;
-            item.useAnimation = 10;
+            item.useTime = 35;
+            item.useAnimation = 30;
             item.useStyle = 1;
             item.knockBack = 0;
             item.value = 10000;

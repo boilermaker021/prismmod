@@ -12,16 +12,16 @@ namespace prismmod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Duck");
+            Main.projFrames[projectile.type] = 2;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 26;
+            projectile.height = 18;
             projectile.friendly = true;
             projectile.melee = true;
             projectile.tileCollide = true;
-            projectile.penetrate = 30;
             projectile.timeLeft = 200;
             projectile.light = 0.75f;
             projectile.extraUpdates = 1;
@@ -33,5 +33,6 @@ namespace prismmod.Projectiles
             projectile.velocity.Y = projectile.velocity.Y + 0.1f;
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
+
     }
 }
