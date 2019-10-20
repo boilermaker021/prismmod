@@ -401,7 +401,7 @@ namespace prismmod.NPCs.Prismachine
         {
             if (npc.life > 0)
             {
-                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt.wav"));
+                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt"));
                 // Note to future self try to find out how to randomize pitch changes.
             }
             // Plays a custom sound when hit and above 0 health
