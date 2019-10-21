@@ -34,7 +34,7 @@ namespace prismmod.NPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.01f;
+            return 0;// SpawnCondition.OverworldNightMonster.Chance * 0.01f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
