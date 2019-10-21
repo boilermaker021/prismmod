@@ -23,7 +23,6 @@ namespace prismmod.Projectiles
             projectile.melee = true;
             projectile.tileCollide = true;
             projectile.timeLeft = 200;
-            projectile.light = 0.75f;
             projectile.extraUpdates = 1;
             projectile.ignoreWater = true;
         }
