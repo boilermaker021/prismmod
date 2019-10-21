@@ -188,7 +188,6 @@ namespace prismmod.NPCs.Prismachine
                 {
                     AI_State = Main.rand.Next(4)+1;
                 }
-                //Main.NewText("New attack #: " + AI_State);
             }
 
             if (!orbsSpawned && Main.netMode != 1)
@@ -228,16 +227,8 @@ namespace prismmod.NPCs.Prismachine
 
             npc.velocity.X = 0f;
             npc.velocity.Y = 0f;
-            /*if (Main.player[npc.target].Distance(npc.Center) < 500f)
-            {
-                if (Main.netMode != 1 && timer >= 10)
-                {
-                    npc.velocity.X = (((float)generator.Next(0, 5) - 3) * 10f);
-                    npc.velocity.Y = (((float)generator.Next(0, 5) - 3) * 10f);
-                    npc.netUpdate = true;
-                    timer = 0;
-                }
-            }*/
+
+            //Add movement code here
 
             if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1 && AI_State == 1)
             {
@@ -308,14 +299,13 @@ namespace prismmod.NPCs.Prismachine
             
         }
 
-        private int frame_timer = 0;
         private int frameNumber = 0;
         private int count = 0;
 
         bool start = false;
-        public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
+        public override void FindFrame(int frameHeight)
         {
-            npc.frame.Y = frameHeight * frameNumber;
+            
             if (AI_State == 1)
             {
 
@@ -397,6 +387,7 @@ namespace prismmod.NPCs.Prismachine
                 frameNumber = 0;
             
             }
+            npc.frame.Y = frameHeight * frameNumber;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -404,9 +395,7 @@ namespace prismmod.NPCs.Prismachine
             if (npc.life > 0)
             {
                 Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt"));
-                // Note to future self try to find out how to randomize pitch changes.
             }
-            // Plays a custom sound when hit and above 0 health
             if (npc.life <= 0)
             {
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);
