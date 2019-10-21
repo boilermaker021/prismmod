@@ -14,16 +14,18 @@ using Terraria.UI;
 
 namespace prismmod
 {
-    class serverConfig: ModConfig
+    class ServerConfig: ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        [Label("Disable Developer items")]
         [DefaultValue(false)]
-        public bool disableDevItems;
+        [ReloadRequired]
+        public bool DisableDevItems {get; set;};
 
     }
 
-    class clientConfig: ModConfig
+    class ClientConfig: ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 

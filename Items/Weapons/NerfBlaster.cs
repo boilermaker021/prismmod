@@ -6,6 +6,11 @@ namespace prismmod.Items.Weapons
 {
     public class Nerfblaster : ModItem
     {
+        public override bool Autoload(ref string name)
+        {
+            return !ModContent.GetInstance<ServerConfig>().DisableDevItems;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nerf Gun");
