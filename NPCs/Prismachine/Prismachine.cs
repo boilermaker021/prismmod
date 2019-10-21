@@ -297,11 +297,13 @@ namespace prismmod.NPCs.Prismachine
                 attackTimes++;
                 //enables attacks of orb/element 4 type
             }
-            AI_Timer++;
-            //Main.NewText("Timer: "+AI_Timer);
-            if (AI_Timer >= 61)
+            if (Main.netMode != 1)
             {
-                AI_Timer = 1;
+                AI_Timer++;
+                if (AI_Timer >= 61)
+                {
+                    AI_Timer = 1;
+                }
             }
             
         }
