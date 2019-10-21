@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,6 +17,22 @@ namespace prismmod
                 }
             }
         }
+
+        /*public override void AI()
+        {
+            bool nearBoss = false;
+            foreach(NPC oNpc in Main.ncps[])
+            {
+                if()//Check distance
+                {
+                    nearBoss = true;
+                }
+            }
+            if(!npc.boss&&nearBoss)
+            {
+                npc.life=0;
+            }
+        }*/
 
         public override void NPCLoot(NPC npc)
         {
