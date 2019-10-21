@@ -33,10 +33,12 @@ namespace prismmod
         }
     }
 
-    class ClientConfig: ModConfig
+    /*class ClientConfig: ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-    }
+
+
+    }*/
 
 }
