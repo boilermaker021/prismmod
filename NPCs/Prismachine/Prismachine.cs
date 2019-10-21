@@ -38,7 +38,7 @@ namespace prismmod.NPCs.Prismachine
             Mod musicmod = ModLoader.GetMod("prismmodmusic");
             if(musicmod!=null)
             {
-                musicPriority = MusicPriority.BossLow;
+                musicPriority = MusicPriority.BossMedium;
                 music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
             }
 
