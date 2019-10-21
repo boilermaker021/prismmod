@@ -10,7 +10,7 @@ namespace prismmod.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Boulducks Retribution");
+            DisplayName.SetDefault("Boulduck's Retribution");
             Tooltip.SetDefault("Quack.");
         }
 
