@@ -23,6 +23,10 @@ namespace prismmod
         [ReloadRequired]
         public bool DisableDevItems {get; set;};
 
+        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
+        {
+            return false;
+        }
     }
 
     class ClientConfig: ModConfig
