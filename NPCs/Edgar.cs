@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -37,7 +37,7 @@ namespace prismmod.NPCs
             return 0;// SpawnCondition.OverworldNightMonster.Chance * 0.1f;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = mod.GetTexture("NPCs/Edgar_Glowmask");
             if (npc.spriteDirection == 1)
@@ -64,6 +64,7 @@ namespace prismmod.NPCs
                 SpriteEffects.None,
                 0f
             );
+            return true;
         }
 
         public override void AI()
