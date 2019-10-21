@@ -87,6 +87,7 @@ namespace prismmod.NPCs.Prismachine
 
         private const int AI_State_Slot = 2;
         private const int AI_Timer_Slot = 1;
+        private const int AI_Frame_Slot = 3;
         private bool GenNewAttack = false;
         private int attackTimes = 0;
         private bool orbsSpawned = false;
@@ -102,6 +103,12 @@ namespace prismmod.NPCs.Prismachine
         {
             get => npc.ai[AI_Timer_Slot];
             set => npc.ai[AI_Timer_Slot] = value;
+        }
+
+        public float AI_Frame
+        {
+            get => npc.ai[AI_Frame_Slot];
+            set => npc.ai[AI_Frame_Slot] = value;
         }
 
         public bool MasterPump
@@ -288,6 +295,91 @@ namespace prismmod.NPCs.Prismachine
                 attackTimes++;
                 //enables attacks of orb/element 4 type
             }
+
+            if (Main.netMode != 1)
+            {
+                if (AI_State == 1)
+                {
+
+                    if (AI_Timer % 25 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 15 + count;
+                        count++;
+                    }
+                    if (count > 5)
+                    {
+                        count = 0;
+                        start = false;
+                    }
+                }
+                else if (AI_State == 2)
+                {
+                    if (AI_Timer % 58 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 7 + count;
+                        count++;
+                    }
+                    if (count > 1)
+                    {
+                        count = 2;
+                        start = false;
+                        AI_Frame = 8;
+                    }
+                }
+                else if (AI_State == 3)
+                {
+                    if (start == false)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 1 + count;
+                        count++;
+                    }
+                    if (count > 4)
+                    {
+                        count = 5;
+                    }
+                }
+                else if (AI_State == 4)
+                {
+                    if (AI_Timer % 55 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 9 + count;
+                        count++;
+                    }
+                    if (count > 5)
+                    {
+                        count = 0;
+                        start = false;
+                    }
+                }
+                else
+                {
+                    AI_Frame = 0;
+                }
+            }
             if (Main.netMode != 1)
             {
                 AI_Timer++;
@@ -299,95 +391,12 @@ namespace prismmod.NPCs.Prismachine
             
         }
 
-        private int frameNumber = 0;
         private int count = 0;
 
         bool start = false;
         public override void FindFrame(int frameHeight)
         {
-            
-            if (AI_State == 1)
-            {
-
-                if (AI_Timer%25==0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 15 + count;
-                    count++;
-                }
-                if (count > 5)
-                {
-                    count = 0;
-                    start = false;
-                }
-            }
-            else if (AI_State == 2)
-            {
-                if (AI_Timer % 58 == 0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 7 + count;
-                    count++;
-                }
-                if (count > 1)
-                {
-                    count = 2;
-                    start = false;
-                    frameNumber = 8;
-                }
-            }
-            else if (AI_State == 3)
-            {
-                if (start == false)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 1 + count;
-                    count++;
-                }
-                if (count > 4)
-                {
-                    count = 5;
-                }
-            }
-            else if (AI_State == 4)
-            {
-                if (AI_Timer%55==0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 9 + count;
-                    count++;
-                }
-                if (count > 5)
-                {
-                    count = 0;
-                    start = false;
-                }
-            }
-            else {
-                frameNumber = 0;
-            
-            }
-            npc.frame.Y = frameHeight * frameNumber;
+            npc.frame.Y = frameHeight * (int)AI_Frame;
         }
 
         public override void HitEffect(int hitDirection, double damage)
