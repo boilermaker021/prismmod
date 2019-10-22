@@ -30,7 +30,7 @@ namespace prismmod.NPCs.Prismachine
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
             // npc.immune = false;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
             npc.boss = true;
             npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
@@ -38,7 +38,7 @@ namespace prismmod.NPCs.Prismachine
             Mod musicmod = ModLoader.GetMod("prismmodmusic");
             if(musicmod!=null)
             {
-                musicPriority = MusicPriority.BossMedium;
+                musicPriority = MusicPriority.BossHigh;
                 music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
             }
 
