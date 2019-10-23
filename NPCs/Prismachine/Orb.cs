@@ -25,7 +25,7 @@ namespace prismmod.NPCs.Prismachine
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //?npc.value = 0.75f;
-            npc.knockBackResist = 0.5f;
+            npc.knockBackResist = 1f;
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
             // npc.immune = false;
             npc.noGravity = true;
