@@ -45,7 +45,7 @@ namespace prismmod.NPCs.Prismachine
                 music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
             }
 
-            
+
         }
 
         //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
@@ -57,7 +57,7 @@ namespace prismmod.NPCs.Prismachine
             {
                 npc.DropBossBags();
             }
-            else 
+            else //non expert mode drops
             {
                 bool wepGained = false;
                 int choice = Main.rand.Next(4/*n-1*/);
@@ -93,7 +93,7 @@ namespace prismmod.NPCs.Prismachine
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
             Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
 
-            ModContent.GetInstance<PrismWorld>().downedPrismachine = true;
+            ModContent.GetInstance<PrismWorld>().downedPrismachine = true; //sets world variable
         }
 
         private const int AI_State_Slot = 2;
@@ -146,7 +146,7 @@ namespace prismmod.NPCs.Prismachine
             set => Attacks_Enabled[3] = value;
         }
 
-        public int numOfAttacks()
+        public int numOfAttacks() //gets the number of attacks enabled
         {
             int t = 0;
             foreach (bool b in Attacks_Enabled)
@@ -159,7 +159,7 @@ namespace prismmod.NPCs.Prismachine
             return t;
         }
 
-        public bool[] attackSetter()
+        public bool[] attackSetter() //transfers attack data from a float to an bool array
         {
             int attackNum = (int)npc.ai[0];
             bool[] parsedAttackList = new bool[4];
@@ -194,7 +194,7 @@ namespace prismmod.NPCs.Prismachine
                 GenNewAttack = true;
             }
             tAttacks = numOfAttacks();
-            
+
 
             Attacks_Enabled = attackSetter();
             if (GenNewAttack)
@@ -216,7 +216,7 @@ namespace prismmod.NPCs.Prismachine
                 for (int j = 0; j < Main.ActivePlayersCount; j++)
                 {
                     Player player = Main.player[j];
-                    if (player.GetModPlayer<PrismPlayer>().spawnedPrismachine)
+                    if (player.GetModPlayer<PrismPlayer>().spawnedPrismachine)//sets target player to the one who most recently used the Prismatic Chunk
                     {
                         playernum = player.whoAmI;
                         player.GetModPlayer<PrismPlayer>().spawnedPrismachine = false;
@@ -224,7 +224,7 @@ namespace prismmod.NPCs.Prismachine
                     }
                 }
 
-                if (playernum < 0)
+                if (playernum < 0) //if no item used, target player set to closest player
                 {
                     playernum = Main.player[npc.target].whoAmI;
                 }
@@ -237,26 +237,26 @@ namespace prismmod.NPCs.Prismachine
                 {
                     if (i == 0)
                     {
-                        numX = 1;
-                        numY = 1;
+                        numX = 2;
+                        numY = 2;
                     }
                     else if (i == 1)
                     {
-                        numX = -1;
-                        numY = -1;
+                        numX = 1;
+                        numY = 1;
                     }
                     else if (i == 2)
                     {
-                        numX = 1;
-                        numY = -1;
+                        numX = 2;
+                        numY = 1;
                     }
                     else if (i == 3)
                     {
-                        numX = -1;
-                        numY = 1;
+                        numX = 1;
+                        numY = 2;
                     }
 
-                    
+
 
 
                     int orb = NPC.NewNPC((int)Main.player[playernum].Center.X + (numX * 250), (int)Main.player[playernum].Center.Y + (numY * 250), mod.NPCType("Orb"));
@@ -322,7 +322,7 @@ namespace prismmod.NPCs.Prismachine
                 {
                     Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
-                
+
                 if (attackTimes >= 2)
                 {
                     GenNewAttack = true;
@@ -423,7 +423,7 @@ namespace prismmod.NPCs.Prismachine
                     AI_Timer = 1;
                 }
             }
-            
+
         }
 
         private int count = 0;
