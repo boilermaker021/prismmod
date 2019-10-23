@@ -5,6 +5,11 @@ namespace prismmod.Items.Accessories
 {
     public class SupersonicPowerBoots : ModItem
     {
+        public override bool Autoload(ref string name)
+        {
+            return !ModContent.GetInstance<ServerConfig>().DisableDevItems;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Supersonic Power Boots");

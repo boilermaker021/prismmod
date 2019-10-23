@@ -9,7 +9,7 @@ namespace prismmod.Items.Mounts
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Prismachine Power Code");
+            DisplayName.SetDefault("Prismachine Power Core");
             Tooltip.SetDefault("<tooltip>");
         }
 

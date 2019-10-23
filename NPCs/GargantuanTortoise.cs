@@ -13,7 +13,7 @@ namespace prismmod.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gargantuan Tortoise");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.GiantTortoise];
+            Main.npcFrameCount[npc.type] = 11;
         }
 
         public override void SetDefaults()

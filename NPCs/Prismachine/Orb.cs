@@ -29,11 +29,13 @@ namespace prismmod.NPCs.Prismachine
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
             // npc.immune = false;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
         }
 
         public override void AI()
         {
+            npc.velocity.Y = 0f;
+            npc.velocity.X = 0f;
             NPC prismachine = Main.npc[(int)npc.ai[0]];
         }
 

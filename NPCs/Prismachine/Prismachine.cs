@@ -3,12 +3,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using prismmod.Items.Weapons;
+using System;
 
 namespace prismmod.NPCs.Prismachine
 {
     [AutoloadBossHead]
     partial class Prismachine : ModNPC
     {
+
+        int spawningPlayer = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Prismachine");
@@ -30,7 +33,7 @@ namespace prismmod.NPCs.Prismachine
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
             // npc.immune = false;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
             npc.boss = true;
             npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
@@ -38,11 +41,11 @@ namespace prismmod.NPCs.Prismachine
             Mod musicmod = ModLoader.GetMod("prismmodmusic");
             if(musicmod!=null)
             {
-                musicPriority = MusicPriority.BossLow;
+                musicPriority = MusicPriority.BossHigh;
                 music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
             }
 
-            
+
         }
 
         //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
@@ -54,13 +57,14 @@ namespace prismmod.NPCs.Prismachine
             {
                 npc.DropBossBags();
             }
-            else 
+            else //non expert mode drops
             {
                 bool wepGained = false;
                 int choice = Main.rand.Next(4/*n-1*/);
                 if (choice == 0)
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<RainBow>(), 1);
+                    wepGained = true;
                 }
                 choice = Main.rand.Next(4/*n-1*/);
                 if (choice == 1)
@@ -73,20 +77,28 @@ namespace prismmod.NPCs.Prismachine
                     //wep 3
                 }
                 choice = Main.rand.Next(4/*n-1*/);
-                if (choice == 1 || wepGained == false)
+                if (choice == 1 )
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<Prismaspear>(), 1);
+                    wepGained = true;
+                }
+                if (!wepGained)
+                {
+                    choice = Main.rand.Next(5);
+
+
                 }
             }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
             Item.NewItem(npc.getRect(), ItemID.PlatinumBar, 10);
 
-            ModContent.GetInstance<PrismWorld>().downedPrismachine = true;
+            ModContent.GetInstance<PrismWorld>().downedPrismachine = true; //sets world variable
         }
 
         private const int AI_State_Slot = 2;
         private const int AI_Timer_Slot = 1;
+        private const int AI_Frame_Slot = 3;
         private bool GenNewAttack = false;
         private int attackTimes = 0;
         private bool orbsSpawned = false;
@@ -102,6 +114,12 @@ namespace prismmod.NPCs.Prismachine
         {
             get => npc.ai[AI_Timer_Slot];
             set => npc.ai[AI_Timer_Slot] = value;
+        }
+
+        public float AI_Frame
+        {
+            get => npc.ai[AI_Frame_Slot];
+            set => npc.ai[AI_Frame_Slot] = value;
         }
 
         public bool MasterPump
@@ -128,7 +146,7 @@ namespace prismmod.NPCs.Prismachine
             set => Attacks_Enabled[3] = value;
         }
 
-        public int numOfAttacks()
+        public int numOfAttacks() //gets the number of attacks enabled
         {
             int t = 0;
             foreach (bool b in Attacks_Enabled)
@@ -141,7 +159,7 @@ namespace prismmod.NPCs.Prismachine
             return t;
         }
 
-        public bool[] attackSetter()
+        public bool[] attackSetter() //transfers attack data from a float to an bool array
         {
             int attackNum = (int)npc.ai[0];
             bool[] parsedAttackList = new bool[4];
@@ -176,7 +194,7 @@ namespace prismmod.NPCs.Prismachine
                 GenNewAttack = true;
             }
             tAttacks = numOfAttacks();
-            
+
 
             Attacks_Enabled = attackSetter();
             if (GenNewAttack)
@@ -188,11 +206,30 @@ namespace prismmod.NPCs.Prismachine
                 {
                     AI_State = Main.rand.Next(4)+1;
                 }
-                //Main.NewText("New attack #: " + AI_State);
             }
 
             if (!orbsSpawned && Main.netMode != 1)
             {
+
+                int playernum = -1;
+
+                for (int j = 0; j < Main.ActivePlayersCount; j++)
+                {
+                    Player player = Main.player[j];
+                    if (player.GetModPlayer<PrismPlayer>().spawnedPrismachine)//sets target player to the one who most recently used the Prismatic Chunk
+                    {
+                        playernum = player.whoAmI;
+                        player.GetModPlayer<PrismPlayer>().spawnedPrismachine = false;
+                        break;
+                    }
+                }
+
+                if (playernum < 0) //if no item used, target player set to closest player
+                {
+                    playernum = Main.player[npc.target].whoAmI;
+                }
+
+
                 int numX = 0;
                 int numY = 0;
                 //orb spawn code
@@ -200,25 +237,29 @@ namespace prismmod.NPCs.Prismachine
                 {
                     if (i == 0)
                     {
-                        numX = 1;
-                        numY = 1;
+                        numX = 2;
+                        numY = 2;
                     }
                     else if (i == 1)
                     {
-                        numX = -1;
-                        numY = -1;
+                        numX = 1;
+                        numY = 1;
                     }
                     else if (i == 2)
                     {
-                        numX = 1;
-                        numY = -1;
+                        numX = 2;
+                        numY = 1;
                     }
                     else if (i == 3)
                     {
-                        numX = -1;
-                        numY = 1;
+                        numX = 1;
+                        numY = 2;
                     }
-                    int orb = NPC.NewNPC((int)npc.Center.X + (numX * 250), (int)npc.Center.Y + (numY * 250), mod.NPCType("Orb"));
+
+
+
+
+                    int orb = NPC.NewNPC((int)Main.player[playernum].Center.X + (numX * 250), (int)Main.player[playernum].Center.Y + (numY * 250), mod.NPCType("Orb"));
                     Main.npc[orb].ai[0] = npc.whoAmI;
                     Main.npc[orb].ai[1] = i;
                     Main.npc[orb].ai[2] = 0;
@@ -228,16 +269,8 @@ namespace prismmod.NPCs.Prismachine
 
             npc.velocity.X = 0f;
             npc.velocity.Y = 0f;
-            /*if (Main.player[npc.target].Distance(npc.Center) < 500f)
-            {
-                if (Main.netMode != 1 && timer >= 10)
-                {
-                    npc.velocity.X = (((float)generator.Next(0, 5) - 3) * 10f);
-                    npc.velocity.Y = (((float)generator.Next(0, 5) - 3) * 10f);
-                    npc.netUpdate = true;
-                    timer = 0;
-                }
-            }*/
+
+            //Add movement code here
 
             if (MasterPump & AI_Timer % 30 == 0 & Main.netMode != 1 && AI_State == 1)
             {
@@ -289,7 +322,7 @@ namespace prismmod.NPCs.Prismachine
                 {
                     Projectile.NewProjectile(npc.Right.X - 5f, npc.Center.Y + 20f, 10f, ((float)-times / 4) + i * 2, ModContent.ProjectileType<PrismachineSpike>(), 20, 1.5f);
                 }
-                
+
                 if (attackTimes >= 2)
                 {
                     GenNewAttack = true;
@@ -297,114 +330,116 @@ namespace prismmod.NPCs.Prismachine
                 attackTimes++;
                 //enables attacks of orb/element 4 type
             }
-            AI_Timer++;
-            //Main.NewText("Timer: "+AI_Timer);
-            if (AI_Timer >= 61)
+
+            if (Main.netMode != 1)
             {
-                AI_Timer = 1;
+                if (AI_State == 1)
+                {
+
+                    if (AI_Timer % 25 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 15 + count;
+                        count++;
+                    }
+                    if (count > 5)
+                    {
+                        count = 0;
+                        start = false;
+                    }
+                }
+                else if (AI_State == 2)
+                {
+                    if (AI_Timer % 58 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 7 + count;
+                        count++;
+                    }
+                    if (count > 1)
+                    {
+                        count = 2;
+                        start = false;
+                        AI_Frame = 8;
+                    }
+                }
+                else if (AI_State == 3)
+                {
+                    if (start == false)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 1 + count;
+                        count++;
+                    }
+                    if (count > 4)
+                    {
+                        count = 5;
+                    }
+                }
+                else if (AI_State == 4)
+                {
+                    if (AI_Timer % 55 == 0)
+                    {
+                        count = 0;
+                        start = true;
+                    }
+
+                    if (start == true)
+                    {
+                        AI_Frame = 9 + count;
+                        count++;
+                    }
+                    if (count > 5)
+                    {
+                        count = 0;
+                        start = false;
+                    }
+                }
+                else
+                {
+                    AI_Frame = 0;
+                }
             }
-            
+            if (Main.netMode != 1)
+            {
+                AI_Timer++;
+                if (AI_Timer >= 61)
+                {
+                    AI_Timer = 1;
+                }
+            }
+
         }
 
-        private int frame_timer = 0;
-        private int frameNumber = 0;
         private int count = 0;
 
         bool start = false;
-        public override void FindFrame(int frameHeight)//Learn how to do this you lazy bastard
+        public override void FindFrame(int frameHeight)
         {
-            npc.frame.Y = frameHeight * frameNumber;
-            if (AI_State == 1)
-            {
-
-                if (AI_Timer%25==0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 15 + count;
-                    count++;
-                }
-                if (count > 5)
-                {
-                    count = 0;
-                    start = false;
-                }
-            }
-            else if (AI_State == 2)
-            {
-                if (AI_Timer % 58 == 0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 7 + count;
-                    count++;
-                }
-                if (count > 1)
-                {
-                    count = 2;
-                    start = false;
-                    frameNumber = 8;
-                }
-            }
-            else if (AI_State == 3)
-            {
-                if (start == false)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 1 + count;
-                    count++;
-                }
-                if (count > 4)
-                {
-                    count = 5;
-                }
-            }
-            else if (AI_State == 4)
-            {
-                if (AI_Timer%55==0)
-                {
-                    count = 0;
-                    start = true;
-                }
-
-                if (start == true)
-                {
-                    frameNumber = 9 + count;
-                    count++;
-                }
-                if (count > 5)
-                {
-                    count = 0;
-                    start = false;
-                }
-            }
-            else {
-                frameNumber = 0;
-            
-            }
+            npc.frame.Y = frameHeight * (int)AI_Frame;
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life > 0)
             {
-                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt.wav"));
-                // Note to future self try to find out how to randomize pitch changes.
+                Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Prismachine/zzzt"));
             }
-            // Plays a custom sound when hit and above 0 health
             if (npc.life <= 0)
             {
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/PrismachineGore1"), 1f);
