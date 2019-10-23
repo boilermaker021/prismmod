@@ -3,12 +3,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using prismmod.Items.Weapons;
+using System;
 
 namespace prismmod.NPCs.Prismachine
 {
     [AutoloadBossHead]
     partial class Prismachine : ModNPC
     {
+
+        int spawningPlayer = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Prismachine");
@@ -61,6 +64,7 @@ namespace prismmod.NPCs.Prismachine
                 if (choice == 0)
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<RainBow>(), 1);
+                    wepGained = true;
                 }
                 choice = Main.rand.Next(4/*n-1*/);
                 if (choice == 1)
@@ -73,9 +77,16 @@ namespace prismmod.NPCs.Prismachine
                     //wep 3
                 }
                 choice = Main.rand.Next(4/*n-1*/);
-                if (choice == 1 || wepGained == false)
+                if (choice == 1 )
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<Prismaspear>(), 1);
+                    wepGained = true;
+                }
+                if (!wepGained)
+                {
+                    choice = Main.rand.Next(5);
+
+
                 }
             }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
@@ -199,6 +210,26 @@ namespace prismmod.NPCs.Prismachine
 
             if (!orbsSpawned && Main.netMode != 1)
             {
+
+                int playernum = -1;
+
+                for (int j = 0; j < Main.ActivePlayersCount; j++)
+                {
+                    Player player = Main.player[j];
+                    if (player.GetModPlayer<PrismPlayer>().spawnedPrismachine)
+                    {
+                        playernum = player.whoAmI;
+                        player.GetModPlayer<PrismPlayer>().spawnedPrismachine = false;
+                        break;
+                    }
+                }
+
+                if (playernum < 0)
+                {
+                    playernum = Main.player[npc.target].whoAmI;
+                }
+
+
                 int numX = 0;
                 int numY = 0;
                 //orb spawn code
@@ -224,7 +255,11 @@ namespace prismmod.NPCs.Prismachine
                         numX = -1;
                         numY = 1;
                     }
-                    int orb = NPC.NewNPC((int)npc.Center.X + (numX * 250), (int)npc.Center.Y + (numY * 250), mod.NPCType("Orb"));
+
+                    
+
+
+                    int orb = NPC.NewNPC((int)Main.player[playernum].Center.X + (numX * 250), (int)Main.player[playernum].Center.Y + (numY * 250), mod.NPCType("Orb"));
                     Main.npc[orb].ai[0] = npc.whoAmI;
                     Main.npc[orb].ai[1] = i;
                     Main.npc[orb].ai[2] = 0;
