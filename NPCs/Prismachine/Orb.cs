@@ -34,6 +34,8 @@ namespace prismmod.NPCs.Prismachine
 
         public override void AI()
         {
+            npc.velocity.Y = 0f;
+            npc.velocity.X = 0f;
             NPC prismachine = Main.npc[(int)npc.ai[0]];
         }
 
