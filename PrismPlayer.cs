@@ -15,6 +15,9 @@ namespace prismmod
         public bool facePancake = false;
         public bool apatheticCloud = false;
 
+        //boss shit
+        public bool spawnedPrismachine = false;
+
         //stat changes
         public float noAmmoUseChance = 0;
         public float IncreaseBulletSpeed = 0;

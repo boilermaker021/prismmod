@@ -28,12 +28,13 @@ namespace prismmod.Items.Consumables
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Prismachine"));
+            player.GetModPlayer<PrismPlayer>().spawnedPrismachine = true;
             return true;
         }
 
         public override bool CanUseItem(Player player)
         {
-            if (player.ZoneOverworldHeight)
+            if (player.ZoneOverworldHeight && NPC.CountNPCS(mod.NPCType("Prismachine")) < 1)
             {
                 return true;
             }
