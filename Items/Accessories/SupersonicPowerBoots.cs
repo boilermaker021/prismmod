@@ -27,6 +27,17 @@ namespace prismmod.Items.Accessories
         {
             player.moveSpeed += 20f;
             player.maxRunSpeed += 20f;
+            /* foreach(String name in //dev name list)
+               {
+                   if(name==player.name)
+                   {
+                       //modify tooltip
+                       break;
+
+                   }
+               }
+
+            */
         }
     }
 }
