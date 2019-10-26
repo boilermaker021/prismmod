@@ -30,6 +30,12 @@ namespace prismmod
         [DefaultValue(false)]
         public bool DisableDevItems {get; set;}
 
+        [Label("Disable Lore")]
+        [Tooltip("Removes lore items from the game. This action requires a mod reload.")]
+        [ReloadRequired]
+        [DefaultValue(false)]
+        public bool DisableLore { get; set; }
+
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
             if(Main.player[whoAmI].name=="CommieSlayer")
