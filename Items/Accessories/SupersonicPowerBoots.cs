@@ -25,8 +25,8 @@ namespace prismmod.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.moveSpeed += 20f;
-            player.maxRunSpeed += 20f;
+            player.moveSpeed += 110f;
+            player.maxRunSpeed += 110f;
             /* foreach(String name in //dev name list)
                {
                    if(name==player.name)
