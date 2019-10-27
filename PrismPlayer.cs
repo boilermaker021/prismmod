@@ -145,17 +145,17 @@ namespace prismmod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (vertDash)
             if (vertDash&&vertDashCooldown==0)
             {
 
-                if (prismmod.updash.JustPressed)
+                if (player.controlUp&&player.releaseUp)
                 {
                     if (upPressed)
                     {
-                        player.velocity.Y -= 20f;
+                        player.velocity.Y = -10f;
                         upPressed = false;
                         upTimer = 0;
+                        vertDashCooldown = 40;
                     }
                     else
                     {
@@ -163,13 +163,14 @@ namespace prismmod
                     }
                 }
 
-                if (prismmod.downdash.JustPressed)
+                if (player.controlDown&&player.releaseDown)
                 {
                     if (downPressed)
                     {
-                        player.velocity.Y += 20f;
+                        player.velocity.Y = 10f;
                         downPressed = false;
                         downTimer = 0;
+                        vertDashCooldown = 20;
                     }
                     else
                     {
