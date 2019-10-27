@@ -30,7 +30,9 @@ namespace prismmod.Items.Placeables
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WorkBench);
-            //recipe.AddIngredient(mod.ItemType("ExampleBlock"), 10);
+            recipe.AddIngredient(ItemID.Furnace, 2);
+            recipe.AddIngredient(ItemID.Glass, 5);
+            recipe.AddIngredient(ItemID.Amethyst, 4);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
