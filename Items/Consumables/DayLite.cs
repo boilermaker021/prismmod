@@ -43,5 +43,15 @@ namespace prismmod.Items.Consumables
         {
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.HellstoneBar, 5);
+            recipe.AddIngredient(ItemID.FallenStar, 3);
+            recipe.SetResult(this, 3);
+            recipe.AddRecipe();
+        }
+
     }
 }
