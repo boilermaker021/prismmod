@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,6 +15,12 @@ namespace prismmod
         public bool tinyTurtle = false;
         public bool facePancake = false;
         public bool apatheticCloud = false;
+
+        public bool upPressed;
+        public int upTimer;
+
+        public bool downPressed;
+        public int downTimer;
 
         //boss shit
         public bool spawnedPrismachine = false;
@@ -30,6 +37,7 @@ namespace prismmod
         public float arrowsFreezeEnemies = 0f;
         public float twoShotRocket = 0f;
         public float reducedContactDamage = 1f;
+        public bool vertDash = false;
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
@@ -55,6 +63,30 @@ namespace prismmod
             reducedContactDamage = 1f;
             tinyTurtle = false;
             facePancake = false;
+            vertDash = false;
+            ResetDashTimers();
+        }
+
+        public void ResetDashTimers()
+        {
+            if (upPressed)
+            {
+                upTimer++;
+                if (upTimer > 30)
+                {
+                    upTimer = 0;
+                    upPressed = false;
+                }
+            }
+            if (downPressed)
+            {
+                downTimer++;
+                if (downTimer > 30)
+                {
+                    downTimer = 0;
+                    downPressed = false;
+                }
+            }
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -103,5 +135,42 @@ namespace prismmod
         {
             damage = (int)((float)damage * (reducedContactDamage - 1f));
         }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (player.mount == null&&vertDash)
+            {
+
+                if (prismmod.updash.JustPressed)
+                {
+                    if (upPressed)
+                    {
+                        player.velocity.Y -= 20f;
+                        upPressed = false;
+                        upTimer = 0;
+                    }
+                    else
+                    {
+                        upPressed = true;
+                    }
+                }
+
+                if (prismmod.downdash.JustPressed)
+                {
+                    if (downPressed)
+                    {
+                        player.velocity.Y += 20f;
+                        downPressed = false;
+                        downTimer = 0;
+                    }
+                    else
+                    {
+                        downPressed = true;
+                    }
+                }
+            }
+
+        }
+
     }
 }

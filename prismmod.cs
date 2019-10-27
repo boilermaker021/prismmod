@@ -5,6 +5,9 @@ namespace prismmod
 {
     internal class prismmod : Mod
     {
+        public static ModHotKey updash;
+        public static ModHotKey downdash;
+
         public prismmod()
         {
             Properties = new ModProperties()
@@ -13,6 +16,18 @@ namespace prismmod
                 AutoloadGores = true,
                 AutoloadSounds = true
             };
+        }
+
+        public override void Load()
+        {
+            updash = RegisterHotKey("Upwards Dash (Double Press)", "W");
+            downdash = RegisterHotKey("Downwards Dash (Double Press)", "S");
+        }
+
+        public override void Unload()
+        {
+            updash = null;
+            downdash = null;
         }
 
         public override void AddRecipes()
