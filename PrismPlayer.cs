@@ -22,6 +22,8 @@ namespace prismmod
         public bool downPressed;
         public int downTimer;
 
+        public int vertDashCooldown = 0;
+
         //boss shit
         public bool spawnedPrismachine = false;
 
@@ -87,6 +89,11 @@ namespace prismmod
                     downPressed = false;
                 }
             }
+
+            if (vertDashCooldown > 0)
+            {
+                vertDashCooldown--;
+            }
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -139,6 +146,7 @@ namespace prismmod
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (vertDash)
+            if (vertDash&&vertDashCooldown==0)
             {
 
                 if (prismmod.updash.JustPressed)
