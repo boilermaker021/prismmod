@@ -7,7 +7,7 @@ namespace prismmod.Items.Placeables
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a modded workbench.");
+            Tooltip.SetDefault("Converts items and ores");
             DisplayName.SetDefault("Converter");
         }
 
