@@ -138,7 +138,7 @@ namespace prismmod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (player.mount == null&&vertDash)
+            if (vertDash)
             {
 
                 if (prismmod.updash.JustPressed)
