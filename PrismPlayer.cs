@@ -155,7 +155,7 @@ namespace prismmod
                         player.velocity.Y = -10f;
                         upPressed = false;
                         upTimer = 0;
-                        vertDashCooldown = 40;
+                        vertDashCooldown = 20;
                     }
                     else
                     {
