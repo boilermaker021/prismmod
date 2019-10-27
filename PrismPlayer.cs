@@ -152,7 +152,7 @@ namespace prismmod
                 {
                     if (upPressed)
                     {
-                        player.velocity.Y = -10f;
+                        player.velocity.Y = -15f;
                         upPressed = false;
                         upTimer = 0;
                         vertDashCooldown = 20;
@@ -167,7 +167,7 @@ namespace prismmod
                 {
                     if (downPressed)
                     {
-                        player.velocity.Y = 10f;
+                        player.velocity.Y = 15f;
                         downPressed = false;
                         downTimer = 0;
                         vertDashCooldown = 20;
