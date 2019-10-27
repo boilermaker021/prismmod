@@ -145,7 +145,7 @@ namespace prismmod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (vertDash&&vertDashCooldown==0)
+            if (player.mount==null&&vertDash&&vertDashCooldown==0)
             {
 
                 if (player.controlUp&&player.releaseUp)
