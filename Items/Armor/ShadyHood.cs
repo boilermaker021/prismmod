@@ -35,6 +35,7 @@ namespace prismmod.Items.Armor
         {
             player.setBonus = "+1 Max Minions";
             player.maxMinions += 1;
+            player.GetModPlayer<PrismPlayer>().vertDash = true;
         }
 
         public override bool DrawHead()
