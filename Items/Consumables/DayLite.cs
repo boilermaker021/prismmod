@@ -47,6 +47,7 @@ namespace prismmod.Items.Consumables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddIngredient(ItemID.HellstoneBar, 5);
             recipe.AddIngredient(ItemID.FallenStar, 3);
             recipe.SetResult(this, 3);

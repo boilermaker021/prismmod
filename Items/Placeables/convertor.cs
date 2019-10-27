@@ -29,7 +29,7 @@ namespace prismmod.Items.Placeables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WorkBench);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddIngredient(ItemID.Furnace, 2);
             recipe.AddIngredient(ItemID.Glass, 5);
             recipe.AddIngredient(ItemID.Amethyst, 4);
