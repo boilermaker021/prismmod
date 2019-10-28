@@ -26,9 +26,14 @@ namespace prismmod.Items.Armor
             ///update equip for armor
         }
 
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == mod.ItemType("VanquishersChestplate") && legs.type == mod.ItemType("VanquishersGreaves");
+        }
+
         public override void UpdateArmorSet(Player player)
         {
-            
+            player.GetModPlayer<PrismPlayer>().vertDash = true;
         }
 
         /*public override void AddRecipes()
