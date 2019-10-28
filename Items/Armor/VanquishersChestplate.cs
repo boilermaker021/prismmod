@@ -9,7 +9,7 @@ namespace prismmod.Items.Armor
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vanquisher's Greaves");
+            DisplayName.SetDefault("Vanquisher's Chestplate");
             Tooltip.SetDefault("???");
         }
 
