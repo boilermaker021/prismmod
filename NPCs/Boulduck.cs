@@ -9,7 +9,7 @@ namespace prismmod.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Boulduck");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Unicorn];
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
         }
 
         public override void SetDefaults()
@@ -17,7 +17,7 @@ namespace prismmod.NPCs
             npc.width = 74;
             npc.height = 50;
             animationType = NPCID.Zombie;
-            npc.aiStyle = 26;
+            npc.aiStyle = 3;
             npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
