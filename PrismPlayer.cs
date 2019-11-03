@@ -11,6 +11,9 @@ namespace prismmod
     {
         Random rndm = new Random();
 
+        //biomes
+        public bool ZoneWaterTown = false;
+
         //pets and mounts
         public bool tinyTurtle = false;
         public bool facePancake = false;
@@ -40,6 +43,11 @@ namespace prismmod
         public float twoShotRocket = 0f;
         public float reducedContactDamage = 1f;
         public bool vertDash = false;
+
+        public override void UpdateBiomes()
+        {
+            ZoneWaterTown = PrismWorld.waterTown > 0;
+        }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {

@@ -10,6 +10,7 @@ namespace prismmod
 {
     public class PrismWorld : ModWorld
     {
+        public static int waterTown = 0;
         public bool killedGargantuanTortoise;
         public bool downedPrismachine;
 
