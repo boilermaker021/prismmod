@@ -70,10 +70,11 @@ namespace prismmod
                         WorldGen.PlaceTile(x + i, y + 10 - 30, TileID.Iron);
                     }
 
-                }));*/
-            }
+                }));
+                
+             }*/
         }
-
-
     }
+
+
 }
