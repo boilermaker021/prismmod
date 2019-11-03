@@ -37,14 +37,26 @@ namespace prismmod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Terrain"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Terrain"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("IRON CUBE", delegate (GenerationProgress progress)
                 {
                     progress.Message = "CUBE";
-                    int x = (int)Main.spawnTileX;
-                    int y = (int)Main.spawnTileY;
+                    int operation;
+                    int x;
+                    if (Main.rand.NextBool())
+                    {
+                        x = (int)Main.maxTilesX;
+                        operation = -1;
+                    }
+                    else
+                    {
+                        x = 0;
+                        operation = 1;
+                    }
+                    
+                    int y = (int)WorldGen.waterLine;
 
                     for (int i = 0; i < 25; i++)
                     {
@@ -74,6 +86,11 @@ namespace prismmod
                 }));
                 
              }*/
+             }
+        }
+
+        public override void TileCountsAvailable(int[] tileCounts)
+        {
         }
     }
 
