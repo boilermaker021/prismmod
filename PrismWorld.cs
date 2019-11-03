@@ -37,7 +37,7 @@ namespace prismmod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Terrain"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("IRON CUBE", delegate (GenerationProgress progress)
