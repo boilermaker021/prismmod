@@ -68,9 +68,9 @@ namespace prismmod
                     for (int i = 0; i < 10; i++)
                     {
                         WorldGen.PlaceTile(x + i, y + 10 - 30, TileID.Iron);
-                    }*/
+                    }
 
-                }));
+                }));*/
             }
         }
 
