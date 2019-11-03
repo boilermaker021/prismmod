@@ -43,32 +43,27 @@ namespace prismmod
                 tasks.Insert(genIndex + 1, new PassLegacy("IRON CUBE", delegate (GenerationProgress progress)
                 {
                     progress.Message = "CUBE";
-                    int operation;
+                    //int operation;
                     int x;
-                    if (Main.rand.NextBool())
-                    {
-                        x = (int)Main.maxTilesX;
-                        operation = -1;
-                    }
-                    else
+                    //if (Main.rand.NextBool())
+                    //{
+                        x = (int)Main.spawnTileX;
+                        //operation = -1;
+                    //}
+                    /*else
                     {
                         x = 0;
                         operation = 1;
-                    }
+                    }*/
                     
-                    int y = (int)WorldGen.waterLine;
+                    int y = (int)Main.spawnTileY;
 
-                    for (int i = 0; i < 25; i++)
+                    for (int i = 0; i < 10; i++)
                     {
-                        for (int j = 0; j < 25; j++)
-                        {
-                            
-                            WorldGen.PlaceTile(x - i + 1, y - j, TileID.Iron);
-                        }
-                        
+                        WorldGen.PlaceTile(x +i +1, y - 30, TileID.Iron);
                     }
 
-                    /*for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 10; i++)
                     {
                         WorldGen.PlaceTile(x, y + i - 30, TileID.Iron);
                     }
@@ -85,12 +80,12 @@ namespace prismmod
 
                 }));
                 
-             }*/
              }
         }
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
+            waterTown = tileCounts[TileID.Iron]; //update with custom mod block
         }
     }
 
