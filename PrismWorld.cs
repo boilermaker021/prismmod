@@ -85,7 +85,7 @@ namespace prismmod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            waterTown = tileCounts[TileID.Iron]; //update with custom mod block
+            waterTown = tileCounts[ModContent.TileType<Tiles.Blox.MoistChiseledStone>()]; //update with custom mod block
         }
     }
 

@@ -46,7 +46,7 @@ namespace prismmod
 
         public override void UpdateBiomes()
         {
-            ZoneWaterTown = PrismWorld.waterTown > 0;
+            ZoneWaterTown = PrismWorld.waterTown > 10;
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
