@@ -5,6 +5,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/CommieSlayer1950/prismmod?color=green)
 
 by CommieSlayer and LordCrumple
+notable contributions by Dalfino
 
 
 
@@ -15,6 +16,7 @@ The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, bi
 ### So far we have added:
 
 * 1 Boss
+* 1 Biome
 * 6 Weapons
 * 5 NPCs
 * 4 Consumables
