@@ -46,12 +46,17 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Beaches"));
             if (genIndex != -1)
             {
-                tasks.Insert(genIndex + 1, new PassLegacy("Generate  Structures", delegate (GenerationProgress progress)
+                tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
-                    progress.Message = "Importing Fish People";
+                    //@todo add gate for water town
+                    //@body use glass tunnel coating to obtain x and y coords for gate placement to keep out the ne'er do wells
+                    bool placedGate = false;//used to check if gateX and gateY should be set
+                    int gateY;
+                    int gateX;
+                    progress.Message = "Tunneling";
 
                     int activeBlock = TileID.Glass;
 
@@ -61,7 +66,24 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71) && (Framing.GetTileSafely(58, yCoord).liquid <= 2 || Framing.GetTileSafely(72, yCoord).liquid <= 2))
+                            if ((xCoord == 59 || xCoord == 71) && (Framing.GetTileSafely(58, yCoord).liquid <= 2 
+                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2) && (Framing.GetTileSafely(58, yCoord).active() || Framing.GetTileSafely(72, yCoord).active()))
+                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == activeBlock))
+                            {
+                                WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
+                            }
+                        }
+                    }
+
+                    //@todo make hole for gate
+                    //@body find a way to make a hole opening for both a gate at the top and a doorway at the bottom of the tunnel
+                    for (int xCoord = 59; xCoord < 120; xCoord++)
+                    {
+                        for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 150; yCoord++)
+                        {
+                            Tile tile = Framing.GetTileSafely(xCoord, yCoord);
+                            tile.ClearTile();
+                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
@@ -70,9 +92,9 @@ namespace prismmod
 
                     activeBlock = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
 
-                    int x = 60;
-                    int y = (int)Main.spawnTileY + 109;
-
+                    int x = 80;
+                    int y = (int)Main.spawnTileY + 135;
+                    progress.Message = "Making the Cube";
                     for (int i = 0; i < 10; i++)
                     {
                         WorldGen.PlaceTile(x + i + 1, y, activeBlock);
@@ -92,6 +114,10 @@ namespace prismmod
                     {
                         WorldGen.PlaceTile(x + i, y + 10, activeBlock);
                     }
+
+                    //@todo Add fish npcs
+                    progress.Message = "Importing Fish People";
+
                 }));
             }
         }
