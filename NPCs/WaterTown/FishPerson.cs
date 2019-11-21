@@ -13,6 +13,7 @@ namespace prismmod.NPCs
 
         public override void SetDefaults()
         {
+            npc.townNPC = true;
             npc.width = 18;
             npc.height = 34;
             animationType = NPCID.GoblinTinkerer;
