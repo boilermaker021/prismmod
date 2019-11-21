@@ -23,8 +23,6 @@ namespace prismmod.NPCs.Prismachine
             npc.height = 260;
             //no Ai Style
             npc.lifeMax = 5000; //ask braden for life values
-            //beware of generic hit sounds
-            //code placed elsewhere//npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
@@ -317,6 +315,7 @@ namespace prismmod.NPCs.Prismachine
 
             if (Main.netMode != 1)
             {
+                //@todo change Prismachine sprite?
                 if (AI_State == 1)
                 {
                     if (AI_Timer % 25 == 0)
@@ -406,11 +405,13 @@ namespace prismmod.NPCs.Prismachine
                     AI_Timer = 1;
                 }
             }
+
+            private int count = 0;
+
+            private bool start = false;
         }
 
-        private int count = 0;
-
-        private bool start = false;
+        
 
         public override void FindFrame(int frameHeight)
         {
