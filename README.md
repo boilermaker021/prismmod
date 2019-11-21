@@ -15,6 +15,7 @@ The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, bi
 ### So far we have added:
 
 * 1 Boss
+* 1 Biome
 * 6 Weapons
 * 5 NPCs
 * 4 Consumables
