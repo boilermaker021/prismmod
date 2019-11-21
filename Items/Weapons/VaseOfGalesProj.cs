@@ -22,10 +22,10 @@ namespace prismmod.Items.Weapons
             projectile.ownerHitCheck = true;
             projectile.magic = true;
         }
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             //add logic for vaccum effect here - For Future Manamaster
-            
         }
     }
 }

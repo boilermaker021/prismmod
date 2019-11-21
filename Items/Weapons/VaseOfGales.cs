@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace prismmod.Items.Weapons
@@ -29,7 +28,6 @@ namespace prismmod.Items.Weapons
             item.shoot = mod.ProjectileType("VaseOfGalesProj");
             item.shootSpeed = 100f;
         }
-
 
         public override Vector2? HoldoutOffset()
         {

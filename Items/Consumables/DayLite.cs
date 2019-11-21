@@ -53,6 +53,5 @@ namespace prismmod.Items.Consumables
             recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
-
     }
 }

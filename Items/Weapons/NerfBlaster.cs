@@ -38,7 +38,6 @@ namespace prismmod.Items.Weapons
             item.rare = -12;
         }
 
-
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-8, 0);

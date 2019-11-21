@@ -31,8 +31,6 @@ namespace prismmod.Items.Weapons
 
             item.shootSpeed = 40f;
             item.shoot = ModContent.ProjectileType<PrismaspearProjectile>();
-
-
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knoclkback, bool crit)

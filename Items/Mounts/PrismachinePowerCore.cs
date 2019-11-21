@@ -1,11 +1,10 @@
-﻿using Terraria.ID;
+﻿using prismmod.Mounts;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using prismmod.Mounts;
 
 namespace prismmod.Items.Mounts
 {
-    class PrismachinePowerCore: ModItem
+    internal class PrismachinePowerCore : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,6 +25,5 @@ namespace prismmod.Items.Mounts
             item.noMelee = true;
             item.mountType = MountType<ApatheticCloud>();
         }
-
     }
 }

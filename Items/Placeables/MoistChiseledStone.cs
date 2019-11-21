@@ -1,9 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace prismmod.Items.Placeables
 {
-    class MoistChiseledStone : ModItem
+    internal class MoistChiseledStone : ModItem
     {
         public override void SetStaticDefaults()
         {

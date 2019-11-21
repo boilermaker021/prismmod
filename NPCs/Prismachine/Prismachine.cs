@@ -1,17 +1,15 @@
+using prismmod.Items.Weapons;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using prismmod.Items.Weapons;
-using System;
 
 namespace prismmod.NPCs.Prismachine
 {
     [AutoloadBossHead]
     partial class Prismachine : ModNPC
     {
+        private int spawningPlayer = 0;
 
-        int spawningPlayer = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Prismachine");
@@ -25,8 +23,6 @@ namespace prismmod.NPCs.Prismachine
             npc.height = 260;
             //no Ai Style
             npc.lifeMax = 5000; //ask braden for life values
-            //beware of generic hit sounds
-            //code placed elsewhere//npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
@@ -39,13 +35,11 @@ namespace prismmod.NPCs.Prismachine
             bossBag = mod.ItemType("PrismachineBag");
 
             Mod musicmod = ModLoader.GetMod("prismmodmusic");
-            if(musicmod!=null)
+            if (musicmod != null)
             {
                 musicPriority = MusicPriority.BossHigh;
                 music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/PrismachineTheme");
             }
-
-
         }
 
         //on spawn method, spawn orbs around the battlefied. Ask braden for range restrictions
@@ -77,7 +71,7 @@ namespace prismmod.NPCs.Prismachine
                     //wep 3
                 }
                 choice = Main.rand.Next(4/*n-1*/);
-                if (choice == 1 )
+                if (choice == 1)
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<Prismaspear>(), 1);
                     wepGained = true;
@@ -85,8 +79,6 @@ namespace prismmod.NPCs.Prismachine
                 if (!wepGained)
                 {
                     choice = Main.rand.Next(5);
-
-
                 }
             }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
@@ -186,31 +178,30 @@ namespace prismmod.NPCs.Prismachine
         }
 
         private int tAttacks = 0;
+
         public override void AI()
         {
             npc.spriteDirection = 0;
-            if (tAttacks == 0 &&numOfAttacks() ==1 )
+            if (tAttacks == 0 && numOfAttacks() == 1)
             {
                 GenNewAttack = true;
             }
             tAttacks = numOfAttacks();
-
 
             Attacks_Enabled = attackSetter();
             if (GenNewAttack)
             {
                 GenNewAttack = false;
                 attackTimes = 0;
-                AI_State = Main.rand.Next(4)+1;
-                while (Attacks_Enabled[(int)AI_State-1] == false)
+                AI_State = Main.rand.Next(4) + 1;
+                while (Attacks_Enabled[(int)AI_State - 1] == false)
                 {
-                    AI_State = Main.rand.Next(4)+1;
+                    AI_State = Main.rand.Next(4) + 1;
                 }
             }
 
             if (!orbsSpawned && Main.netMode != 1)
             {
-
                 int playernum = -1;
 
                 for (int j = 0; j < Main.ActivePlayersCount; j++)
@@ -228,7 +219,6 @@ namespace prismmod.NPCs.Prismachine
                 {
                     playernum = Main.player[npc.target].whoAmI;
                 }
-
 
                 int numX = 0;
                 //orb spawn code
@@ -250,7 +240,6 @@ namespace prismmod.NPCs.Prismachine
                     {
                         numX = 2;
                     }
-
 
                     int orb = NPC.NewNPC((int)Main.player[playernum].Center.X + (numX * 125), (int)Main.player[playernum].Center.Y - 250, mod.NPCType("Orb"));
                     Main.npc[orb].ai[0] = npc.whoAmI;
@@ -326,9 +315,9 @@ namespace prismmod.NPCs.Prismachine
 
             if (Main.netMode != 1)
             {
+                //@todo change Prismachine sprite?
                 if (AI_State == 1)
                 {
-
                     if (AI_Timer % 25 == 0)
                     {
                         count = 0;
@@ -417,11 +406,13 @@ namespace prismmod.NPCs.Prismachine
                 }
             }
 
+            private int count = 0;
+
+            private bool start = false;
         }
 
-        private int count = 0;
+        
 
-        bool start = false;
         public override void FindFrame(int frameHeight)
         {
             npc.frame.Y = frameHeight * (int)AI_Frame;
