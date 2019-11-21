@@ -35,7 +35,6 @@ namespace prismmod.Items.Armor
         {
             player.setBonus = "+1 Max Minions";
             player.maxMinions += 1;
-            
         }
 
         public override bool DrawHead()

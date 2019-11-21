@@ -18,15 +18,15 @@ namespace prismmod.NPCs.Prismachine
             projectile.ranged = true;
             projectile.timeLeft = 180;
             projectile.hostile = true;
-            projectile.penetrate = 1;   
+            projectile.penetrate = 1;
         }
 
         public override void AI()
         {
-            for (int i= 0; i < Main.player.Length;i++)
+            for (int i = 0; i < Main.player.Length; i++)
             {
                 Player target = Main.player[i];
-                if (target.Distance(projectile.Center)<400f)
+                if (target.Distance(projectile.Center) < 400f)
                 {
                     float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                     float shootToY = target.position.Y - projectile.Center.Y;
@@ -52,6 +52,5 @@ namespace prismmod.NPCs.Prismachine
         {
             projectile.Kill();
         }
-
     }
 }

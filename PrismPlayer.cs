@@ -9,13 +9,14 @@ namespace prismmod
 {
     internal class PrismPlayer : ModPlayer
     {
-        Random rndm = new Random();
+        private Random rndm = new Random();
 
         //biomes
         public bool ZoneWaterTown = false;
 
         //pets and mounts
         public bool tinyTurtle = false;
+
         public bool facePancake = false;
         public bool apatheticCloud = false;
 
@@ -32,6 +33,7 @@ namespace prismmod
 
         //stat changes
         public float noAmmoUseChance = 0;
+
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
         public float flamerDamageIncrease = 1f;
@@ -153,10 +155,9 @@ namespace prismmod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (vertDash&&vertDashCooldown==0)
+            if (vertDash && vertDashCooldown == 0)
             {
-
-                if (player.controlUp&&player.releaseUp)
+                if (player.controlUp && player.releaseUp)
                 {
                     if (upPressed)
                     {
@@ -171,7 +172,7 @@ namespace prismmod
                     }
                 }
 
-                if (player.controlDown&&player.releaseDown)
+                if (player.controlDown && player.releaseDown)
                 {
                     if (downPressed)
                     {
@@ -186,8 +187,6 @@ namespace prismmod
                     }
                 }
             }
-
         }
-
     }
 }
