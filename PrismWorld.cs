@@ -35,6 +35,10 @@ namespace prismmod
             downedPrismachine = flags[1];
         }
 
+        //@todo figure out what the hell the Save and Load functions do
+        //@body what even is a TagCompound?
+        //save/load functions here
+
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
@@ -46,6 +50,7 @@ namespace prismmod
                 }));
             }*/
 
+            //@todo fix infinite glass spawning before Smoothing World gen task
             int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Beaches"));
             if (genIndex != -1)
             {
