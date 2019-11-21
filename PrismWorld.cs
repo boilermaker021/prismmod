@@ -37,50 +37,81 @@ namespace prismmod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
+            /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            if (genIndex != -1)
+            {
+                tasks.Insert(genIndex + 1, new PassLegacy("Reserved Prismmod Test Space", delegate (GenerationProgress progress)
+                {
+                    progress.Message = "Test Code Here ;)";
+
+
+                }));
+            }*/
+
             int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
-                tasks.Insert(genIndex + 1, new PassLegacy("IRON CUBE", delegate (GenerationProgress progress)
+                tasks.Insert(genIndex + 1, new PassLegacy("Generate  Structures", delegate (GenerationProgress progress)
                 {
-                    progress.Message = "CUBE";
+                    progress.Message = "Importing Fish People";
                     //int operation;
                     int x;
                     //if (Main.rand.NextBool())
                     //{
-                        x = (int)Main.spawnTileX;
-                        //operation = -1;
+                    x = 60;
+                    //operation = -1;
                     //}
                     /*else
                     {
                         x = 0;
                         operation = 1;
                     }*/
+
+                    int activeBlock = TileID.Glass;
+
+                    for (int xCoord = 59; xCoord < 72; xCoord++)
+                    {
+                        for (int yCoord = Main.spawnTileY-80; yCoord < Main.spawnTileY + 120; yCoord++)
+                        {
+                            Tile tile = Framing.GetTileSafely(xCoord, yCoord);
+                            tile.ClearTile();
+                            if ((xCoord == 59 || xCoord == 71) && (Framing.GetTileSafely(58, yCoord).liquid <=2 || Framing.GetTileSafely(72, yCoord).liquid <= 2))
+                            {
+                                WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
+                            }
+                        }
+                    }
+
+                        activeBlock = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
+
+                        int y = (int)Main.spawnTileY + 109;
+
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            WorldGen.PlaceTile(x + i + 1, y, activeBlock);
+                        }
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            WorldGen.PlaceTile(x, y + i, activeBlock);
+                        }
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            WorldGen.PlaceTile(x + 10, y + i, activeBlock);
+                        }
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            WorldGen.PlaceTile(x + i, y + 10, activeBlock);
+                        }
+
                     
-                    int y = (int)Main.spawnTileY;
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x +i +1, y - 30, TileID.Iron);
-                    }
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x, y + i - 30, TileID.Iron);
-                    }
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x + 10, y + i - 30, TileID.Iron);
-                    }
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x + i, y + 10 - 30, TileID.Iron);
-                    }
-
                 }));
                 
-             }
+                
+            }
         }
 
         public override void TileCountsAvailable(int[] tileCounts)
