@@ -4,7 +4,8 @@ using Terraria.ModLoader;
 
 namespace prismmod.NPCs
 {
-    [AutoloadHead]//@todo add head file for these NPCS
+    //@todo add head file for these NPCS
+    [AutoloadHead]
     internal class FishBlue : FishPerson
     {
 
