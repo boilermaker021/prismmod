@@ -10,7 +10,7 @@ namespace prismmod
 {
     internal class PrismWorld : ModWorld
     {
-        public static int waterTown = 0;
+        public static int moistChiseledStoneCount = 0;
         public bool killedGargantuanTortoise;
         public bool downedPrismachine;
 
@@ -128,7 +128,7 @@ namespace prismmod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            waterTown = tileCounts[ModContent.TileType<Tiles.Blox.MoistChiseledStone>()]; //update with custom mod block
+            moistChiseledStoneCount = tileCounts[ModContent.TileType<Tiles.Blox.MoistChiseledStone>()]; //update with custom mod block
         }
     }
 }
