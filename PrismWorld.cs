@@ -51,6 +51,8 @@ namespace prismmod
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
+                    //@todo make placeholder for gate block
+                    //@body create class and image for block that acts as a gate to the biome
                     //@todo add gate for water town
                     //@body use glass tunnel coating to obtain x and y coords for gate placement to keep out the ne'er do wells
                     bool placedGate = false;//used to check if gateX and gateY should be set
@@ -58,6 +60,8 @@ namespace prismmod
                     int gateX;
                     progress.Message = "Tunneling";
 
+                    //@todo update activeBlock to unbreakable block
+                    //@body force braden to make another placeholder unbreakable block for guarding the biome
                     int activeBlock = TileID.Glass;
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
@@ -83,7 +87,7 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120)))
+                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120)) && !((xCoord-59<10)&&(yCoord==120)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
