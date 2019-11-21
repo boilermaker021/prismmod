@@ -47,7 +47,7 @@ namespace prismmod.Items.Consumables
             recipe.AddTile(TileID.WorkBenches);
             recipe.AddIngredient(ItemID.DemoniteBar, 5);
             recipe.AddIngredient(ItemID.FallenStar, 3);
-            recipe.SetResult(this,3);
+            recipe.SetResult(this, 3);
             recipe.AddRecipe();
 
             ModRecipe recipe2 = new ModRecipe(mod);
@@ -57,6 +57,5 @@ namespace prismmod.Items.Consumables
             recipe2.SetResult(this, 3);
             recipe2.AddRecipe();
         }
-
     }
 }

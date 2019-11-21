@@ -1,8 +1,5 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-
 
 namespace prismmod.Items.Weapons
 {
@@ -31,8 +28,5 @@ namespace prismmod.Items.Weapons
             item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.Duck, 0);
             item.autoReuse = false;
         }
-
-
-
     }
 }
