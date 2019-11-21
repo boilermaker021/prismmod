@@ -1,8 +1,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using prismmod.NPCs.WaterTown;
 
-namespace prismmod.NPCs
+namespace prismmod.NPCs.WaterTown
 {
     //@todo add head file for these NPCS
     [AutoloadHead]

@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace prismmod.NPCs
+namespace prismmod.NPCs.WaterTown
 {
     internal class FishPerson : ModNPC
     {
