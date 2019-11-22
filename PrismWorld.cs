@@ -82,6 +82,12 @@ namespace prismmod
                             || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active())) 
                             || (Framing.GetTileSafely(xCoord,yCoord-1).type == TileID.Glass))
                             {
+                                if(!placedGate)
+                                {
+                                    placedGate=true;
+                                    gateY = yCoord;
+                                    gateX = xCoord;
+                                }
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
                         }
