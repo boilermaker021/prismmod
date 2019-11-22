@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static prismmod.PrismmodHelper;
+using static prismmod.PrismHelper;
 
 namespace prismmod.NPCs.WaterTown
 {
@@ -38,7 +38,7 @@ namespace prismmod.NPCs.WaterTown
         public override string TownNPCName()
         {
             int nameNum = Main.rand.Next(fishNames.Length);
-            return fishNames[nameNum];
+            return fishNames[nameNum];//uses fishNames from PrismHelper
 
         }
     }
