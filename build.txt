@@ -1,7 +1,7 @@
 author = CommieSlayer and LordCrumple
 version = 0.0.5
 displayName = Prism Mod - Alpha
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* , .git\*, Templates\*, README.md, .gitignore, README.md, builditems\*, *.yml, *.sln, changelog.txt, pat.txt
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\* , .git\*, Templates\*, README.md, .gitignore, README.md, builditems\*, *.yml, *.sln, pat.txt
 homepage = https://github.com/CommieSlayer1950/prismmod/wiki
 hideCode = false
 hideResources = false
