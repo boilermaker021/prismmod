@@ -8,6 +8,7 @@ namespace prismmod.NPCs.WaterTown
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Fish Person");
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.GoblinTinkerer];//107 if NPCID is incorrect
         }
 

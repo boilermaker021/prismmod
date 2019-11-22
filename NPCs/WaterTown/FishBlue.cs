@@ -16,9 +16,10 @@ namespace prismmod.NPCs.WaterTown
 
         }
 
-        public override void SetChatButtons(ref string button, ref string button2) {
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
 			button = "Bruh";
-			button2 = "Moment";
+
 		}
         public override string GetChat()
         {
