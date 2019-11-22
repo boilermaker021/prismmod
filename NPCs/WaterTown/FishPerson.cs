@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static prismmod.PrismmodHelper;
 
 namespace prismmod.NPCs.WaterTown
 {
@@ -33,8 +34,6 @@ namespace prismmod.NPCs.WaterTown
             npc.breath = 100;
             npc.breathCounter = 100;
         }
-
-        string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds","Reefback", "Gerald", "Markus", "Vincent", "Tom", "Bofa", "Gex", "Salmonelly", "Jeb", "Joel", "[REDACTED]"};
 
         public override string TownNPCName()
         {

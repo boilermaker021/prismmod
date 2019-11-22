@@ -10,7 +10,7 @@ namespace prismmod
         Tile[] waterHouse
 
         //other values
-        
+        string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds","Reefback", "Gerald", "Markus", "Vincent", "Tom", "Bofa", "Gex", "Salmonelly", "Jeb", "Joel", "[REDACTED]"};
 
     }
 
