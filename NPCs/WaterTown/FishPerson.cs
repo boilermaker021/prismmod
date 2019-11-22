@@ -33,5 +33,14 @@ namespace prismmod.NPCs.WaterTown
             npc.breath = 100;
             npc.breathCounter = 100;
         }
+
+        string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds","Reefback", "Gerald", "Markus", "Vincent", "Tom", "Bofa", "Gex", "Salmonelly", "Jeb", "Joel", "[REDACTED]"};
+
+        public override string TownNPCName()
+        {
+            int nameNum = Main.rand.Next(fishNames.Length);
+            return fishNames[nameNum];
+
+        }
     }
 }
