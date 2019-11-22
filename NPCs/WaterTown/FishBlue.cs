@@ -17,6 +17,7 @@ namespace prismmod.NPCs.WaterTown
         public override string GetChat()
         {
             return "This is the only chat message so far, stop trying for a new one.";
+            //request chat messages from braden
         }
         public override void OnChatButtonClicked(bool firstbutton, ref bool shop)
         {
@@ -24,6 +25,7 @@ namespace prismmod.NPCs.WaterTown
         }
 
         //@todo Setup Shop method
+        //unique to each fish person?
 
 
 
