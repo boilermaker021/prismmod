@@ -73,13 +73,14 @@ namespace prismmod
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
                     {
-                        for (int yCoord = Main.spawnTileY - 80; yCoord < Main.spawnTileY + 120; yCoord++)
+                        for (int yCoord = Main.spawnTileY - 30; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71) && (Framing.GetTileSafely(58, yCoord).liquid <= 2 
-                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2) && (Framing.GetTileSafely(58, yCoord).active() || Framing.GetTileSafely(72, yCoord).active()))
-                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == activeBlock))
+                            if ((xCoord == 59 || xCoord == 71) 
+                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active()) 
+                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active())) 
+                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == TileID.Glass))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
