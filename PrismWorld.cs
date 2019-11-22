@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
 
+using prismmod.NPCs.WaterTown;
+
 namespace prismmod
 {
     internal class PrismWorld : ModWorld
@@ -51,7 +53,7 @@ namespace prismmod
             }*/
 
             //@todo fix infinite glass spawning before Smoothing World gen task
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Beaches"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -71,13 +73,14 @@ namespace prismmod
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
                     {
-                        for (int yCoord = Main.spawnTileY - 80; yCoord < Main.spawnTileY + 120; yCoord++)
+                        for (int yCoord = Main.spawnTileY - 30; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71) && (Framing.GetTileSafely(58, yCoord).liquid <= 2 
-                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2) && (Framing.GetTileSafely(58, yCoord).active() || Framing.GetTileSafely(72, yCoord).active()))
-                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == activeBlock))
+                            if ((xCoord == 59 || xCoord == 71) 
+                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active()) 
+                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active())) 
+                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == TileID.Glass))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
@@ -92,7 +95,7 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120)) && !((xCoord-59<10)&&(yCoord==120)))//last check may screw things up big time
+                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120))&&!(yCoord==Main.spawnTileY+120&&((xCoord-59)<10)&&(xCoord-59)>0))//last check may screw things up big time
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
@@ -126,6 +129,7 @@ namespace prismmod
 
                     //@todo Add fish npcs
                     progress.Message = "Importing Fish People";
+                    NPC.NewNPC((100)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
 
                 }));
             }

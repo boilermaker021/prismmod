@@ -313,8 +313,11 @@ namespace prismmod.NPCs.Prismachine
                 //enables attacks of orb/element 4 type
             }
 
+
             if (Main.netMode != 1)
             {
+                
+
                 //@todo change Prismachine sprite?
                 if (AI_State == 1)
                 {
@@ -405,13 +408,12 @@ namespace prismmod.NPCs.Prismachine
                     AI_Timer = 1;
                 }
             }
-
-            private int count = 0;
-
-            private bool start = false;
         }
+        private int count = 0;
+        private bool start = false;
 
-        
+
+
 
         public override void FindFrame(int frameHeight)
         {

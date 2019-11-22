@@ -1,8 +1,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using prismmod.NPCs.WaterTown;
 
-namespace prismmod.NPCs
+namespace prismmod.NPCs.WaterTown
 {
     //@todo add head file for these NPCS
     [AutoloadHead]
@@ -15,9 +16,10 @@ namespace prismmod.NPCs
 
         }
 
-        public override void SetChatButtons(ref string button, ref string button2) {
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
 			button = "Bruh";
-			button2 = "Moment";
+
 		}
         public override string GetChat()
         {
