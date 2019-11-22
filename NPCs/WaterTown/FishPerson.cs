@@ -27,5 +27,11 @@ namespace prismmod.NPCs.WaterTown
             npc.damage = 14;
             npc.friendly=true;
         }
+
+        public override void AI()
+        {
+            npc.breath = 100;
+            npc.breathCounter = 100;
+        }
     }
 }

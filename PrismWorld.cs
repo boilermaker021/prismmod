@@ -95,7 +95,7 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120))&&!(yCoord==Main.spawnTileY+120&&((xCoord-59)<10)&&(xCoord-59)>0))//last check may screw things up big time
+                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120))&&!(yCoord==Main.spawnTileY+120&&((xCoord-59)<12)&&(xCoord-59)>0))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
