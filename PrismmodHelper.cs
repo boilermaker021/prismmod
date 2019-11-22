@@ -14,7 +14,7 @@ namespace prismmod
             {mcs,mcs,mcs},
             {mcs,na,mcs},
             {mcs,mcs,mcs},
-        }
+        };
 
         //other values
         string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds",
