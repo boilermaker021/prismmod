@@ -33,5 +33,11 @@ namespace prismmod.NPCs.WaterTown
             npc.breath = 100;
             npc.breathCounter = 100;
         }
+
+        public override string TownNPCName()
+        {
+            return "Fisy FIsh";//@todo generate random names for this fishy individual
+
+        }
     }
 }

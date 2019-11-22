@@ -9,13 +9,6 @@ namespace prismmod.NPCs.WaterTown
     [AutoloadHead]
     internal class FishBlue : FishPerson
     {
-
-        public override string TownNPCName()
-        {
-            return "Blue Fish";//@todo generate random names for this fishy individual
-
-        }
-
         public override void SetChatButtons(ref string button, ref string button2)
         {
 			button = "Bruh";
