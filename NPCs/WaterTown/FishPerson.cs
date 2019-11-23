@@ -10,14 +10,14 @@ namespace prismmod.NPCs.WaterTown
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fish Person");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.GoblinTinkerer];//107 if NPCID is incorrect
+            Main.npcFrameCount[npc.type] = 16;//107 if NPCID is incorrect
         }
 
         public override void SetDefaults()
         {
             npc.townNPC = true;
-            npc.width = 18;
-            npc.height = 34;
+            npc.width = 32;
+            npc.height = 52;
             animationType = NPCID.GoblinTinkerer;
             npc.aiStyle = 7;
             npc.lifeMax = 75;
