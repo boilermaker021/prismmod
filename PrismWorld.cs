@@ -78,10 +78,10 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71) 
-                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active()) 
-                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active())) 
-                            || (Framing.GetTileSafely(xCoord,yCoord-1).type == TileID.Glass))
+                            if ((xCoord == 59 || xCoord == 71)
+                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active())
+                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active()))
+                            || (Framing.GetTileSafely(xCoord, yCoord - 1).type == ModContent.TileType<CityWall>()))
                             {
                                 if(!placedGate)
                                 {
