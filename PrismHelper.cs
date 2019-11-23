@@ -6,8 +6,8 @@ namespace prismmod
 {
     public class PrismHelper
     {
-        int mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
-        string na = "nothing";
+        public static int mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
+        public static string na = "nothing";
 
         //Building Section
 

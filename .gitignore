@@ -6,5 +6,5 @@ obj/
 .bin/
 pat.txt
 bin/
-CONTRIBUTING.md
-LICENSE.md
+CONTRIBUTING
+LICENSE

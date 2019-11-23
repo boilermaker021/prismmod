@@ -41,5 +41,10 @@ namespace prismmod.NPCs.WaterTown
             return fishNames[nameNum];//uses fishNames from PrismHelper
 
         }
+
+        public override string GetChat()
+        {
+            return "34tijeh iqjpsaiubcn 13iweq @@@@@@@@@@@@@ eruthf912uqwohfd239r0 129704y rqewuhf safndqwopeiuhfn ! ! ! `uh32wqrhsdaxczij";
+        }
     }
 }
