@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using prismmod.NPCs.WaterTown;
+using static prismmod.PrismHelper;
 
 namespace prismmod.NPCs.WaterTown
 {
@@ -11,7 +12,7 @@ namespace prismmod.NPCs.WaterTown
     {
         public override void SetChatButtons(ref string button, ref string button2)
         {
-			button = "Bruh";
+			button = "Shop";
 
 		}
         public override string GetChat()
@@ -21,11 +22,15 @@ namespace prismmod.NPCs.WaterTown
         }
         public override void OnChatButtonClicked(bool firstbutton, ref bool shop)
         {
-            shop=true;
+            if(firstbutton)
+                shop=true;
+            //else do something for second button if we have one...
         }
 
-        //@todo Setup Shop method
-        //unique to each fish person?
+        public override void SetupShop(Chest shop, ref int nextSlot)
+        {
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Tools.KanayasChainsaw>());
+        }
 
 
 
