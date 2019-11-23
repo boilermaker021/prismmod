@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static prismmod.PrismmodHelper;
+using static prismmod.PrismHelper;
 
 namespace prismmod.NPCs.WaterTown
 {
