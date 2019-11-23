@@ -70,8 +70,6 @@ namespace prismmod
                     int gateX;
                     progress.Message = "Tunneling";
 
-                    //@todo update activeBlock to unbreakable block
-                    //@body force braden to make another placeholder unbreakable block for guarding the biome
                     int activeBlock = ModContent.TileType<CityWall>();//TileID.Glass;
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
