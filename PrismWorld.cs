@@ -73,7 +73,7 @@ namespace prismmod
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
                     {
-                        for (int yCoord = Main.spawnTileY - 30; yCoord < Main.spawnTileY + 120; yCoord++)
+                        for (int yCoord = Main.spawnTileY - 40; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
