@@ -15,6 +15,14 @@ namespace prismmod.Tiles.Blox
             Main.tileLighted[Type] = true;
             drop = ItemType<Items.Placeables.MoistChiseledStone>();
             AddMapEntry(new Color(200, 200, 200));
+            mineResist = 7f;
+            minPick = 100;
+            
+        }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
