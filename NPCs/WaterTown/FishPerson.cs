@@ -44,7 +44,15 @@ namespace prismmod.NPCs.WaterTown
 
         public override string GetChat()
         {
-            return "34tijeh iqjpsaiubcn 13iweq @@@@@@@@@@@@@ eruthf912uqwohfd239r0 129704y rqewuhf safndqwopeiuhfn ! ! ! `uh32wqrhsdaxczij";
+            int speakNum = Main.rand.Next(3);
+            if (speakNum == 0)
+                return "34tijeh iqjpsaiubcn 13iweq @@@@@@@@@@@@@ eruthf912uqwohfd239r0 129704y rqewuhf safndqwopeiuhfn ! ! ! `uh32wqrhsdaxczij";
+            else if (speakNum == 1)
+                return "oi[qrep @*&#$Yuh12niywgeh837 (@hqp !@)U$h9723hr29q 923h r392 r";
+            else if (speakNum == 2)
+                return "v fygbuhijo mkojniuhyg8t7298u35 4ed &@#T h0y2uhrd8y09qrw 9302ueds hi238yhgo 0291eidj'";
+            else
+                return "YOU HAVE REACHED THE UNREACHABLE< ASLDKJHASFKJLHASDFLKJHASDLKJHASFLKJGHASF";
         }
     }
 }
