@@ -7,7 +7,7 @@ namespace prismmod
     public class PrismHelper
     {
         public static int mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
-        public static string na = "nothing";
+        public static int ctwl = ModContent.TileType<Tiles.Blox.CityWall>();
 
         //Building Section
 
