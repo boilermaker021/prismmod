@@ -8,6 +8,8 @@ using Terraria.World.Generation;
 
 using prismmod.NPCs.WaterTown;
 using prismmod.Tiles.Blox;
+using prismmod.Walls;
+using static prismmod.PrismHelper;
 
 namespace prismmod
 {
