@@ -6,7 +6,7 @@ namespace prismmod
 {
     internal class PrismmodHelper
     {
-        Tile mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>()
+        Tile mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
         string na = "nothing";
 
         //Building Section
