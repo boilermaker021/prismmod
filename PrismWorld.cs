@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.World.Generation;
 
 using prismmod.NPCs.WaterTown;
+using prismmod.Tiles.Blox;
 
 namespace prismmod
 {
@@ -69,11 +70,11 @@ namespace prismmod
 
                     //@todo update activeBlock to unbreakable block
                     //@body force braden to make another placeholder unbreakable block for guarding the biome
-                    int activeBlock = TileID.Glass;
+                    int activeBlock = ModContent.TileType<CityWall>();//TileID.Glass;
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
                     {
-                        for (int yCoord = Main.spawnTileY - 40; yCoord < Main.spawnTileY + 120; yCoord++)
+                        for (int yCoord = Main.spawnTileY - 70; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
@@ -95,15 +96,21 @@ namespace prismmod
 
                     //@todo make hole for gate
                     //@body find a way to make a hole opening for both a gate at the top and a doorway at the bottom of the tunnel
-                    for (int xCoord = 59; xCoord < 120; xCoord++)
+                    for (int xCoord = 59; xCoord < 210; xCoord++)
                     {
-                        for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 150; yCoord++)
+                        for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 119)||(yCoord==Main.spawnTileY+149||yCoord==Main.spawnTileY+120))&&!(yCoord==Main.spawnTileY+120&&((xCoord-59)<12)&&(xCoord-59)>0))
+                            if (((xCoord == 59 || xCoord == 209) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - 59) < 12) && (xCoord - 59) > 0))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
+                            }
+                            else 
+                            {
+                                tile.liquid = 255;
+                                tile.liquidType(0);
+                                tile.liquid = 255;
                             }
                         }
                     }
