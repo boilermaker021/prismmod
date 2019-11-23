@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace prismmod
 {
-    internal class PrismHelper
+    public class PrismHelper
     {
         int mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
         string na = "nothing";
@@ -12,7 +12,7 @@ namespace prismmod
         //Building Section
 
         //other values
-        string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds",
+        public static string[] fishNames = { "Coral","Jerry","Mark","Bubbles","Octavius, Destroyer of Worlds",
         "Reefback", "Gerald", "Markus", "Vincent", "Tom", "Bofa", "Gex", "Salmonelly",
          "Jeb", "Joel", "[REDACTED]", "Guppy","Sharko","Natalie","Lance","Louie","Alph","Skinner",
          "Travis", "Joe", "Carl", "Smokey", "Toad", "Magnus", "Devin", "Blart"};
