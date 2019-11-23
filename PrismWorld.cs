@@ -120,27 +120,23 @@ namespace prismmod
 
                     activeBlock = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
 
-                    int x = 80;
-                    int y = (int)Main.spawnTileY + 135;
+                    int biomeStartX= 59;
+                    int biomeStartY = 120;
+
                     progress.Message = "Making the Cube";
-                    for (int i = 0; i < 10; i++)
+                    for (int y = biomeStartY+10; y < testHouse.GetLength(0)+10; y++)
                     {
-                        WorldGen.PlaceTile(x + i + 1, y, activeBlock);
-                    }
+                        for (int x = biomeStartX+10; x < testHouse.GetLength(1)+10; x++)
+                        {
+                            Tile tile = Framing.GetTileSafely(x, y);
+                            switch (testHouse[y - biomeStartY - 10, x-biomeStartX-10])
+                            {
+                                case 1:
+                                    tile.type = (ushort) ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
+                                    break;
 
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x, y + i, activeBlock);
-                    }
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x + 10, y + i, activeBlock);
-                    }
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        WorldGen.PlaceTile(x + i, y + 10, activeBlock);
+                            }
+                        }
                     }
 
                     //@todo Add fish npcs
