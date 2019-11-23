@@ -6,8 +6,15 @@ namespace prismmod
 {
     public class PrismHelper
     {
-        public static int mcs = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
-        public static int ctwl = ModContent.TileType<Tiles.Blox.CityWall>();
+        public static int mcs = 1;
+        public static int ctwl = 2;
+
+        public static int[,] testHouse = {
+
+            {mcs, mcs, mcs},
+            {mcs, ctwl, mcs},
+            {mcs, mcs, mcs}
+    };
 
         //Building Section
 
