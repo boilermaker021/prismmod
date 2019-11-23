@@ -96,8 +96,8 @@ namespace prismmod
                         }
                     }
 
-                    //@todo make hole for gate
-                    //@body find a way to make a hole opening for both a gate at the top and a doorway at the bottom of the tunnel
+                    //Framing.GetTileSafely(gateX, gateY);
+
                     for (int xCoord = 59; xCoord < 210; xCoord++)
                     {
                         for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
