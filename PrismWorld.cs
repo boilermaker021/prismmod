@@ -17,8 +17,8 @@ namespace prismmod
     internal class PrismWorld : ModWorld
     {
         public static int moistChiseledStoneCount = 0;
-        public static bool downedGargantuanTortoise;
-        public static bool downedPrismachine;
+        public bool downedGargantuanTortoise;
+        public bool downedPrismachine;
 
         public override void Initialize()
         {
