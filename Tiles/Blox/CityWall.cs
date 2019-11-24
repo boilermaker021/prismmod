@@ -14,7 +14,7 @@ namespace prismmod.Tiles.Blox
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
             drop = ItemType<Items.Placeables.MoistChiseledStone>();
-            AddMapEntry(new Color(200, 200, 200));
+            AddMapEntry(new Color(74, 71, 245);
             mineResist = 7f;
             minPick = 100;
             
