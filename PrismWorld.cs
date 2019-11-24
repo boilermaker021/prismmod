@@ -10,20 +10,44 @@ using prismmod.NPCs.WaterTown;
 using prismmod.Tiles.Blox;
 using prismmod.Walls;
 using static prismmod.PrismHelper;
+using Terraria.ModLoader.IO;
 
 namespace prismmod
 {
     internal class PrismWorld : ModWorld
     {
         public static int moistChiseledStoneCount = 0;
-        public bool killedGargantuanTortoise;
-        public bool downedPrismachine;
+        public static bool killedGargantuanTortoise;
+        public static bool downedPrismachine;
 
         public override void Initialize()
         {
             killedGargantuanTortoise = false;
             downedPrismachine = false;
         }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("downed");
+            downedPrismachine = downed.Contains("Prismachine");
+            killedGargantuanTortoise = downed.Contains("GargantuanTortoise");
+        }
+
+        public override TagCompound Save()
+        {
+            var downed = new List<string>();
+            if (downedPrismachine)
+                downed.Add("Prismachine");
+            if (killedGargantuanTortoise)
+            {
+                downed.Add("GargantuanTortoise");
+            }
+            return new TagCompound
+            {
+                ["downed"] = downed
+            };
+        }
+
 
         public override void NetSend(BinaryWriter writer)
         {
