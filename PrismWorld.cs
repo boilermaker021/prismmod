@@ -17,12 +17,12 @@ namespace prismmod
     internal class PrismWorld : ModWorld
     {
         public static int moistChiseledStoneCount = 0;
-        public static bool killedGargantuanTortoise;
+        public static bool downedGargantuanTortoise;
         public static bool downedPrismachine;
 
         public override void Initialize()
         {
-            killedGargantuanTortoise = false;
+            downedGargantuanTortoise = false;
             downedPrismachine = false;
         }
 
@@ -30,7 +30,7 @@ namespace prismmod
         {
             var downed = tag.GetList<string>("downed");
             downedPrismachine = downed.Contains("Prismachine");
-            killedGargantuanTortoise = downed.Contains("GargantuanTortoise");
+            downedGargantuanTortoise = downed.Contains("GargantuanTortoise");
         }
 
         public override TagCompound Save()
@@ -38,7 +38,7 @@ namespace prismmod
             var downed = new List<string>();
             if (downedPrismachine)
                 downed.Add("Prismachine");
-            if (killedGargantuanTortoise)
+            if (downedGargantuanTortoise)
             {
                 downed.Add("GargantuanTortoise");
             }
@@ -52,7 +52,7 @@ namespace prismmod
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
-            flags[0] = killedGargantuanTortoise;
+            flags[0] = downedGargantuanTortoise;
             flags[1] = downedPrismachine;
             writer.Write(flags);
         }
@@ -60,7 +60,7 @@ namespace prismmod
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
-            killedGargantuanTortoise = flags[0];
+            downedGargantuanTortoise = flags[0];
             downedPrismachine = flags[1];
         }
 

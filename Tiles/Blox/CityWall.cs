@@ -27,9 +27,9 @@ namespace prismmod.Tiles.Blox
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = 0.5f;
-            g = 0.5f;
-            b = 0.5f;
+            r = 74/255;
+            g = 71/255;
+            b = 245/255;
         }
     }
 }
