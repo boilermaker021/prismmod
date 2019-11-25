@@ -50,14 +50,21 @@ namespace prismmod.NPCs.WaterTown
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-			button = "D̵̪̜̠͂͊̀́̂̓̎̔̇̈́̀͜į̸͓̭̭̠̖̣͔̭̓̇͑̃̏͗͌̊̎̍͜͝ͅv̵̦̣̖͕̩̩̫̻̣̭̿̀̃̂̀̓̐̄̈i̷̛̳͗͘ď̷͇̻̼͖̅ẹ̷͓͉̳̓̈́͊̑͗͗̂͗ ̷̗̲͙͖̝͋̋̈͆̒̄̊̏̕b̵̨͍̘̫̰̟̟͆̑̑̇̑ỳ̶̹͉̜̠͇͎̟͇͉̘̯̼̒̀̍͐̕̕ ̴̨̭̩̜̮̟̜̻̘͛̋̈́̕͜ż̴̝̝͓̭͕̓͝ͅe̶̮̜̰͇͉͉͓̓̎̔̒̀r̶̡̛̰̰̼̮͕̪̺͔̈́̅̀̄͂̿̏̒o̸̱̍͊̃̆̊̈́͂̂̓͝͝";
+			button = "Divide by zero";
 
 		}
 
+        double bruh;
+        double zero = 0;
         public override void OnChatButtonClicked(bool firstbutton, ref bool shop)
         {
-            if(firstbutton)
-                int bruh = 1/0;
+            if (firstbutton)
+            {
+                while (true)
+                {
+                    bruh = 1 / zero;
+                }
+            }
         }
 
         public override string GetChat()
