@@ -49,7 +49,7 @@ namespace prismmod.NPCs.WaterTown
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-			button = "Divide by zero";
+			button = "D̵̪̜̠͂͊̀́̂̓̎̔̇̈́̀͜į̸͓̭̭̠̖̣͔̭̓̇͑̃̏͗͌̊̎̍͜͝ͅv̵̦̣̖͕̩̩̫̻̣̭̿̀̃̂̀̓̐̄̈i̷̛̳͗͘ď̷͇̻̼͖̅ẹ̷͓͉̳̓̈́͊̑͗͗̂͗ ̷̗̲͙͖̝͋̋̈͆̒̄̊̏̕b̵̨͍̘̫̰̟̟͆̑̑̇̑ỳ̶̹͉̜̠͇͎̟͇͉̘̯̼̒̀̍͐̕̕ ̴̨̭̩̜̮̟̜̻̘͛̋̈́̕͜ż̴̝̝͓̭͕̓͝ͅe̶̮̜̰͇͉͉͓̓̎̔̒̀r̶̡̛̰̰̼̮͕̪̺͔̈́̅̀̄͂̿̏̒o̸̱̍͊̃̆̊̈́͂̂̓͝͝";
 
 		}
 
