@@ -10,11 +10,6 @@ namespace prismmod.NPCs.WaterTown
     [AutoloadHead]
     internal class FishPink : FishPerson
     {
-        public override void SetChatButtons(ref string button, ref string button2)
-        {
-			button = "Shop";
-
-		}
         public override string GetChat()
         {
             return "This is the only chat message so far, stop trying for a new one.";

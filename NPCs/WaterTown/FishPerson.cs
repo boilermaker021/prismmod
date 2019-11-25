@@ -50,15 +50,21 @@ namespace prismmod.NPCs.WaterTown
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-			button = "Divide by zero";
-
+            if (this.GetType() == typeof(FishPerson))
+            {
+                button = "Divide by zero";
+            }
+            else 
+            {
+                button = "Shop";
+            }
 		}
 
         double bruh;
         double zero = 0;
         public override void OnChatButtonClicked(bool firstbutton, ref bool shop)
         {
-            if (firstbutton)
+            if (firstbutton&& this.GetType() == typeof(FishPerson))
             {
                 while (true)
                 {
