@@ -30,6 +30,7 @@ namespace prismmod.NPCs.WaterTown
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Tools.KanayasChainsaw>());
+            nextSlot++;
         }
 
 
