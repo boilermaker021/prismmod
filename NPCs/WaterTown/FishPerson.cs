@@ -31,13 +31,14 @@ namespace prismmod.NPCs.WaterTown
 
         public override void AI()
         {
+            //breathe underwater, do not override.
             npc.breath = 100;
             npc.breathCounter = 100;
         }
 
         public override string TownNPCName()
         {
-            if(this.GetType() == typeof(FishPerson))
+            if(this.GetType() == typeof(FishPerson))//should check for FishPerson instance EXCLUDING inheritance
             {
                 DisplayName.SetDefault("Unknowable");
                 return "ArA93&%@MJyt**lf000";
