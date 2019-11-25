@@ -37,9 +37,26 @@ namespace prismmod.NPCs.WaterTown
 
         public override string TownNPCName()
         {
+            if(this.GetType() == typeof(FishPerson))
+            {
+                DisplayName.SetDefault("Unknowable");
+                return "ArA93&%@MJyt**lf000";
+            }
             int nameNum = Main.rand.Next(fishNames.Length);
             return fishNames[nameNum];//uses fishNames from PrismHelper
 
+        }
+
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+			button = "Divide by zero";
+
+		}
+
+        public override void OnChatButtonClicked(bool firstbutton, ref bool shop)
+        {
+            if(firstbutton)
+                int bruh = 1/0;
         }
 
         public override string GetChat()
