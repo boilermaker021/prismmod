@@ -70,6 +70,7 @@ namespace prismmod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
+            
             /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
@@ -89,6 +90,17 @@ namespace prismmod
                     //@body create class and image for block that acts as a gate to the biome
                     //@todo add gate for water town
                     //@body use glass tunnel coating to obtain x and y coords for gate placement to keep out the ne'er do wells
+
+                    bool wtRight;
+                    if (WorldGen.dungeonX < Main.maxTilesX / 2)
+                    {
+                        wtRight = true;
+                    }
+                    else
+                    {
+                        wtRight = false;
+                    }
+
                     bool placedGate = false;//used to check if gateX and gateY should be set
                     int gateY;
                     int gateX;
