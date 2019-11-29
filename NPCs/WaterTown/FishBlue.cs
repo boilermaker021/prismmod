@@ -6,7 +6,6 @@ using static prismmod.PrismHelper;
 
 namespace prismmod.NPCs.WaterTown
 {
-    //@todo add head file for these NPCS
     [AutoloadHead]
     internal class FishBlue : FishPerson
     {

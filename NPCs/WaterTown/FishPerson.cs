@@ -40,7 +40,6 @@ namespace prismmod.NPCs.WaterTown
         {
             if(this.GetType() == typeof(FishPerson))//should check for FishPerson instance EXCLUDING inheritance
             {
-                DisplayName.SetDefault("Unknowable");
                 return "ArA93&%@MJyt**lf000";
             }
             int nameNum = Main.rand.Next(fishNames.Length);
