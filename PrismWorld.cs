@@ -88,21 +88,23 @@ namespace prismmod
                 {
                     //@todo make placeholder for gate block
                     //@body create class and image for block that acts as a gate to the biome
-                    //@todo add gate for water town
-                    //@body use glass tunnel coating to obtain x and y coords for gate placement to keep out the ne'er do wells
 
+                    int operation;
                     bool wtRight;
                     if (WorldGen.dungeonX < Main.maxTilesX / 2)
                     {
                         wtRight = true;
+                        operation = -1;
                     }
                     else
                     {
                         wtRight = false;
+                        operation = 1;
                     }
 
+                    int gateBlock = TileID.WoodBlock;
                     bool placedGate = false;//used to check if gateX and gateY should be set
-                    int gateY;
+                    int gateY = 0;
                     int gateX;
                     progress.Message = "Tunneling";
 
@@ -119,16 +121,29 @@ namespace prismmod
                             || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active()))
                             || (Framing.GetTileSafely(xCoord, yCoord - 1).type == ModContent.TileType<CityWall>()))
                             {
-                                if(!placedGate)
+                                if (!placedGate)
                                 {
-                                    placedGate=true;
+                                    placedGate = true;
                                     gateY = yCoord;
                                     gateX = xCoord;
                                 }
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
+                            else
+                            {
+                                Tile target = Framing.GetTileSafely(xCoord, yCoord);
+                                target.liquid = 255;
+                                target.liquidType(0);
+                                target.liquid = 255;
+
+                            }
                         }
+
+                        WorldGen.PlaceTile(xCoord,gateY, gateBlock);
+
                     }
+
+
 
                     //Framing.GetTileSafely(gateX, gateY);
 
@@ -173,7 +188,6 @@ namespace prismmod
                         }
                     }
 
-                    //@todo Add fish npcs
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((100)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
 
