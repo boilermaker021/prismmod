@@ -19,11 +19,15 @@ namespace prismmod
         public static int moistChiseledStoneCount = 0;
         public bool downedGargantuanTortoise;
         public bool downedPrismachine;
+        public bool accessedWaterTown;
+        public int gatesY;
+        public int gatesX;
 
         public override void Initialize()
         {
             downedGargantuanTortoise = false;
             downedPrismachine = false;
+            accessedWaterTown = false;
         }
 
         public override void Load(TagCompound tag)
@@ -31,6 +35,9 @@ namespace prismmod
             var downed = tag.GetList<string>("downed");
             downedPrismachine = downed.Contains("Prismachine");
             downedGargantuanTortoise = downed.Contains("GargantuanTortoise");
+
+            var accessed = tag.GetList<string>("accessed");
+            accessedWaterTown = accessed.Contains("WaterTown");
         }
 
         public override TagCompound Save()
@@ -42,9 +49,14 @@ namespace prismmod
             {
                 downed.Add("GargantuanTortoise");
             }
+
+            var accessed = new List<string>();
+            if (accessedWaterTown)
+                accessed.Add("WaterTown");
             return new TagCompound
             {
-                ["downed"] = downed
+                ["downed"] = downed,
+                ["accessed"] = accessed
             };
         }
 
@@ -138,7 +150,7 @@ namespace prismmod
 
                             }
                         }
-
+                        gatesY = gateY;
                         WorldGen.PlaceTile(xCoord,gateY, gateBlock);
 
                     }
