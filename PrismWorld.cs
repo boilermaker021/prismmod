@@ -94,17 +94,27 @@ namespace prismmod
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
 
-                    int operation;
+                    int operation=1;
                     bool wtRight;
+                    int startXTunnel;
+                    int endXTunnel;
+                    int endXBiome;
                     if (WorldGen.dungeonX < Main.maxTilesX / 2)
                     {
                         wtRight = true;
                         operation = -1;
+                        startXTunnel = Main.maxTilesX-50;
+                        endXTunnel = Main.maxTilesX-63;
+                        endXBiome = Main.maxTilesX-151;
+
                     }
                     else
                     {
                         wtRight = false;
                         operation = 1;
+                        startXTunnel = 59;
+                        endXTunnel = 72;
+                        endXBiome = 210;
                     }
 
                     int gateBlock = ModContent.TileType<UnbreakableGate>();
@@ -115,15 +125,15 @@ namespace prismmod
 
                     int activeBlock = ModContent.TileType<CityWall>();
 
-                    for (int xCoord = 59; xCoord < 72; xCoord++)
+                    for (int xCoord = startXTunnel; (operation*xCoord < operation*endXTunnel); xCoord=xCoord+operation)
                     {
                         for (int yCoord = Main.spawnTileY - 70; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71)
-                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active())
-                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active()))
+                            if ((xCoord == startXTunnel || xCoord == endXTunnel-operation)
+                            && ((Framing.GetTileSafely(startXTunnel-operation, yCoord).liquid <= 2 && Framing.GetTileSafely(startXTunnel-operation, yCoord).active())
+                            || (Framing.GetTileSafely(endXTunnel, yCoord).liquid <= 2 && Framing.GetTileSafely(endXTunnel, yCoord).active()))
                             || (Framing.GetTileSafely(xCoord, yCoord - 1).type == ModContent.TileType<CityWall>()))
                             {
                                 if (!placedGate)
@@ -152,13 +162,13 @@ namespace prismmod
 
                     //Framing.GetTileSafely(gateX, gateY);
 
-                    for (int xCoord = 59; xCoord < 210; xCoord++)
+                    for (int xCoord = startXTunnel; operation*xCoord < endXBiome*operation; xCoord=xCoord+operation)
                     {
                         for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 209) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - 59) < 12) && (xCoord - 59) > 0))
+                            if (((xCoord == startXTunnel || xCoord == endXBiome-operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - startXTunnel) < 12) && (xCoord - startXTunnel) > 0))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
