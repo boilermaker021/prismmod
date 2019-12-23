@@ -88,7 +88,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Gems"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -162,17 +162,17 @@ namespace prismmod
 
                     //Framing.GetTileSafely(gateX, gateY);
 
-                    for (int xCoord = startXTunnel; operation*xCoord < endXBiome*operation; xCoord=xCoord+operation)
+                    for (int xCoord = startXTunnel; operation * xCoord < endXBiome * operation; xCoord = xCoord + operation)
                     {
                         for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == startXTunnel || xCoord == endXBiome-operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - startXTunnel) < 12) && (xCoord - startXTunnel) > 0))
+                            if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel+1)*operation)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
-                            else 
+                            else
                             {
                                 tile.liquid = 255;
                                 tile.liquidType(0);
@@ -182,29 +182,10 @@ namespace prismmod
                         }
                     }
 
-                    activeBlock = ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
-
-                    int biomeStartX= 59;
-                    int biomeStartY = 120;
-
-                    progress.Message = "Making the Cube";
-                    for (int y = biomeStartY+10; y < testHouse.GetLength(0)+10; y++)
-                    {
-                        for (int x = biomeStartX+10; x < testHouse.GetLength(1)+10; x++)
-                        {
-                            Tile tile = Framing.GetTileSafely(x, y);
-                            switch (testHouse[y - biomeStartY - 10, x-biomeStartX-10])
-                            {
-                                case 1:
-                                    tile.type = (ushort) ModContent.TileType<Tiles.Blox.MoistChiseledStone>();
-                                    break;
-
-                            }
-                        }
-                    }
+                    
 
                     progress.Message = "Importing Fish People";
-                    NPC.NewNPC((100)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
+                    NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
 
                 }));
             }
