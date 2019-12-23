@@ -76,10 +76,6 @@ namespace prismmod
             downedPrismachine = flags[1];
         }
 
-        //@todo figure out what the hell the Save and Load functions do
-        //@body what even is a TagCompound?
-        //save/load functions here
-
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             
@@ -92,14 +88,11 @@ namespace prismmod
                 }));
             }*/
 
-            //@todo fix infinite glass spawning before Smoothing World gen task
             int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
-                    //@todo make placeholder for gate block
-                    //@body create class and image for block that acts as a gate to the biome
 
                     int operation;
                     bool wtRight;
