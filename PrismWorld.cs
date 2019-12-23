@@ -88,7 +88,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Gems"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Remove Water From Sand"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -193,7 +193,7 @@ namespace prismmod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            moistChiseledStoneCount = tileCounts[ModContent.TileType<Tiles.Blox.MoistChiseledStone>()]; //update with custom mod block
+            moistChiseledStoneCount = tileCounts[ModContent.TileType<Tiles.Blox.CityWall>()]; //Change back to chiseled stone
         }
     }
 }
