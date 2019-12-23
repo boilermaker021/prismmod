@@ -16,6 +16,20 @@ namespace prismmod
             {mcs, mcs, mcs}
         };
 
+        public static void drawBaseFishHouse(int xStart, int yStart, int height, int width, int block)
+        {
+            for (int x = xStart; x < xStart + width; x++)
+            {
+                for (int y = yStart; y > yStart-height; y--)
+                {
+                    if (x == xStart || x == xStart + width-1 || y == yStart || y == yStart - height+1)
+                    {
+                        WorldGen.PlaceTile(x, y, block);
+                    }
+                }
+            }
+        }
+
         //Building Section
 
         //other values

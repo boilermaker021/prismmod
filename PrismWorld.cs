@@ -182,7 +182,35 @@ namespace prismmod
                         }
                     }
 
-                    
+                    int topY;
+                    int botY;
+                    int rightX;
+                    int leftX;
+                    topY = Main.spawnTileY + 120;
+                    botY = Main.spawnTileY + 280;
+                    if (wtRight)
+                    {
+                        rightX = startXTunnel;
+                        leftX = endXBiome;
+                    }
+                    else 
+                    {
+                        rightX = endXBiome;
+                        leftX = startXTunnel;
+                    }
+
+                    PrismHelper.drawBaseFishHouse(Main.spawnTileX, Main.spawnTileY, 20, 20, ModContent.TileType<MoistChiseledStone>());
+
+                    /*for (int x = leftX + 1; x < leftX + 21; x++)
+                    {
+                        for (int y = topY + 55; y < topY + 36; y--)
+                        {
+                            if ((x == leftX + 1 || x == leftX + 20)||(y==topY+55||y==topY+35))
+                            {
+                                WorldGen.PlaceTile(x, y, ModContent.TileType<MoistChiseledStone>());
+                            }
+                        }
+                    }*/
 
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
