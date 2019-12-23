@@ -177,7 +177,7 @@ namespace prismmod
                                 tile.liquid = 255;
                                 tile.liquidType(0);
                                 tile.liquid = 255;
-                                tile.wall = (ushort)ModContent.WallType<Placeholder>();
+                                //tile.wall = (ushort)ModContent.WallType<Placeholder>();
                             }
                         }
                     }
