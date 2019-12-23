@@ -102,13 +102,13 @@ namespace prismmod
                         operation = 1;
                     }
 
-                    int gateBlock = TileID.WoodBlock;
+                    int gateBlock = ModContent.TileType<UnbreakableGate>();
                     bool placedGate = false;//used to check if gateX and gateY should be set
                     int gateY = 0;
                     int gateX;
                     progress.Message = "Tunneling";
 
-                    int activeBlock = ModContent.TileType<CityWall>();//TileID.Glass;
+                    int activeBlock = ModContent.TileType<CityWall>();
 
                     for (int xCoord = 59; xCoord < 72; xCoord++)
                     {
