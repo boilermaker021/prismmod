@@ -19,11 +19,15 @@ namespace prismmod
         public static int moistChiseledStoneCount = 0;
         public bool downedGargantuanTortoise;
         public bool downedPrismachine;
+        public bool accessedWaterTown;
+        public int gatesY;
+        public int gatesX;
 
         public override void Initialize()
         {
             downedGargantuanTortoise = false;
             downedPrismachine = false;
+            accessedWaterTown = false;
         }
 
         public override void Load(TagCompound tag)
@@ -31,6 +35,9 @@ namespace prismmod
             var downed = tag.GetList<string>("downed");
             downedPrismachine = downed.Contains("Prismachine");
             downedGargantuanTortoise = downed.Contains("GargantuanTortoise");
+
+            var accessed = tag.GetList<string>("accessed");
+            accessedWaterTown = accessed.Contains("WaterTown");
         }
 
         public override TagCompound Save()
@@ -42,9 +49,14 @@ namespace prismmod
             {
                 downed.Add("GargantuanTortoise");
             }
+
+            var accessed = new List<string>();
+            if (accessedWaterTown)
+                accessed.Add("WaterTown");
             return new TagCompound
             {
-                ["downed"] = downed
+                ["downed"] = downed,
+                ["accessed"] = accessed
             };
         }
 
@@ -64,10 +76,6 @@ namespace prismmod
             downedPrismachine = flags[1];
         }
 
-        //@todo figure out what the hell the Save and Load functions do
-        //@body what even is a TagCompound?
-        //save/load functions here
-
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             
@@ -80,45 +88,52 @@ namespace prismmod
                 }));
             }*/
 
-            //@todo fix infinite glass spawning before Smoothing World gen task
             int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
-                    //@todo make placeholder for gate block
-                    //@body create class and image for block that acts as a gate to the biome
 
-                    int operation;
+                    int operation=1;
                     bool wtRight;
+                    int startXTunnel;
+                    int endXTunnel;
+                    int endXBiome;
                     if (WorldGen.dungeonX < Main.maxTilesX / 2)
                     {
                         wtRight = true;
                         operation = -1;
+                        startXTunnel = Main.maxTilesX-50;
+                        endXTunnel = Main.maxTilesX-63;
+                        endXBiome = Main.maxTilesX-151;
+
                     }
                     else
                     {
                         wtRight = false;
                         operation = 1;
+                        startXTunnel = 59;
+                        endXTunnel = 72;
+                        endXBiome = 210;
                     }
 
-                    int gateBlock = TileID.WoodBlock;
+                    int gateBlock = ModContent.TileType<UnbreakableGate>();
                     bool placedGate = false;//used to check if gateX and gateY should be set
                     int gateY = 0;
                     int gateX;
                     progress.Message = "Tunneling";
 
-                    int activeBlock = ModContent.TileType<CityWall>();//TileID.Glass;
+                    int activeBlock = ModContent.TileType<CityWall>();
 
-                    for (int xCoord = 59; xCoord < 72; xCoord++)
+                    for (int xCoord = startXTunnel; (operation*xCoord < operation*endXTunnel); xCoord=xCoord+operation)
                     {
                         for (int yCoord = Main.spawnTileY - 70; yCoord < Main.spawnTileY + 120; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if ((xCoord == 59 || xCoord == 71)
-                            && ((Framing.GetTileSafely(58, yCoord).liquid <= 2 && Framing.GetTileSafely(58, yCoord).active())
-                            || (Framing.GetTileSafely(72, yCoord).liquid <= 2 && Framing.GetTileSafely(72, yCoord).active()))
+                            if ((xCoord == startXTunnel || xCoord == endXTunnel-operation)
+                            && ((Framing.GetTileSafely(startXTunnel-operation, yCoord).liquid <= 2 && Framing.GetTileSafely(startXTunnel-operation, yCoord).active())
+                            || (Framing.GetTileSafely(endXTunnel, yCoord).liquid <= 2 && Framing.GetTileSafely(endXTunnel, yCoord).active()))
                             || (Framing.GetTileSafely(xCoord, yCoord - 1).type == ModContent.TileType<CityWall>()))
                             {
                                 if (!placedGate)
@@ -138,7 +153,7 @@ namespace prismmod
 
                             }
                         }
-
+                        gatesY = gateY;
                         WorldGen.PlaceTile(xCoord,gateY, gateBlock);
 
                     }
@@ -147,13 +162,13 @@ namespace prismmod
 
                     //Framing.GetTileSafely(gateX, gateY);
 
-                    for (int xCoord = 59; xCoord < 210; xCoord++)
+                    for (int xCoord = startXTunnel; operation*xCoord < endXBiome*operation; xCoord=xCoord+operation)
                     {
                         for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == 59 || xCoord == 209) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - 59) < 12) && (xCoord - 59) > 0))
+                            if (((xCoord == startXTunnel || xCoord == endXBiome-operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && ((xCoord - startXTunnel) < 12) && (xCoord - startXTunnel) > 0))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }

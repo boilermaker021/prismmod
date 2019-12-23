@@ -14,7 +14,7 @@ namespace prismmod
             {mcs, mcs, mcs},
             {mcs, ctwl, mcs},
             {mcs, mcs, mcs}
-    };
+        };
 
         //Building Section
 

@@ -46,6 +46,7 @@ namespace prismmod.NPCs.Prismachine
 
         public override void NPCLoot()
         {
+            Item.NewItem(npc.getRect(), ModContent.ItemType<Items.Consumables.WaterTownKey>());
             //Change loot to bossbag in hard mode and regular items if not
             if (Main.expertMode)
             {
@@ -80,6 +81,7 @@ namespace prismmod.NPCs.Prismachine
                 {
                     choice = Main.rand.Next(5);
                 }
+                
             }
             Item.NewItem(npc.getRect(), ItemID.IronBar, 10);
             Item.NewItem(npc.getRect(), ItemID.SilverBar, 10);
