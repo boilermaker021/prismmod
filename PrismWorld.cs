@@ -172,12 +172,6 @@ namespace prismmod
 
                     }
 
-                    for (int x = 0; x < Main.maxTilesX; x++)
-                    {
-                        Framing.GetTileSafely(x, baseSandBlock).type=TileID.HoneyBlock;
-                        WorldGen.PlaceTile(x, baseSandBlock, TileID.HoneyBlock);
-                    }
-
                     //Framing.GetTileSafely(gateX, gateY);
                     progress.Message = "Main Biome";
                     for (int xCoord = startXTunnel; operation * xCoord < endXBiome * operation; xCoord = xCoord + operation)
