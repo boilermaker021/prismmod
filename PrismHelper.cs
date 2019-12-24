@@ -27,7 +27,13 @@ namespace prismmod
                         WorldGen.PlaceTile(x, y, block);
                     }
                 }
+                int y=0;
+
+                WorldGen.PlaceTile(x, y, block);
+
             }
+
+
         }
 
         //Building Section

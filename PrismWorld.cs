@@ -88,7 +88,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Remove Water From Sand"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -199,7 +199,7 @@ namespace prismmod
                         leftX = startXTunnel;
                     }
 
-                    PrismHelper.drawBaseFishHouse(Main.spawnTileX, Main.spawnTileY, 20, 20, ModContent.TileType<MoistChiseledStone>());
+                    PrismHelper.drawBaseFishHouse(leftX+1, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
 
                     /*for (int x = leftX + 1; x < leftX + 21; x++)
                     {
