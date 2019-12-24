@@ -121,7 +121,7 @@ namespace prismmod
                     int baseSandBlock = 0;
                     for (int y = 0; y < Main.maxTilesY;y++)
                     {
-                        Tile tile = Framing.GetTileSafely(59,y);
+                        Tile tile = Framing.GetTileSafely(startXTunnel,y);
                         if (tile.active() && tile.liquid == 0)
                         {
                             baseSandBlock = y;
