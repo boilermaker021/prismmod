@@ -22,6 +22,7 @@ namespace prismmod
         public bool accessedWaterTown;
         public int gatesY;
         public int gatesX;
+        public int bsb;
 
         public override void Initialize()
         {
@@ -88,7 +89,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Beaches"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -116,18 +117,31 @@ namespace prismmod
                         endXTunnel = 72;
                         endXBiome = 210;
                     }
+                    progress.Message = "Finding some Sand";
+                    int baseSandBlock = 0;
+                    for (int y = 0; y < Main.maxTilesY;y++)
+                    {
+                        Tile tile = Framing.GetTileSafely(59,y);
+                        if (tile.active() && tile.liquid == 0)
+                        {
+                            baseSandBlock = y;
+                            break;
+                        }
+                    }
+
+                    bsb = baseSandBlock;
 
                     int gateBlock = ModContent.TileType<UnbreakableGate>();
                     bool placedGate = false;//used to check if gateX and gateY should be set
                     int gateY = 0;
                     int gateX;
-                    progress.Message = "Tunneling";
 
+                    progress.Message = "Tunneling";
                     int activeBlock = ModContent.TileType<CityWall>();
 
                     for (int xCoord = startXTunnel; (operation*xCoord < operation*endXTunnel); xCoord=xCoord+operation)
                     {
-                        for (int yCoord = Main.spawnTileY - 70; yCoord < Main.spawnTileY + 120; yCoord++)
+                        for (int yCoord = baseSandBlock-1; yCoord < baseSandBlock+15; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
@@ -158,17 +172,21 @@ namespace prismmod
 
                     }
 
-
+                    for (int x = 0; x < Main.maxTilesX; x++)
+                    {
+                        Framing.GetTileSafely(x, baseSandBlock).type=TileID.HoneyBlock;
+                        WorldGen.PlaceTile(x, baseSandBlock, TileID.HoneyBlock);
+                    }
 
                     //Framing.GetTileSafely(gateX, gateY);
-
+                    progress.Message = "Main Biome";
                     for (int xCoord = startXTunnel; operation * xCoord < endXBiome * operation; xCoord = xCoord + operation)
                     {
-                        for (int yCoord = Main.spawnTileY + 120; yCoord < Main.spawnTileY + 280; yCoord++)
+                        for (int yCoord = baseSandBlock+15; yCoord < baseSandBlock+175; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel-1)*operation)))
+                            if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == baseSandBlock+174 || yCoord == baseSandBlock+15)) && !(yCoord == baseSandBlock+15 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel-1)*operation)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
@@ -186,8 +204,8 @@ namespace prismmod
                     int botY;
                     int rightX;
                     int leftX;
-                    topY = Main.spawnTileY + 120;
-                    botY = Main.spawnTileY + 280;
+                    topY = baseSandBlock+15;
+                    botY = baseSandBlock+175;
                     if (wtRight)
                     {
                         rightX = startXTunnel;
@@ -200,17 +218,6 @@ namespace prismmod
                     }
 
                     PrismHelper.drawBaseFishHouse(leftX+1, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
-
-                    /*for (int x = leftX + 1; x < leftX + 21; x++)
-                    {
-                        for (int y = topY + 55; y < topY + 36; y--)
-                        {
-                            if ((x == leftX + 1 || x == leftX + 20)||(y==topY+55||y==topY+35))
-                            {
-                                WorldGen.PlaceTile(x, y, ModContent.TileType<MoistChiseledStone>());
-                            }
-                        }
-                    }*/
 
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
