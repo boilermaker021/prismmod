@@ -27,9 +27,14 @@ namespace prismmod
                         WorldGen.PlaceTile(x, y, block);
                     }
                 }
-                int y=0;
-
-                WorldGen.PlaceTile(x, y, block);
+                /*int yRoof=0;
+                int h = (x + (width / 2));
+                int k = (5);
+                int cx = xStart;
+                int cy = yStart + height;
+                int a = (cy-k)/(x-h^2);
+                yRoof = a*(x - h) ^ 2 + k;
+                WorldGen.PlaceTile(x, yRoof, block);*/
 
             }
 
