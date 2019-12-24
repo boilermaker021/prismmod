@@ -168,7 +168,7 @@ namespace prismmod
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
                             tile.ClearTile();
-                            if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel-1)*operation)))
+                            if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == Main.spawnTileY + 279 || yCoord == Main.spawnTileY + 120)) && !(yCoord == Main.spawnTileY + 120 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel+1)*operation)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
