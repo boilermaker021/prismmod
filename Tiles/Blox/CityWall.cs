@@ -13,7 +13,6 @@ namespace prismmod.Tiles.Blox
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
-            drop = ItemType<Items.Placeables.MoistChiseledStone>();
             AddMapEntry(new Color(74, 71, 245));
             mineResist = 7f;
             minPick = 100;
