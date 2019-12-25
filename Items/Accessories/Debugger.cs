@@ -13,7 +13,7 @@ namespace prismmod.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Debugger");
-            Tooltip.SetDefault("Delete these now, you cheater");
+            Tooltip.SetDefault("Doesn't do anything yet");
         }
 
         public override void SetDefaults()
