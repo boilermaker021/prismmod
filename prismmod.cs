@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace prismmod
 {
@@ -25,6 +26,20 @@ namespace prismmod
         public override void Unload()
         {
             //updash = null;
+        }
+
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
+            {
+                return;
+            }
+
+            if (Main.LocalPlayer.GetModPlayer<PrismPlayer>().ZoneWaterTown && ModLoader.GetMod("prismmod")!=null)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Biomes/WaterTown/Theme");
+                priority = MusicPriority.BiomeMedium;
+            }
         }
 
         public override void AddRecipes()
