@@ -89,7 +89,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Beaches"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Water Chests"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
@@ -211,7 +211,7 @@ namespace prismmod
                         leftX = startXTunnel;
                     }
 
-                    PrismHelper.drawBaseFishHouse(leftX+1, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
+                    PrismHelper.drawBaseFishHouse(leftX+2, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
 
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
