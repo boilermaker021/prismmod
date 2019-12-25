@@ -179,7 +179,7 @@ namespace prismmod
                         for (int yCoord = baseSandBlock+15; yCoord < baseSandBlock+175; yCoord++)
                         {
                             Tile tile = Framing.GetTileSafely(xCoord, yCoord);
-                            tile.ClearTile();
+                            tile.ClearEverything();
                             if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == baseSandBlock+174 || yCoord == baseSandBlock+15)) && !(yCoord == baseSandBlock+15 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel-1)*operation)))
                             {
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
