@@ -35,10 +35,14 @@ namespace prismmod
                 return;
             }
 
-            if (Main.LocalPlayer.GetModPlayer<PrismPlayer>().ZoneWaterTown && ModLoader.GetMod("prismmod")!=null)
+            if (Main.LocalPlayer.GetModPlayer<PrismPlayer>().ZoneWaterTown)
             {
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Biomes/WaterTown/Theme");
-                priority = MusicPriority.BiomeMedium;
+                Mod musicmod = ModLoader.GetMod("prismmodmusic");
+                if (musicmod != null)
+                {
+                    priority = MusicPriority.BossHigh;
+                    music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/Biomes/WaterTown");
+                }
             }
         }
 
