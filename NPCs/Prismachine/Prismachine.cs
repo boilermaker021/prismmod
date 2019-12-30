@@ -46,7 +46,17 @@ namespace prismmod.NPCs.Prismachine
 
         public override void NPCLoot()
         {
-            Item.NewItem(npc.getRect(), ModContent.ItemType<Items.Consumables.WaterTownKey>());
+            for (int x = 0; x < Main.maxTilesX; x++)
+            {
+                int y = ModContent.GetInstance<PrismWorld>().gatesY;
+                Tile tile = Framing.GetTileSafely(x, y);
+                if (tile.type == (ushort)ModContent.TileType<Tiles.Blox.UnbreakableGate>())
+                {
+                    tile.ClearTile();
+                }
+            }
+
+            ModContent.GetInstance<PrismWorld>().accessedWaterTown = true;
             //Change loot to bossbag in hard mode and regular items if not
             if (Main.expertMode)
             {
