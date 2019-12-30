@@ -16,6 +16,20 @@ namespace prismmod
             {mcs, mcs, mcs}
         };
 
+        public static void UnlockWaterTown()
+        {
+            for (int x = 0; x < Main.maxTilesX; x++)
+            {
+                int y = ModContent.GetInstance<PrismWorld>().gatesY;
+                Tile tile = Framing.GetTileSafely(x, y);
+                if (tile.type == (ushort)ModContent.TileType<Tiles.Blox.UnbreakableGate>())
+                {
+                    tile.ClearTile();
+                }
+            }
+
+            ModContent.GetInstance<PrismWorld>().accessedWaterTown = true;
+        }
         public static void drawBaseFishHouse(int xStart, int yStart, int height, int width, int block)
         {
             for (int x = xStart; x < xStart + width; x++)
