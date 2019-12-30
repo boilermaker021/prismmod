@@ -18,6 +18,11 @@ namespace prismmod
 
         public static void UnlockWaterTown()
         {
+            if (Main.netMode != 2)
+            {
+                Main.NewText("The gateway to a restricted land has opened... the fish people want your money...", 0, 0, 255);
+            }
+
             for (int x = 0; x < Main.maxTilesX; x++)
             {
                 int y = ModContent.GetInstance<PrismWorld>().gatesY;
