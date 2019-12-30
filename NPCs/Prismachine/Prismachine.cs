@@ -46,7 +46,12 @@ namespace prismmod.NPCs.Prismachine
 
         public override void NPCLoot()
         {
-            PrismHelper.UnlockWaterTown();
+            if (Main.netMode != 2 && !ModContent.GetInstance<PrismWorld>().accessedWaterTown)
+            {
+                Main.NewText("The gateway to a restricted land has opened... the fish people want your money...",0,0,255);
+                PrismHelper.UnlockWaterTown();
+            }
+            
             //Change loot to bossbag in hard mode and regular items if not
             if (Main.expertMode)
             {
