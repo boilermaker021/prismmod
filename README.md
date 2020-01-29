@@ -1,4 +1,4 @@
-## The Prism Mod
+## The Prism Mod - Development on Hiatus
 ![Discord](https://img.shields.io/discord/591522781087399937.svg)
 ![GitHub release](https://img.shields.io/github/release/CommieSlayer1950/prismmod.svg?label=latest%20version)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/CommieSlayer1950/prismmod/latest/test-branch?color=green)
@@ -9,6 +9,7 @@ by CommieSlayer and LordCrumple
 
 notable contributions by Dalfino
 
+## Development is no longer in progress and will likely be resumed during the Summer.
 
 
 The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, biomes, and more.
