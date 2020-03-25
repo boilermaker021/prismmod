@@ -89,7 +89,7 @@ namespace prismmod
                 }));
             }*/
 
-            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Water Chests"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Pots"));
             if (genIndex != -1)
             {
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
