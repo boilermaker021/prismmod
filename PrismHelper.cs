@@ -75,7 +75,7 @@ namespace prismmod
             {
                 Framing.GetTileSafely(xDoor, y).ClearTile();
             }
-            Point spawnPoint = new Point(xStart+(width/2), yStart);
+            Point spawnPoint = new Point(xStart+(width/2), yStart+1);
             return spawnPoint;
             
 
