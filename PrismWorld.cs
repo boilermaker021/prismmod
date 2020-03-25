@@ -168,6 +168,8 @@ namespace prismmod
                             }
                         }
                         gatesY = gateY;
+                        Tile gTarget = Framing.GetTileSafely(xCoord, gateY);
+                        gTarget.ClearTile();
                         WorldGen.PlaceTile(xCoord,gateY, gateBlock);
 
                     }
@@ -211,7 +213,10 @@ namespace prismmod
                         leftX = startXTunnel;
                     }
 
-                    PrismHelper.drawBaseFishHouse(leftX+2, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
+
+                    //house drawing
+                    PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
+                    PrismHelper.drawGroundFromWall(leftX + 2, topY + 31, 5, 25, TileID.Stone, 'l');
 
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
