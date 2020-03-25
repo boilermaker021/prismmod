@@ -5,12 +5,12 @@ using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
-
 using prismmod.NPCs.WaterTown;
 using prismmod.Tiles.Blox;
 using prismmod.Walls;
 using static prismmod.PrismHelper;
 using Terraria.ModLoader.IO;
+using Microsoft.Xna.Framework;
 
 namespace prismmod
 {
@@ -221,9 +221,10 @@ namespace prismmod
                         leftX = startXTunnel;
                     }
 
+                    List<Point> spawnPoints = new List<Point>();
 
                     //house drawing
-                    PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l');
+                    spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
                     PrismHelper.drawGroundFromWall(leftX + 2, topY + 30, 5, 25, TileID.Stone, 'l');
 
                     progress.Message = "Importing Fish People";

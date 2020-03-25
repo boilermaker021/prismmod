@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using prismmod.Tiles.Blox;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace prismmod
 {
@@ -9,7 +11,7 @@ namespace prismmod
     {
         public static int mcs = 1;
         public static int ctwl = 2;
-
+        
         public static int[,] testHouse = {
 
             {mcs, mcs, mcs},
@@ -17,11 +19,12 @@ namespace prismmod
             {mcs, mcs, mcs}
         };
 
+
         public static void UnlockWaterTown()
         {
             if (Main.netMode != 2)
             {
-                Main.NewText("The gateway to a restricted land has opened... the fish people want your money...", 0, 0, 255);
+                Main.NewText("The gateway to a restricted land has opened... the fish people want your money.", 0, 0, 255);
             }
 
             for (int x = 0; x < Main.maxTilesX; x++)
@@ -36,7 +39,7 @@ namespace prismmod
 
             ModContent.GetInstance<PrismWorld>().accessedWaterTown = true;
         }
-        public static void drawBaseFishHouse(int xStart, int yStart, int height, int width, int block, char direction)
+        public static Point drawBaseFishHouse(int xStart, int yStart, int height, int width, int block, char direction)
         {
             for (int x = xStart; x <= (xStart + width); x++)
             {
@@ -72,6 +75,8 @@ namespace prismmod
             {
                 Framing.GetTileSafely(xDoor, y).ClearTile();
             }
+            Point spawnPoint = new Point(xStart+(width/2), yStart);
+            return spawnPoint;
             
 
         }
