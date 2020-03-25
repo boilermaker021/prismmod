@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using prismmod.Tiles.Blox;
 
 namespace prismmod
 {
@@ -35,7 +36,7 @@ namespace prismmod
 
             ModContent.GetInstance<PrismWorld>().accessedWaterTown = true;
         }
-        public static void drawBaseFishHouse(int xStart, int yStart, int height, int width, int block)
+        public static void drawBaseFishHouse(int xStart, int yStart, int height, int width, int block, char direction)
         {
             for (int x = xStart; x <= (xStart + width); x++)
             {
@@ -44,6 +45,13 @@ namespace prismmod
                     if (x == xStart || x == xStart + width || y == yStart || y == yStart - height)
                     {
                         WorldGen.PlaceTile(x, y, block);
+                    }
+                    else
+                    {
+                        Tile target = Framing.GetTileSafely(x, y);
+                        target.liquid = 255;
+                        target.liquidType(0);
+                        target.liquid = 255;
                     }
                 }
                 /*int yRoof=0;
@@ -54,9 +62,17 @@ namespace prismmod
                 int a = (cy-k)/(x-h^2);
                 yRoof = a*(x - h) ^ 2 + k;
                 WorldGen.PlaceTile(x, yRoof, block);*/
-
             }
-
+            int xDoor=0;
+            if (direction == 'l')
+            {
+                xDoor = xStart + width;
+            }
+            for (int y = yStart - 1; y >= yStart - 5; y--)
+            {
+                Framing.GetTileSafely(xDoor, y).ClearTile();
+            }
+            
 
         }
 
@@ -81,8 +97,12 @@ namespace prismmod
                     for (int x = xStart; x <= (xStart + width); x++)
                     {
                         Tile tile = Framing.GetTileSafely(x, y);
-                        tile.ClearTile();
-                        WorldGen.PlaceTile(x,y,block);
+                        if (tile.type != ModContent.TileType<MoistChiseledStone>())
+                        {
+                            tile.ClearTile();
+                            WorldGen.PlaceTile(x, y, block);
+                        }
+                        
                     }
                 }
             }
