@@ -60,6 +60,35 @@ namespace prismmod
 
         }
 
+        public static void drawGroundFromWall(int xStart, int yStart, int height, int width, int block, char direction)
+        {
+            if (direction == 'l')
+            {
+                for (int y = yStart; y <= (yStart + height); y++)
+                {
+                    if ((y - yStart) / (yStart + height) <= 0.25)
+                    {
+                        width -= 1;
+                    }
+                    if ((y - yStart) / (yStart + height) <= 0.5)
+                    {
+                        width -= 1;
+                    }
+                    if ((y - yStart) / (height) <= 0.75)//at each interval, decrease width by an increasing amount
+                    {
+                        width -= 1;
+                    }
+                    for (int x = xStart; x <= (xStart + width); x++)
+                    {
+                        Tile tile = Framing.GetTileSafely(x, y);
+                        tile.ClearTile();
+                        WorldGen.PlaceTile(x,y,block);
+                    }
+                }
+            }
+        }
+
+
         //Building Section
 
         //other values
