@@ -223,8 +223,8 @@ namespace prismmod
 
 
                     //house drawing
-                    PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>());
-                    PrismHelper.drawGroundFromWall(leftX + 2, topY + 31, 5, 25, TileID.Stone, 'l');
+                    PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l');
+                    PrismHelper.drawGroundFromWall(leftX + 2, topY + 30, 5, 25, TileID.Stone, 'l');
 
                     progress.Message = "Importing Fish People";
                     NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());
