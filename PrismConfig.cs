@@ -19,15 +19,6 @@ namespace prismmod
         [ReloadRequired]
         [DefaultValue(false)]
         public bool DisableLore { get; set; }
-
-        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
-        {
-            if (Main.player[whoAmI].name == "CommieSlayer")
-            {
-                return true;
-            }
-            return false;
-        }
     }
 
     /*class ClientConfig: ModConfig
