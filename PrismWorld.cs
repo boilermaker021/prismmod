@@ -184,6 +184,14 @@ namespace prismmod
                             tile.ClearEverything();
                             if (((xCoord == startXTunnel || xCoord == endXBiome - operation) || (yCoord == baseSandBlock+174 || yCoord == baseSandBlock+15)) && !(yCoord == baseSandBlock+15 && (xCoord* operation > startXTunnel* operation && xCoord*operation < (endXTunnel-1)*operation)))
                             {
+                                WorldGen.PlaceTile(xCoord+1, yCoord+1, activeBlock);
+                                WorldGen.PlaceTile(xCoord-1, yCoord-1, activeBlock);
+                                WorldGen.PlaceTile(xCoord+1, yCoord-1, activeBlock);
+                                WorldGen.PlaceTile(xCoord-1, yCoord+1, activeBlock);
+                                WorldGen.PlaceTile(xCoord+1, yCoord, activeBlock);
+                                WorldGen.PlaceTile(xCoord-1, yCoord, activeBlock);
+                                WorldGen.PlaceTile(xCoord, yCoord+1, activeBlock);
+                                WorldGen.PlaceTile(xCoord, yCoord-1, activeBlock);
                                 WorldGen.PlaceTile(xCoord, yCoord, activeBlock);
                             }
                             else
