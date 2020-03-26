@@ -95,15 +95,14 @@ namespace prismmod
                 tasks.Insert(genIndex + 1, new PassLegacy("Generate  Water Town", delegate (GenerationProgress progress)
                 {
 
-                    int operation=1;
+                    int operation = 1;
                     bool wtRight;
                     int startXTunnel;
-                    int endXBiome;
                     if (WorldGen.dungeonX < Main.maxTilesX / 2)
                     {
                         wtRight = true;
                         operation = -1;
-                        startXTunnel = Main.maxTilesX-75;
+                        startXTunnel = Main.maxTilesX - 75;
 
                     }
                     else
@@ -114,9 +113,9 @@ namespace prismmod
                     }
                     progress.Message = "Finding some Sand";
                     int baseSandBlock = 0;
-                    for (int y = 0; y < Main.maxTilesY;y++)
+                    for (int y = 0; y < Main.maxTilesY; y++)
                     {
-                        Tile tile = Framing.GetTileSafely(startXTunnel,y);
+                        Tile tile = Framing.GetTileSafely(startXTunnel, y);
                         if (tile.active() && tile.liquid == 0)
                         {
                             baseSandBlock = y;
@@ -125,14 +124,14 @@ namespace prismmod
                     }
 
                     bsb = baseSandBlock;
-                    
+
 
                     int gateBlock = ModContent.TileType<UnbreakableGate>();
                     bool placedGate = false;//used to check if gateX and gateY should be set
                     int gateY = 0;
                     int gateX;
 
-                    progress.Message = "Tunneling";
+                    
                     int activeBlock = ModContent.TileType<CityWall>();
 
                     /*
@@ -144,40 +143,109 @@ namespace prismmod
                      */
                     int tunnelDepth = 35;
                     int tunnelWidth = 9;
+                    int biomeDepth = 95;
+                    int biomeWidth = 200;
                     int endXTunnel = startXTunnel + (operation * tunnelWidth);
+                    int endXBiome = startXTunnel + (operation * biomeWidth);
+                    progress.Message = "Tunneling";
 
-                    for (int y = bsb; y<=(bsb+tunnelDepth);y++)//start at base sand block and go until desired tunnel depth has been reached
+                    for (int y = bsb; y <= (bsb + tunnelDepth); y++)//start at base sand block and go until desired tunnel depth has been reached
                     {
-                        for (int x = (startXTunnel-operation-operation); x != (endXTunnel+operation); x += operation) 
+                        for (int x = (startXTunnel - operation); x != (endXTunnel + operation + operation); x += operation)
                         {
-                            Framing.GetTileSafely(x, y).ClearTile();
-                        }
-                        for (int x = (startXTunnel - operation - operation); x != (endXTunnel + operation); x += operation)
-                        {
-                            if (x == startXTunnel || x == endXTunnel)
-                            {
-                                WorldGen.PlaceTile(x, y, activeBlock);
-                                WorldGen.PlaceTile(x - 1, y, activeBlock);
-                                WorldGen.PlaceTile(x + 1, y, activeBlock);
-                            }
+
+                            Tile tile = Framing.GetTileSafely(x, y);
+                            tile.ClearEverything();
+                            tile.liquidType(0);
+                            tile.liquid = 255;
                         }
                     }
 
+
+                    progress.Message = "Digging Main Biome";
+                    for (int y = bsb + tunnelDepth-1; y <= (bsb + tunnelDepth + biomeDepth+1); y++)//start at base sand block and go until desired tunnel depth has been reached
+                    {
+                        for (int x = (startXTunnel - operation); x != (startXTunnel + (biomeWidth * operation)+operation+operation); x += operation)
+                        {
+                            Tile tile = Framing.GetTileSafely(x, y);
+                            tile.ClearEverything();
+                            tile.liquidType(0);
+                            tile.liquid = 255;
+                        }
+                    }
+
+                    progress.Message = "Placing Gate";
                     for (int x = startXTunnel; x != endXTunnel; x += operation)
                     {
                         WorldGen.PlaceTile(x, bsb, ModContent.TileType<UnbreakableGate>());
                     }
 
+                    progress.Message = "Building Initial Tunnel Walls";
+                    for (int y = bsb; y <= (bsb + tunnelDepth); y++)
+                    {
+                        for (int x = (startXTunnel - operation); x != (endXTunnel + operation + operation); x += operation)
+                        {
+                            if (x == startXTunnel || x == endXTunnel)
+                            {
+                            WorldGen.PlaceTile(x, y, activeBlock);
+                            WorldGen.PlaceTile(x - 1, y, activeBlock);
+                            WorldGen.PlaceTile(x + 1, y, activeBlock);
+                            }
+                        }
+                    }
 
+                    progress.Message = "Placing Main Biome Walls";
+                    for (int y = bsb + tunnelDepth; y <= (bsb + tunnelDepth + biomeDepth+1); y++)
+                    {
+                        for (int x = (startXTunnel - operation - operation); x != (startXTunnel + (biomeWidth * operation)+operation+operation); x += operation)
+                        {
+                            if (y==bsb+tunnelDepth && (x*operation>endXTunnel*operation))//top layer
+                            {
+                                WorldGen.PlaceTile(x, y, activeBlock);
+                                WorldGen.PlaceTile(x, y+1, activeBlock);
+                                WorldGen.PlaceTile(x, y-1, activeBlock);
+                            }
 
-                    List<Point> spawnPoints = new List<Point>();
+                            if (x == startXTunnel || x == (endXBiome))//sides
+                            {
+                                WorldGen.PlaceTile(x, y, activeBlock);
+                                WorldGen.PlaceTile(x-1, y, activeBlock);
+                                WorldGen.PlaceTile(x+1, y, activeBlock);
+                            }
+
+                            if (y==bsb + tunnelDepth + biomeDepth)
+                            {
+                                WorldGen.PlaceTile(x, y, activeBlock);
+                                WorldGen.PlaceTile(x, y + 1, activeBlock);
+                                WorldGen.PlaceTile(x, y - 1, activeBlock);
+                            }
+
+                        }
+                    }
+
+                    List <Point> spawnPoints = new List<Point>();
+
+                    int leftX=0;
+                    int rightX=0;
+                    if (wtRight)
+                    {
+                        leftX = endXBiome;
+                        rightX = startXTunnel;
+                    }
+                    if (!wtRight)
+                    {
+                        leftX = startXTunnel;
+                        rightX = endXBiome;
+                    }
+                    int topY = bsb + tunnelDepth;
+                    int botY = bsb + tunnelDepth + biomeDepth;
 
                     //house drawing
-                    /*spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
+                    spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
                     PrismHelper.drawGroundFromWall(leftX + 2, topY + 30, 5, 25, TileID.Stone, 'l');
-
-                    progress.Message = "Importing Fish People";
-                    NPC.NewNPC((startXTunnel+endXBiome/2)*16, (Main.spawnTileY + 130)*16,ModContent.NPCType<FishBlue>());*/
+                    /*NPC.NewNPC(,, ModContent.NPCType<FishBlue>()); */
+                              progress.Message = "Importing Fish People";
+                    
 
                 }));
             }
