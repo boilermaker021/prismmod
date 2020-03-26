@@ -241,11 +241,15 @@ namespace prismmod
                     int botY = bsb + tunnelDepth + biomeDepth;
 
                     //house drawing
-                    spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 15, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
+                    spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 8, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
                     PrismHelper.drawGroundFromWall(leftX + 2, topY + 30, 5, 25, TileID.Stone, 'l');
-                    /*NPC.NewNPC(,, ModContent.NPCType<FishBlue>()); */
-                              progress.Message = "Importing Fish People";
                     
+                    progress.Message = "Importing Fish People";
+                    Point spawnPoint1 = spawnPoints.ToArray()[0];
+                    NPC.NewNPC(spawnPoint1.X*16,spawnPoint1.Y*16, ModContent.NPCType<FishBlue>());
+
+                    progress.Message = "Populating Passives";
+
 
                 }));
             }
