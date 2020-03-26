@@ -29,7 +29,7 @@ namespace prismmod
 
             for (int x = 0; x < Main.maxTilesX; x++)
             {
-                int y = ModContent.GetInstance<PrismWorld>().gatesY;
+                int y = ModContent.GetInstance<PrismWorld>().bsb;
                 Tile tile = Framing.GetTileSafely(x, y);
                 if (tile.type == (ushort)ModContent.TileType<Tiles.Blox.UnbreakableGate>())
                 {
