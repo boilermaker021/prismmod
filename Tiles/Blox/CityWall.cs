@@ -15,7 +15,7 @@ namespace prismmod.Tiles.Blox
             Main.tileLighted[Type] = true;
             AddMapEntry(new Color(74, 71, 245));
             mineResist = 7f;
-            minPick = 100;
+            minPick = 100000000;
             
         }
 
