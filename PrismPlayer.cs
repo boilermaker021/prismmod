@@ -48,7 +48,7 @@ namespace prismmod
 
         public override void UpdateBiomes()
         {
-            ZoneWaterTown = PrismWorld.moistChiseledStoneCount > 10;
+            ZoneWaterTown = PrismWorld.moistChiseledStoneCount > 200;
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)

@@ -174,11 +174,7 @@ namespace prismmod
                         }
                     }
 
-                    progress.Message = "Placing Gate";
-                    for (int x = startXTunnel; x != endXTunnel; x += operation)
-                    {
-                        WorldGen.PlaceTile(x, bsb, ModContent.TileType<UnbreakableGate>());
-                    }
+                    
 
                     progress.Message = "Building Initial Tunnel Walls";
                     for (int y = bsb; y <= (bsb + tunnelDepth); y++)
@@ -221,6 +217,12 @@ namespace prismmod
                             }
 
                         }
+                    }
+
+                    progress.Message = "Placing Gate";
+                    for (int x = startXTunnel; x != endXTunnel; x += operation)
+                    {
+                        WorldGen.PlaceTile(x, bsb, ModContent.TileType<UnbreakableGate>());
                     }
 
                     List <Point> spawnPoints = new List<Point>();
