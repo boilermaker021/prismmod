@@ -33,7 +33,7 @@ namespace prismmod
                 Tile tile = Framing.GetTileSafely(x, y);
                 if (tile.type == (ushort)ModContent.TileType<Tiles.Blox.UnbreakableGate>())
                 {
-                    tile.ClearTile();
+                    tile.ClearEverything();
                 }
             }
 
@@ -57,14 +57,7 @@ namespace prismmod
                         target.liquid = 255;
                     }
                 }
-                /*int yRoof=0;
-                int h = (x + (width / 2));
-                int k = (5);
-                int cx = xStart;
-                int cy = yStart + height;
-                int a = (cy-k)/(x-h^2);
-                yRoof = a*(x - h) ^ 2 + k;
-                WorldGen.PlaceTile(x, yRoof, block);*/
+
             }
             int xDoor=0;
             if (direction == 'l')
@@ -111,6 +104,11 @@ namespace prismmod
                     }
                 }
             }
+        }
+
+        public static void drawIsland(int xCenter, int yCenter, int width, int height, int block)
+        { 
+            
         }
 
 
