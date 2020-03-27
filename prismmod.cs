@@ -6,17 +6,6 @@ namespace prismmod
 {
     internal class prismmod : Mod
     {
-        //public static ModHotKey updash;
-
-        public prismmod()
-        {
-            Properties = new ModProperties()
-            {
-                Autoload = true,
-                AutoloadGores = true,
-                AutoloadSounds = true
-            };
-        }
 
 
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
@@ -27,7 +16,7 @@ namespace prismmod
             }
 
             if (Main.LocalPlayer.GetModPlayer<PrismPlayer>().ZoneWaterTown)
-            {
+            { 
                 Mod musicmod = ModLoader.GetMod("prismmodmusic");
                 if (musicmod != null)
                 {
