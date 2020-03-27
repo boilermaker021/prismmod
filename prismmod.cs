@@ -18,15 +18,6 @@ namespace prismmod
             };
         }
 
-        public override void Load()
-        {
-            //updash = RegisterHotKey("Upwards Dash (Double Press)", "W");
-        }
-
-        public override void Unload()
-        {
-            //updash = null;
-        }
 
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
