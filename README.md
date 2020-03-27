@@ -9,7 +9,7 @@ by CommieSlayer and LordCrumple
 
 notable contributions by Dalfino
 
-## Development is no longer in progress and will likely be resumed during the Summer.
+## Development is now in progress again!
 
 
 The Prism Mod aims to overhaul Terraria and add many new bosses, npcs, items, biomes, and more.
