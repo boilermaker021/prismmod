@@ -14,8 +14,8 @@ namespace prismmod.Backgrounds
 		{
 			textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG0");
 			textureSlots[1] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG1");
-			textureSlots[2] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG2");
-			textureSlots[3] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG3");
+			textureSlots[2] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG0");
+			textureSlots[3] = mod.GetBackgroundSlot("Backgrounds/WaterTownUG1");
 		}
 	}
 }
