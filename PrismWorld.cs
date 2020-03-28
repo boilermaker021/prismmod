@@ -155,9 +155,11 @@ namespace prismmod
                         {
 
                             Tile tile = Framing.GetTileSafely(x, y);
-                            tile.ClearEverything();
+                            tile.ClearTile();
                             tile.liquidType(0);
                             tile.liquid = 255;
+                            WorldGen.PlaceWall(x, y, ModContent.WallType<Placeholder>());
+                            tile.wall = (ushort)ModContent.WallType<Placeholder>();
                         }
                     }
 
@@ -168,9 +170,12 @@ namespace prismmod
                         for (int x = (startXTunnel - operation); x != (startXTunnel + (biomeWidth * operation)+operation+operation); x += operation)
                         {
                             Tile tile = Framing.GetTileSafely(x, y);
-                            tile.ClearEverything();
+                            tile.ClearTile();
                             tile.liquidType(0);
                             tile.liquid = 255;
+                            WorldGen.PlaceWall(x, y, ModContent.WallType<Placeholder>());
+                            tile.wall = (ushort)ModContent.WallType<Placeholder>();
+
                         }
                     }
 
@@ -183,9 +188,9 @@ namespace prismmod
                         {
                             if (x == startXTunnel || x == endXTunnel)
                             {
-                            WorldGen.PlaceTile(x, y, activeBlock);
-                            WorldGen.PlaceTile(x - 1, y, activeBlock);
-                            WorldGen.PlaceTile(x + 1, y, activeBlock);
+                                WorldGen.PlaceTile(x, y, activeBlock);
+                                WorldGen.PlaceTile(x - 1, y, activeBlock);
+                                WorldGen.PlaceTile(x + 1, y, activeBlock);
                             }
                         }
                     }
