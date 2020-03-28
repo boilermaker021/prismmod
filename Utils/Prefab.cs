@@ -1,27 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Terraria;
+using Terraria.ID;
 using Microsoft.Xna.Framework;
 
 namespace prismmod.Utils
 {
-    class Prefab
+    abstract class PrismPrefab
     {
         int height;
         int width;
-        char direction;
+        bool faceLeft;
         int[,] structure = {
             { },
             { },
             { }
         };
 
-        public Point drawStructure(int x, int y, char direction)
+        public abstract Point drawStructure(int x, int y, char direction);
+
+        public virtual void setDirection(bool faceLeft)
         {
-            Point center = new Point(x, y);
-            return center;
+            if (this.faceLeft != faceLeft)
+            { 
+                //flip code here
+            }
         }
-    }
+
+        public virtual int[,] getArray()
+        {
+            return this.structure;
+        }
 }
