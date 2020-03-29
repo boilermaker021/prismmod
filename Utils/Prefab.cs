@@ -20,7 +20,7 @@ namespace prismmod.Utils
         public virtual void setDirection(bool faceLeft)
         {
             if (this.faceLeft != faceLeft)
-            { 
+            {
                 //flip code here
             }
         }
@@ -29,4 +29,5 @@ namespace prismmod.Utils
         {
             return this.structure;
         }
+    }
 }
