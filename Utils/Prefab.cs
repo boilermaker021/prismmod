@@ -15,7 +15,12 @@ namespace prismmod.Utils
             { }
         };
 
-        public abstract Point drawStructure(int x, int y, char direction);
+        public PrismPrefab(bool faceLeft) 
+        {
+            setDirection(faceLeft);
+        }
+
+        public abstract Point drawStructure(int x, int y, bool faceLeft);
 
         public virtual void setDirection(bool faceLeft)
         {
