@@ -6,10 +6,10 @@ namespace prismmod.Utils
 {
     abstract class PrismPrefab
     {
-        int height;
-        int width;
-        bool faceLeft;
-        int[,] structure = {
+        protected int height;
+        protected int width;
+        protected bool faceLeft;
+        protected int[,] structure = {
             { },
             { },
             { }
