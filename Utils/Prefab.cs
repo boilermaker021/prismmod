@@ -9,11 +9,7 @@ namespace prismmod.Utils
         protected int height;
         protected int width;
         protected bool faceLeft;
-        protected int[,] structure = {
-            { },
-            { },
-            { }
-        };
+        protected int[,] structure = { };
 
         public PrismPrefab(bool faceLeft) 
         {
