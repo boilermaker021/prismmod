@@ -414,6 +414,7 @@ namespace prismmod.NPCs.Prismachine
                     AI_Timer = 1;
                 }
             }
+            npc.netUpdate = true;
         }
         private int count = 0;
         private bool start = false;
