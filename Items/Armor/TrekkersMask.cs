@@ -41,7 +41,7 @@ namespace prismmod.Items.Armor
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SpecialCloth"), 4);
+            recipe.AddIngredient(mod.ItemType("IciclunkHorn"), 4);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

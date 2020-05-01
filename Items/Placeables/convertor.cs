@@ -7,7 +7,7 @@ namespace prismmod.Items.Placeables
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a modded workbench.");
+            Tooltip.SetDefault("Converts items and ores");
             DisplayName.SetDefault("Converter");
         }
 
@@ -29,8 +29,10 @@ namespace prismmod.Items.Placeables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WorkBench);
-            //recipe.AddIngredient(mod.ItemType("ExampleBlock"), 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.Furnace, 2);
+            recipe.AddIngredient(ItemID.Glass, 5);
+            recipe.AddIngredient(ItemID.Amethyst, 4);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

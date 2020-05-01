@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,18 +9,31 @@ namespace prismmod
 {
     internal class PrismPlayer : ModPlayer
     {
-        Random rndm = new Random();
+        private Random rndm = new Random();
+
+        //biomes
+        public bool ZoneWaterTown = false;
 
         //pets and mounts
         public bool tinyTurtle = false;
+
         public bool facePancake = false;
         public bool apatheticCloud = false;
+
+        public bool upPressed;
+        public int upTimer;
+
+        public bool downPressed;
+        public int downTimer;
+
+        public int vertDashCooldown = 0;
 
         //boss shit
         public bool spawnedPrismachine = false;
 
         //stat changes
         public float noAmmoUseChance = 0;
+
         public float IncreaseBulletSpeed = 0;
         public int timesBounced = 0;
         public float flamerDamageIncrease = 1f;
@@ -30,6 +44,12 @@ namespace prismmod
         public float arrowsFreezeEnemies = 0f;
         public float twoShotRocket = 0f;
         public float reducedContactDamage = 1f;
+        public bool vertDash = false;
+
+        public override void UpdateBiomes()
+        {
+            ZoneWaterTown = PrismWorld.moistChiseledStoneCount > 200;
+        }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
@@ -55,6 +75,35 @@ namespace prismmod
             reducedContactDamage = 1f;
             tinyTurtle = false;
             facePancake = false;
+            vertDash = false;
+            ResetDashTimers();
+        }
+
+        public void ResetDashTimers()
+        {
+            if (upPressed)
+            {
+                upTimer++;
+                if (upTimer > 30)
+                {
+                    upTimer = 0;
+                    upPressed = false;
+                }
+            }
+            if (downPressed)
+            {
+                downTimer++;
+                if (downTimer > 30)
+                {
+                    downTimer = 0;
+                    downPressed = false;
+                }
+            }
+
+            if (vertDashCooldown > 0)
+            {
+                vertDashCooldown--;
+            }
         }
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -102,6 +151,42 @@ namespace prismmod
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
             damage = (int)((float)damage * (reducedContactDamage - 1f));
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (vertDash && vertDashCooldown == 0)
+            {
+                if (player.controlUp && player.releaseUp)
+                {
+                    if (upPressed)
+                    {
+                        player.velocity.Y = -15f;
+                        upPressed = false;
+                        upTimer = 0;
+                        vertDashCooldown = 60;
+                    }
+                    else
+                    {
+                        upPressed = true;
+                    }
+                }
+
+                if (player.controlDown && player.releaseDown)
+                {
+                    if (downPressed)
+                    {
+                        player.velocity.Y = 15f;
+                        downPressed = false;
+                        downTimer = 0;
+                        vertDashCooldown = 60;
+                    }
+                    else
+                    {
+                        downPressed = true;
+                    }
+                }
+            }
         }
     }
 }

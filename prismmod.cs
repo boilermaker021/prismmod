@@ -1,18 +1,29 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace prismmod
 {
     internal class prismmod : Mod
     {
-        public prismmod()
+
+
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            Properties = new ModProperties()
+            if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
             {
-                Autoload = true,
-                AutoloadGores = true,
-                AutoloadSounds = true
-            };
+                return;
+            }
+
+            if (Main.LocalPlayer.GetModPlayer<PrismPlayer>().ZoneWaterTown)
+            { 
+                Mod musicmod = ModLoader.GetMod("prismmodmusic");
+                if (musicmod != null)
+                {
+                    priority = MusicPriority.BossHigh;
+                    music = musicmod.GetSoundSlot(SoundType.Music, "Sounds/Music/Biomes/WaterTown");
+                }
+            }
         }
 
         public override void AddRecipes()

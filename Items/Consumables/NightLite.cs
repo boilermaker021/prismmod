@@ -40,5 +40,22 @@ namespace prismmod.Items.Consumables
         {
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.DemoniteBar, 5);
+            recipe.AddIngredient(ItemID.FallenStar, 3);
+            recipe.SetResult(this, 3);
+            recipe.AddRecipe();
+
+            ModRecipe recipe2 = new ModRecipe(mod);
+            recipe2.AddTile(TileID.WorkBenches);
+            recipe2.AddIngredient(ItemID.CrimtaneBar, 5);
+            recipe2.AddIngredient(ItemID.FallenStar, 3);
+            recipe2.SetResult(this, 3);
+            recipe2.AddRecipe();
+        }
     }
 }

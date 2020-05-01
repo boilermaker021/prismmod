@@ -35,7 +35,7 @@ namespace prismmod.NPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.dayTime == false && ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise == false
+            if (Main.dayTime == false && ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise == false
                 && NPC.CountNPCS(mod.NPCType("GargantuanTortoise")) < 1 && NPC.downedSlimeKing)
             {
                 return SpawnCondition.SurfaceJungle.Chance * 0.1f;
@@ -45,15 +45,15 @@ namespace prismmod.NPCs
 
         public override void NPCLoot()
         {
-            if (ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise == false)
+            if (ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise == false)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("DuoGloriae"));
             }
-            ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise = true;
+            ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise = true;
 
-            if (!ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise)
+            if (!ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise)
             {
-                ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise = true;
+                ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise = true;
                 if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.

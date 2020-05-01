@@ -9,7 +9,7 @@ namespace prismmod.Items.Consumables
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prismatic Chunk");
-            Tooltip.SetDefault("Summons the Bejeweled Behemoth");
+            Tooltip.SetDefault("Summons the Prismachine");
         }
 
         public override void SetDefaults()

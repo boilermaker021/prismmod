@@ -1,6 +1,4 @@
-using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace prismmod.Items.Weapons
 {
@@ -28,6 +26,5 @@ namespace prismmod.Items.Weapons
         public override void AI()
         {
         }
-
     }
 }

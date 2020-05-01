@@ -1,8 +1,5 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace prismmod.Projectiles
@@ -32,6 +29,5 @@ namespace prismmod.Projectiles
             projectile.velocity.Y = projectile.velocity.Y + 0.1f;
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
-
     }
 }

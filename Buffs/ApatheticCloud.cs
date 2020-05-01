@@ -1,8 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
 
 namespace prismmod.Buffs
 {
@@ -21,7 +19,6 @@ namespace prismmod.Buffs
             player.mount.SetMount(MountType<Mounts.ApatheticCloud>(), player);
             player.buffTime[buffIndex] = 10;
             player.mount.ResetFlightTime(0f);
-            
         }
     }
 }

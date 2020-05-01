@@ -4,13 +4,13 @@ using Terraria.ModLoader;
 
 namespace prismmod
 {
-    class PrismGlobalNPC : GlobalNPC
+    internal class PrismGlobalNPC : GlobalNPC
     {
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {
             if (type == NPCID.Dryad)
             {
-                if (ModContent.GetInstance<PrismWorld>().killedGargantuanTortoise)
+                if (ModContent.GetInstance<PrismWorld>().downedGargantuanTortoise)
                 {
                     shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Consumables.MechaEgg>());
                     nextSlot++;
@@ -45,6 +45,5 @@ namespace prismmod
                 }
             }
         }
-
     }
 }
