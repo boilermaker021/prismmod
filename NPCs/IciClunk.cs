@@ -77,6 +77,7 @@ namespace prismmod.NPCs
             {
                 if (AI_State == AI_State_Waiting)
                 {
+                    
                     npc.rotation = 0f;
                     jumped = false;
                     hitPlayer = false;
@@ -86,21 +87,44 @@ namespace prismmod.NPCs
 
                     if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                     {
-                        npc.velocity = new Vector2(20f * adjDistance, -20f);//*adjDistanceY);
-                        jumped = true;
-                        AI_State = AI_State_Jumped;
-                        AI_Timer = 0;
+                        AI_Timer++;
+                        if (AI_Timer % 35 == 0)
+                        {
+                            npc.velocity = new Vector2(20f * adjDistance, -20f);//*adjDistanceY);
+                            jumped = true;
+                            AI_State = AI_State_Jumped;
+                            AI_Timer = 0;
+                        }
+                        else if (AI_Timer % 30 == 0)
+                        {
+                            AI_Frame = 4;
+                        }
+                        else if (AI_Timer % 20 == 0)
+                        {
+                            AI_Frame = 3;
+                        }
+                        
                     }
                     else if (npc.HasValidTarget)
                     {
-                        jumped = true;
-                        npc.velocity = new Vector2(20f * (adjDistance * Math.Abs(1 / adjDistance)), -20f);//*adjDistanceY);
-                        AI_State = AI_State_Movement;
-                        AI_Timer = 0;
+                        AI_Timer++;
+                        AI_Frame = 1;
+                        Main.NewText(AI_Timer);
+                        if (AI_Timer % 20 == 0)
+                        {
+                            jumped = true;
+                            npc.velocity = new Vector2(20f * (adjDistance * Math.Abs(1 / adjDistance)), -20f);//*adjDistanceY);
+                            AI_State = AI_State_Movement;
+                            AI_Timer = 0;
+                        }
+                        
+                        
+                        
                     }
                 }
                 else if (AI_State == AI_State_Movement)
                 {
+                    AI_Frame = 2;
                     npc.velocity.Y = npc.velocity.Y + 0.5f;
 
                     if (npc.velocity.Y > 1f)
@@ -115,6 +139,7 @@ namespace prismmod.NPCs
                 }
                 else if (AI_State == AI_State_Jumped)
                 {
+                    AI_Frame = 5;
                     npc.velocity.Y = npc.velocity.Y + 0.5f; // 0.1f for arrow gravity, 0.4f for knife gravity
                     if (npc.velocity.Y > 16f) // This check implements "terminal velocity".
                     {
@@ -142,6 +167,7 @@ namespace prismmod.NPCs
                 }
                 else if (AI_State == AI_State_Landed_PostMove)
                 {
+                    AI_Frame = 0;
                     AI_Timer++;
                     if (AI_Timer > 120)//waits for 2 seconds before the enemy rights itself
                     {
@@ -153,25 +179,42 @@ namespace prismmod.NPCs
                 {
                     if (hitPlayer)
                     {
-                        AI_State = AI_State_Landed_PostMove;
+                        AI_State = AI_State_Righting;
                         npc.rotation = 0f;
                         hitPlayer = false;
+                        AI_Frame = 0;
                     }
                     else
                     {
                         AI_Timer++;
+                        if((AI_Frame !=6 && AI_Frame!=7)||AI_Timer%8==0)
+                        if (AI_Frame == 6)
+                        {
+                            AI_Frame = 7;
+                        }
+                        else if (AI_Frame == 7)
+                        {
+                            AI_Frame = 6;
+                        }
+                        else
+                        {
+                            AI_Frame = 6;
+                        }
                         if (AI_Timer > 180)//waits for 2 seconds before the enemy rights itself
                         {
+                            
                             AI_Timer = 0;
                             AI_State = AI_State_Righting;
                             jumped = true;
                             npc.velocity.Y = -6f;
                             npc.velocity.X = -2f;
                         }
+                        npc.netUpdate = true;
                     }
                 }
                 else if (AI_State == AI_State_Righting)
                 {
+                    AI_Frame = 0;
                     npc.rotation = (npc.velocity.ToRotation() + MathHelper.PiOver2) - MathHelper.Pi;
                     if (npc.velocity.Y > 1f)
                     {
@@ -208,11 +251,8 @@ namespace prismmod.NPCs
             8.
              
             */
-            npc.frame.Y = 0;
-            if (AI_State == AI_State_Landed_PostJump)
-            { 
-                
-            }
+            npc.frame.Y = frameHeight * (int)AI_Frame;
+
         }
 
         public override void HitEffect(int hitDirection, double damage)
