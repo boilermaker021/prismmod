@@ -47,6 +47,7 @@ namespace prismmod.NPCs.Prismachine
 
         public override void NPCLoot()
         {
+
             if (Main.netMode != 2)
             {
                 NPC prismachine = Main.npc[(int)npc.ai[0]];
@@ -101,7 +102,12 @@ namespace prismmod.NPCs.Prismachine
                     color = new Color(112, 202, 204);
                 }
                 NetMessage.BroadcastChatMessage(text, color);
+
+                
             }
+            Main.npc[(int)npc.ai[0]].dontTakeDamage=false;
+
         }
+
     }
 }

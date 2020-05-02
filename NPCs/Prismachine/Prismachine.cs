@@ -1,4 +1,5 @@
 using prismmod.Items.Weapons;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,6 +34,7 @@ namespace prismmod.NPCs.Prismachine
             npc.boss = true;
             npc.dontTakeDamageFromHostiles = true;
             bossBag = mod.ItemType("PrismachineBag");
+            npc.dontTakeDamage = true;
 
             Mod musicmod = ModLoader.GetMod("prismmodmusic");
             if (musicmod != null)
@@ -185,8 +187,26 @@ namespace prismmod.NPCs.Prismachine
 
         private int tAttacks = 0;
 
+        private bool check1 = false, check2 = false, check3 = false;
         public override void AI()
         {
+            Main.NewText("takedamagebool" + npc.dontTakeDamage);
+            if (npc.life <= (int)(npc.lifeMax * 0.75) && check1 == false)
+            {
+                npc.dontTakeDamage = true;
+                check1 = true;
+            }
+            if (npc.life <= (int)(npc.lifeMax * 0.5) && check2 == false)
+            {
+                npc.dontTakeDamage = true;
+                check2 = true;
+            }
+            if (npc.life <= (int)(npc.lifeMax * 0.25) && check3 == false)
+            {
+                npc.dontTakeDamage = true;
+                check3 = true;
+            }
+
             npc.spriteDirection = 0;
             if (tAttacks == 0 && numOfAttacks() == 1)
             {
