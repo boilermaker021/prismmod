@@ -25,6 +25,7 @@ namespace prismmod.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0.75f;
             npc.knockBackResist = 0.5f;
+            npc.netAlways = true;
         }
 
         public override void NPCLoot()
@@ -34,6 +35,7 @@ namespace prismmod.NPCs
 
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
+        private const int AI_Frame_Slot = 2;
 
         private const int AI_State_Waiting = 0;
         private const int AI_State_Jumped = 1;
@@ -55,6 +57,13 @@ namespace prismmod.NPCs
             get => npc.ai[AI_Timer_Slot];
             set => npc.ai[AI_Timer_Slot] = value;
         }
+
+        public float AI_Frame
+        {
+            get => npc.ai[AI_Frame_Slot];
+            set => npc.ai[AI_Frame_Slot] = value; 
+        }
+
 
         public float Rotation
         {
@@ -107,7 +116,7 @@ namespace prismmod.NPCs
                 else if (AI_State == AI_State_Jumped)
                 {
                     npc.velocity.Y = npc.velocity.Y + 0.5f; // 0.1f for arrow gravity, 0.4f for knife gravity
-                    if (npc.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
+                    if (npc.velocity.Y > 16f) // This check implements "terminal velocity".
                     {
                         npc.velocity.Y = 16f;
                     }
@@ -175,7 +184,6 @@ namespace prismmod.NPCs
                         npc.rotation = 0f;
                     }
                 }
-                npc.netUpdate = true;
             }
             
         }
@@ -188,7 +196,23 @@ namespace prismmod.NPCs
         public override void FindFrame(int frameHeight)
         {
             //add in frame-changing code depending on AI_State
+            /*
+            Frames:
+            1.
+            2.
+            3.
+            4.
+            5.
+            6.
+            7.
+            8.
+             
+            */
             npc.frame.Y = 0;
+            if (AI_State == AI_State_Landed_PostJump)
+            { 
+                
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
