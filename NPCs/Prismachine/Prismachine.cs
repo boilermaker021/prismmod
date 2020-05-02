@@ -190,7 +190,6 @@ namespace prismmod.NPCs.Prismachine
         private bool check1 = false, check2 = false, check3 = false;
         public override void AI()
         {
-            Main.NewText("takedamagebool" + npc.dontTakeDamage);
             if (npc.life <= (int)(npc.lifeMax * 0.75) && check1 == false)
             {
                 npc.dontTakeDamage = true;
