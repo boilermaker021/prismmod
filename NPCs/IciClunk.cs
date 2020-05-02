@@ -109,7 +109,6 @@ namespace prismmod.NPCs
                     {
                         AI_Timer++;
                         AI_Frame = 1;
-                        Main.NewText(AI_Timer);
                         if (AI_Timer % 20 == 0)
                         {
                             jumped = true;
