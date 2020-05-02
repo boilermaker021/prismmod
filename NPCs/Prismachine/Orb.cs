@@ -101,7 +101,6 @@ namespace prismmod.NPCs.Prismachine
                     color = new Color(112, 202, 204);
                 }
                 NetMessage.BroadcastChatMessage(text, color);
-                prismachine.immune = false;
             }
         }
     }
