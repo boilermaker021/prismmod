@@ -21,6 +21,7 @@ namespace prismmod.NPCs.Prismachine
             npc.height = 25;
             //no Ai Style
             npc.lifeMax = 100; //ask braden for life values
+            npc.netAlways = true;
             //beware of generic hit sounds
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -100,6 +101,7 @@ namespace prismmod.NPCs.Prismachine
                     color = new Color(112, 202, 204);
                 }
                 NetMessage.BroadcastChatMessage(text, color);
+                prismachine.immune = false;
             }
         }
     }

@@ -27,7 +27,7 @@ namespace prismmod.NPCs.Prismachine
             //?npc.value = 0.75f;
             npc.knockBackResist = 1f;
             npc.damage = 1000; //lots of damage, should not get close to it, bceeause it should not get close to you
-            // npc.immune = false;
+            npc.netAlways = true;
             npc.noGravity = true;
             npc.noTileCollide = false;
             npc.boss = true;
@@ -414,7 +414,10 @@ namespace prismmod.NPCs.Prismachine
                     AI_Timer = 1;
                 }
             }
-            npc.netUpdate = true;
+
+
+            //Move Code here:
+            
         }
         private int count = 0;
         private bool start = false;
