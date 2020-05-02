@@ -9,16 +9,6 @@ namespace prismmod
 {
     public class PrismHelper
     {
-        public static int mcs = 1;
-        public static int ctwl = 2;
-        
-        public static int[,] testHouse = {
-
-            {mcs, mcs, mcs},
-            {mcs, ctwl, mcs},
-            {mcs, mcs, mcs}
-        };
-
 
         public static void UnlockWaterTown()
         {
