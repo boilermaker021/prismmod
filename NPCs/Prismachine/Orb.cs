@@ -38,6 +38,14 @@ namespace prismmod.NPCs.Prismachine
             npc.velocity.Y = 0f;
             npc.velocity.X = 0f;
             NPC prismachine = Main.npc[(int)npc.ai[0]];
+            if (!prismachine.dontTakeDamage)
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
         }
 
         public override void FindFrame(int frameHeight)
