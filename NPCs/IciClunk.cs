@@ -73,7 +73,7 @@ namespace prismmod.NPCs
 
         public override void AI()
         {
-            if (Main.netMode != 2)
+            if (Main.netMode != 1)
             {
                 if (AI_State == AI_State_Waiting)
                 {
