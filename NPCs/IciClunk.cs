@@ -43,6 +43,7 @@ namespace prismmod.NPCs
         private const int AI_State_Landed_PostMove = 3;
         private const int AI_State_Landed_PostJump = 4;
         private const int AI_State_Righting = 5;
+        private const int AI_State_Hit_PLayer = 6;
         private bool jumped;
         private bool hitPlayer;
 
@@ -73,18 +74,16 @@ namespace prismmod.NPCs
 
         public override void AI()
         {
-            if (Main.netMode != 2)
-            {
                 if (AI_State == AI_State_Waiting)
                 {
-                    
+                    npc.TargetClosest();
                     npc.rotation = 0f;
                     jumped = false;
                     hitPlayer = false;
 
                     float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.0035f;
                     //float adjDistanceY = Math.Abs((Main.player[npc.target].Center.Y - npc.Center.Y) * 0.001f);
-                    npc.TargetClosest();
+
                     if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                     {
                         AI_Timer++;
@@ -176,15 +175,7 @@ namespace prismmod.NPCs
                 }
                 else if (AI_State == AI_State_Landed_PostJump)
                 {
-                    if (hitPlayer)
-                    {
-                        AI_State = AI_State_Righting;
-                        npc.rotation = 0f;
-                        hitPlayer = false;
-                        AI_Frame = 0;
-                    }
-                    else
-                    {
+ 
                         AI_Timer++;
                         if((AI_Frame !=6 && AI_Frame!=7)||AI_Timer%8==0)
                         if (AI_Frame == 6)
@@ -209,8 +200,14 @@ namespace prismmod.NPCs
                             npc.velocity.X = -2f;
                         }
                         npc.netUpdate = true;
-                    }
                 }
+                else if (AI_State==AI_State_Hit_PLayer)
+                    {
+                        AI_State = AI_State_Righting;
+                        npc.rotation = 0f;
+                        hitPlayer = false;
+                        AI_Frame = 0;
+                    }
                 else if (AI_State == AI_State_Righting)
                 {
                     AI_Frame = 0;
@@ -226,30 +223,21 @@ namespace prismmod.NPCs
                         npc.rotation = 0f;
                     }
                 }
-            }
+
             
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            hitPlayer = true;
+            AI_State = AI_State_Hit_PLayer;
+            if (Main.netMode != 2)
+            {
+                npc.netUpdate = true;
+            }
         }
 
         public override void FindFrame(int frameHeight)
         {
-            //add in frame-changing code depending on AI_State
-            /*
-            Frames:
-            1.
-            2.
-            3.
-            4.
-            5.
-            6.
-            7.
-            8.
-             
-            */
             npc.frame.Y = frameHeight * (int)AI_Frame;
 
         }
