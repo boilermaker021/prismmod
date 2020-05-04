@@ -84,7 +84,7 @@ namespace prismmod.NPCs
 
                     float adjDistance = (Main.player[npc.target].Center.X - npc.Center.X) * 0.0035f;
                     //float adjDistanceY = Math.Abs((Main.player[npc.target].Center.Y - npc.Center.Y) * 0.001f);
-
+                    npc.TargetClosest();
                     if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 500f)
                     {
                         AI_Timer++;
