@@ -70,11 +70,11 @@ namespace prismmod
             {
                 for (int y = yStart; y <= (yStart + height); y++)
                 {
-                    if ((y - yStart) / (yStart + height) <= 0.25)
+                    if ((y - yStart) / (height) <= 0.25)
                     {
                         width -= 1;
                     }
-                    if ((y - yStart) / (yStart + height) <= 0.5)
+                    if ((y - yStart) / (height) <= 0.5)
                     {
                         width -= 1;
                     }
@@ -96,9 +96,21 @@ namespace prismmod
             }
         }
 
-        public static void drawIsland(int xCenter, int yCenter, int width, int height, int block)
-        { 
-            
+        public static void drawIsland(int xLeft, int yTop, int height, int width, int block)
+        {
+            for (int x = xLeft; x <= xLeft + width; x++)
+            {
+                for (int y = yTop; y <= yTop + height; y++)
+                {
+                    Tile tile = Framing.GetTileSafely(x, y);
+                    if (tile.type != ModContent.TileType<MoistChiseledStone>())
+                    {
+                        tile.ClearTile();
+                        WorldGen.PlaceTile(x, y, block);
+                    }
+                }
+            }
+
         }
 
 
