@@ -250,10 +250,14 @@ namespace prismmod
                     //house drawing
                     spawnPoints.Add(PrismHelper.drawBaseFishHouse(leftX+3, topY+30, 8, 15, ModContent.TileType<MoistChiseledStone>(), 'l'));
                     PrismHelper.drawGroundFromWall(leftX + 2, topY + 30, 5, 25, TileID.Stone, 'l');
+
+                    spawnPoints.Add(PrismHelper.drawBaseFishHouse(startXTunnel + (startXTunnel - endXBiome) + 10, topY + 50, 8, 15, ModContent.TileType<MoistChiseledStone>(), 'r'));
+                    PrismHelper.drawIsland(startXTunnel + (startXTunnel - endXBiome) / 2, topY + 50, 5, 25, TileID.Stone);
                     
                     progress.Message = "Importing Fish People";
-                    Point spawnPoint1 = spawnPoints.ToArray()[0];
-                    NPC.NewNPC(spawnPoint1.X*16,spawnPoint1.Y*16, ModContent.NPCType<FishBlue>());
+                    Point[] spawnPointsArray = spawnPoints.ToArray();
+                    NPC.NewNPC(spawnPointsArray[0].X*16,spawnPointsArray[0].Y*16, ModContent.NPCType<FishBlue>());
+                    NPC.NewNPC(spawnPointsArray[1].X * 16, spawnPointsArray[1].Y * 16, ModContent.NPCType<FishRainbow>());
 
                     progress.Message = "Populating Passives";
 
